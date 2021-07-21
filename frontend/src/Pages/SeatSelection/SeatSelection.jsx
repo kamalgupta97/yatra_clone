@@ -3,6 +3,14 @@ import React from 'react';
 import styles from  './SeatSelection.module.css';
 import {LoadingIndicator} from '../../Components/LoadingIndicator/LoadingIndicator';
 import styled from 'styled-components';
+import Available from './Images/Available.png';
+import Booked from './Images/Booked.png';
+import BookedByLadies from './Images/BookedByladies.png';
+import ForLadies from './Images/ForLadies.png';
+import Selected from './Images/Selected.png';
+import ForMale from './Images/ForMale.png';
+import { Grid, Typography } from '@material-ui/core';
+
 
 const SeatSelectionWrapper =styled.div`
 
@@ -14,7 +22,9 @@ const SeatSelectionWrapperRight=styled.div`
     // height:100vh;
     padding:20px;
 `
-
+const DescriptionAnsStatus = styled.div`
+    display:flex;
+`
 const H1 = styled.div`
     margin-bottom:10px;
     font-size:24px;
@@ -53,23 +63,77 @@ const SeatStatus = styled.div`
 margin:2%;
 background:white;
 width:96%;
-min-height:150px;
+min-height:120px;
+// background:red;
 `
 
+const Para = styled.div`
+    width:96%;
+    margin:auto;
+    margin-top:5%;
+    &>p{
+       font-size:12px;
+    }
+`
 
+const TravelDescription=styled.div`
+    // background:#f2f2f2;
+    width:52%;
+    height:100vh;
+`
 
+const DescHeading=styled.div`
+background:#f2f2f2;
+height:80px;
+&>button{
+    border:none;
+    height:100%;
+    background:none;
+    font-size: 14px;
+    font-weight:600;
+ }
+`
 
 export const SeatSelection = () => {
-    const [activelower,setActivelower] = React.useState(false)
+    const [activelower,setActivelower] = React.useState(true)
+    const [activeplace,setactiveplace] =React.useState(true)
+    const [activeBordingpoint,setactiveBordingpoint] = React.useState(false)
+    const [activeDroppingpoint,setactiveDroppingpoint] = React.useState(false)
+
+    const handleClick=(e)=>{
+        if(e.target.name==="activeplace"){
+            setactiveplace(true)
+            setactiveBordingpoint(false)
+            setactiveDroppingpoint(false)
+        }
+        else if(e.target.name==="activeBordingpoint"){
+        
+                setactiveplace(false)
+                setactiveBordingpoint(true)
+                setactiveDroppingpoint(false)
+         
+        }
+        else if(e.target.name==="activeDroppingpoint"){
+                setactiveplace(false)
+                setactiveBordingpoint(false)
+                setactiveDroppingpoint(true)
+
+        }
+        // console.log(activeplace,activeBordingpoint,activeDroppingpoint) at this line why it is giving wrong output
+    }
+
     return (
         <SeatSelectionWrapper>
-
+            {/* {console.log(activeplace,activeBordingpoint,activeDroppingpoint)} */}
            <LoadingIndicator Custwidth={"25%"} icons={false}/>
+
 
            <SeatSelectionWrapperRight>
                 <div>
                     <H1>Seat Preferences</H1>
                 </div>
+
+                <DescriptionAnsStatus>
                 <ArrangementWrapper>
                     <LowerUper>
                         <Buttons>
@@ -83,8 +147,65 @@ export const SeatSelection = () => {
                     </Sitting>
                     <SeatStatus>
 
+                    <Grid container className={styles.seatsStatusContainer}>
+                        <Grid xs={6} sm={6} md={2} lg={2} xl={2} className={styles.seatsStatus}>
+                            <img src={Available} />  
+                            <p>Available</p>                             
+                        </Grid>
+                    
+                        <Grid xs={6} sm={6} md={2} lg={2} xl={2} className={styles.seatsStatus}>
+                        <img src={Booked} />
+                        <p>Booked</p>
+                                                   
+                        </Grid>
+                    
+                        <Grid xs={6} sm={6} md={2} lg={2} xl={2} className={styles.seatsStatus}>
+                        <img src={Selected} />
+                        <p>Selected</p>
+
+                           
+                        </Grid>
+                    
+                        <Grid xs={6} sm={6} md={2} lg={2} xl={2} className={styles.seatsStatus}>
+                        <img src={BookedByLadies} />
+                        <p>Booked</p>
+                              
+                        </Grid>
+                    
+                        <Grid xs={6} sm={6} md={2} lg={2} xl={2} className={styles.seatsStatus}>
+                        <img src={ForLadies} />
+                        <p>For Ladies</p>
+    
+                        </Grid>
+                    
+                        <Grid xs={6} sm={6} md={2} lg={2} xl={2} className={styles.seatsStatus}>
+                        <img src={ForMale} /> 
+                        <p>For Male</p>
+                              
+                        </Grid>
+                    </Grid>
+         
+        
+                <Para>
+                    <p>
+                    The seat numbers are indicative & not guaranteed. The bus operator reserves the right to change the seat numbers
+                    </p>
+                </Para>
+                        
+                       
+
                     </SeatStatus>
                 </ArrangementWrapper>
+                <TravelDescription>
+                   <DescHeading>
+                        <button className={activeplace && styles.activebuttons} name="activeplace" onClick={handleClick}>Delhi-Jaipur</button>
+                        <button className={activeBordingpoint && styles.activebuttons} name="activeBordingpoint" onClick={handleClick}>Bording Points</button>
+                        <button className={activeDroppingpoint && styles.activebuttons} name="activeDroppingpoint" onClick={handleClick}>Dropping Points</button>
+
+                   </DescHeading>
+                </TravelDescription>
+                </DescriptionAnsStatus>
+
            </SeatSelectionWrapperRight>
         
 

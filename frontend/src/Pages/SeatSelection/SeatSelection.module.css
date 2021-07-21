@@ -1,3 +1,19 @@
-.wrapper{
- 
+.activelower{
+    color:red;
+    border:none;
+    background:white;
+    width: 50%;
+    height: 100%;
+    font-size: 14px;
+    font-weight:700;
+}
+
+.lower{
+  
+    border:none;
+    width: 50%;
+    height: 100%;
+    font-size: 14px;
+    font-weight:700;
+   
 }

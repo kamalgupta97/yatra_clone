@@ -7,8 +7,8 @@ position:fixed;
 width:100%;
 height:100%;
 background-color:#000000;
-opacity:0.8;
-z-index:1000;
+opacity:0.6;
+
 top:0;
 `
 
@@ -19,10 +19,10 @@ const style ={
     color:'c4c4c4',
     fontSize:'40px'
 }
-export const LoadingIndicator = () => {
+export const LoadingIndicator = ({Custwidth,icons}) => {
     return (
-        <Loader>
-            <ViewColumnIcon style={style}/>
+        <Loader style={{width:Custwidth}}>
+           {icons && <ViewColumnIcon style={style} className="App-logo"/> }
         </Loader>
     )
 }

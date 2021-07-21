@@ -10,6 +10,7 @@ import ForLadies from './Images/ForLadies.png';
 import Selected from './Images/Selected.png';
 import ForMale from './Images/ForMale.png';
 import { Grid, Typography } from '@material-ui/core';
+import { Points } from './Points';
 
 
 const SeatSelectionWrapper =styled.div`
@@ -91,9 +92,38 @@ height:80px;
     background:none;
     font-size: 14px;
     font-weight:600;
+    letter-spacing: 0.5px;
+ }`
+
+
+const SeatConfirmation=styled.div`
+`
+const BordingPoints=styled.div``
+const DroppingPoints=styled.div``
+
+const SeatConfirmationHeader = styled.div`
+ margin:15px;
+ &>p{
+     font-size:18px;
+     font-weight:600;
  }
 `
-
+const Bustype = styled.div`
+margin:15px;
+&>p{
+    font-size:13px;
+    font-weight:600;
+    color:#000;
+}
+`
+const Dates = styled.div`
+margin:15px;
+&>p{
+    font-size:13px;
+    font-weight:600;
+    color:#000;
+}
+`
 export const SeatSelection = () => {
     const [activelower,setActivelower] = React.useState(true)
     const [activeplace,setactiveplace] =React.useState(true)
@@ -203,6 +233,34 @@ export const SeatSelection = () => {
                         <button className={activeDroppingpoint && styles.activebuttons} name="activeDroppingpoint" onClick={handleClick}>Dropping Points</button>
 
                    </DescHeading>
+                    {
+                        activeplace && <SeatConfirmation>
+                            <SeatConfirmationHeader>
+                                <p>{"Kamal Travels Regd."}</p>
+                            </SeatConfirmationHeader>
+                            <Bustype>
+                                <p>{"A-C Seater - Sleeper (2+1)"}</p>
+                            </Bustype>
+
+                            <Dates>
+                                <p>{"Date: Thu, 22 Jul, 2021 Time: 03:00 PM - 08:22 PM"}</p>
+                            </Dates>
+                        </SeatConfirmation>
+
+                    }
+
+                    {
+                        activeBordingpoint&&<BordingPoints>
+                            <Points BordingPoints={true}/>
+                        </BordingPoints>
+                    }
+                    {
+                        activeDroppingpoint&&<DroppingPoints>
+                             <Points BordingPoints={false}/>
+                        </DroppingPoints>
+                    }
+
+
                 </TravelDescription>
                 </DescriptionAnsStatus>
 

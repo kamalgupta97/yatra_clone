@@ -7,8 +7,6 @@ import styles from "./BusSelectionCard.module.css";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import RemoveIcon from "@material-ui/icons/Remove";
 import { useTheme } from "@material-ui/core/styles";
-// import useMediaQuery from "@material-ui/core/useMediaQuery";
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,12 +25,18 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "10px",
     },
   },
+  Cancel_policy_btn: {
+    border: "none",
+    outline: "none",
+    background: "transparent",
+    color: "gray",
+    marginTop: "4px",
+  },
 }));
 
-const SelectionCard = () => {
+const SelectionCard = ({ handleCancelPolicy }) => {
   const classes = useStyles();
   const theme = useTheme();
-  // const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Card className={classes.root}>
@@ -40,7 +44,7 @@ const SelectionCard = () => {
         <CardContent className={styles.Card_bus_selection}>
           <div className={styles.Column1}>
             <div>
-              <h1 className={styles.Bus_title} >Shakthi Traveller</h1>
+              <h1 className={styles.Bus_title}>Shakthi Traveller</h1>
               <p style={{ color: "green" }}>Ac sleeper</p>
             </div>
           </div>
@@ -56,7 +60,7 @@ const SelectionCard = () => {
             </div>
             <h1>5.00</h1>
             <div>
-              <h1 className={styles.Bus_fair} >1345</h1>
+              <h1 className={styles.Bus_fair}>1345</h1>
               <p>13 seat left</p>
             </div>
           </div>
@@ -64,6 +68,12 @@ const SelectionCard = () => {
             <Button className={classes.btn} variant="contained">
               Select seat
             </Button>
+            <button
+              className={classes.Cancel_policy_btn}
+              onClick={handleCancelPolicy}
+            >
+              cancellation policy
+            </button>
           </div>
         </CardContent>
       </div>

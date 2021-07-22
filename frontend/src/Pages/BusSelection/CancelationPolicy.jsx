@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 import CancelIcon from "@material-ui/icons/Cancel";
+import { useTheme } from "@material-ui/core/styles";
 import { makeStyles } from "@material-ui/core/styles";
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   Cancellation_Heading: {
     color: "red",
     paddingBottom: "10px",
@@ -11,6 +12,9 @@ const useStyles = makeStyles({
     width: "94%",
     display: "inherit",
     marginLeft: "20px",
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "10px",
+    },
   },
   Cancellation_Info_Heading: {
     display: "inline-flex",
@@ -35,7 +39,7 @@ const useStyles = makeStyles({
     outline: "none",
     marginTop: "13px",
   },
-});
+}));
 
 const Cancelation = styled.div`
   display: flex;
@@ -46,9 +50,14 @@ const Cancelation = styled.div`
   height: 100vh;
   padding: 15px;
   background-color: white;
+  @media screen and (max-width:420px){
+  left: 0%;
+  width: 87%;
+}
 `;
 
 const CancelationPolicy = ({}) => {
+  const theme = useTheme();
   const classes = useStyles();
   const [showBusSelection, setShowBusSelection] = useState(true);
   const handleCancelPolicyCard = () => {

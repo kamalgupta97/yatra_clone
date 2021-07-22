@@ -23,6 +23,8 @@ opacity:1;
 
 left:0;
 top:0;
+@media (max-width: 800px) {
+    overflow-y:scroll;    
 
 `
 
@@ -38,7 +40,11 @@ padding: 11px 17px;
 cursor: pointer;
 font-weight:900;
 border:none;
-&>CloseIcon{
+display:flex;
+@media (max-width: 800px) {
+    display:none;
+   
+    }
 
 `
 const SeatSelectionWrapperRight=styled.div`
@@ -47,9 +53,21 @@ const SeatSelectionWrapperRight=styled.div`
     
     // height:100vh;
     padding:20px;
+    @media (max-width: 800px) {
+        margin-left:0;
+        }
+`
+
+const TobeHide=styled.div`
+@media (max-width: 800px) {
+    display:none;
+    }
 `
 const DescriptionAnsStatus = styled.div`
     display:flex;
+    @media (max-width: 800px) {
+        flex-direction:column;
+        }
 `
 const H1 = styled.div`
     color: rgba(0,0,0,0.9); 
@@ -62,6 +80,10 @@ const ArrangementWrapper = styled.div`
     width:48%;
     height:100vh;
     background:#f2f2f2;
+    @media (max-width: 800px) {
+        width:100%;
+        }
+    
 
 `
 const LowerUper =styled.div`
@@ -77,6 +99,7 @@ const Buttons = styled.div`
     width:200px;
     border:1px solid #c4c4c4;
     height:40px;
+   
    
 `
 const Sitting = styled.div`
@@ -117,9 +140,15 @@ const Para = styled.div`
 `
 
 const TravelDescription=styled.div`
-    // background:#f2f2f2;
+    
     width:52%;
     height:100vh;
+    @media (max-width: 800px) {
+        width:90%;
+        background:#f2f2f2;  
+        padding:5%; 
+    
+    }
 `
 
 const DescHeading=styled.div`
@@ -135,17 +164,40 @@ height:60px;
     padding-left:20px;
     padding-right:20px;
     color: rgba(0,0,0,.8);
- }`
+ }
+ @media (max-width: 800px) {
+    display:flex;
+
+
+}
+ 
+ `
+ 
 
 
 const SeatConfirmation=styled.div`
+@media (max-width: 800px) {
+    background:#fff;  
+    padding:10px;    
+
+}
 `
 const BordingPoints=styled.div`
  padding:10px;
+ @media (max-width: 800px) {
+    background:#fff;   
+    padding:10px;    
+
+}
 
 `
 const DroppingPoints=styled.div`
 padding:10px;
+@media (max-width: 800px) {
+    background:#fff; 
+    padding:10px;      
+
+}
 `
 
 const SeatConfirmationHeader = styled.div`
@@ -235,7 +287,7 @@ export const SeatSelection = ({setopenSelectseat}) => {
     return  (
         <SeatSelectionWrapper>
             {/* {console.log(activeplace,activeBordingpoint,activeDroppingpoint)} */}
-           <LoadingIndicator Custwidth={"25%"} icons={false}/>
+          <TobeHide><LoadingIndicator Custwidth={"25%"} icons={false}/></TobeHide>
 
             
            <SeatSelectionWrapperRight>

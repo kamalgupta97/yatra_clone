@@ -8,7 +8,7 @@ const HeadingPara = styled.div`
 
 const Heading = styled.div`
     margin-top:10px;
-    width:100%;
+    width:95%;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -21,7 +21,7 @@ const Heading = styled.div`
 
 const StopsTiming = styled.div`
     dmargin-top:10px;
-    width:100%;
+    width:95%;
     display:flex;
     justify-content:space-between;
     align-items:center;

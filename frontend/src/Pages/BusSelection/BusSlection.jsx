@@ -9,7 +9,7 @@ const BusSlection = () => {
   };
   return (
     <>
-      <h1>Bus selection</h1>
+      <h1 style={{textAlign:"center"}}>Bus selection</h1>
       <SelectionCard handleCancelPolicy={handleCancelPolicy} />
       {showCancelPolicy ? <CancelationPolicy /> : null}
     </>

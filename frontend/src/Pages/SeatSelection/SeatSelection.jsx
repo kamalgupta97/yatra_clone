@@ -10,9 +10,12 @@ import ForLadies from './Images/ForLadies.png';
 import Selected from './Images/Selected.png';
 import ForMale from './Images/ForMale.png';
 import driver from './Images/Driver.png'
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { Points } from './Points';
-import CloseIcon from '@material-ui/icons/Close';
+
+
+import { requirement } from './requirement';
+
 
 
 const SeatSelectionWrapper =styled.div`
@@ -30,7 +33,7 @@ top:0;
 
 const CrossIcon = styled.button`
 position: absolute;
-right: 75%;
+right: 76%;
 top:0;
 color: #fff;
 font-size: 15px;
@@ -49,7 +52,7 @@ display:flex;
 `
 const SeatSelectionWrapperRight=styled.div`
     background:#fff;
-    margin-left:25%;
+    margin-left:24%;
     
     // height:100vh;
     padding:20px;
@@ -153,6 +156,7 @@ const TravelDescription=styled.div`
 
 const DescHeading=styled.div`
 background:#f2f2f2;
+display:flex;
 height:60px;
 &>button{
     border:none;
@@ -166,7 +170,7 @@ height:60px;
     color: rgba(0,0,0,.8);
  }
  @media (max-width: 800px) {
-    display:flex;
+    
 
 
 }
@@ -287,7 +291,7 @@ export const SeatSelection = ({setopenSelectseat}) => {
     return  (
         <SeatSelectionWrapper>
             {/* {console.log(activeplace,activeBordingpoint,activeDroppingpoint)} */}
-          <TobeHide><LoadingIndicator Custwidth={"25%"} icons={false}/></TobeHide>
+          <TobeHide><LoadingIndicator Custwidth={"24%"} icons={false}/></TobeHide>
 
             
            <SeatSelectionWrapperRight>
@@ -308,45 +312,45 @@ export const SeatSelection = ({setopenSelectseat}) => {
                     <Sitting>
                            
                    { activelower &&  <Driver>
-                            <img src={driver} alt="" />
+                            <img src={driver} alt="driver" />
                             
                             </Driver>}
                     </Sitting>
                     <SeatStatus>
 
                     <Grid container className={styles.seatsStatusContainer}>
-                        <Grid xs={6} sm={6} md={2} lg={2} xl={2} className={styles.seatsStatus}>
-                            <img src={Available} />  
+                        <Grid xs={6} sm={6} md={6} lg={2} xl={2} className={styles.seatsStatus}>
+                            <img src={Available} alt="available"/>  
                             <p>Available</p>                             
                         </Grid>
                     
-                        <Grid xs={6} sm={6} md={2} lg={2} xl={2} className={styles.seatsStatus}>
-                        <img src={Booked} />
+                        <Grid xs={6} sm={6} md={6} lg={2} xl={2} className={styles.seatsStatus}>
+                        <img src={Booked} alt="booked"/>
                         <p>Booked</p>
                                                    
                         </Grid>
                     
-                        <Grid xs={6} sm={6} md={2} lg={2} xl={2} className={styles.seatsStatus}>
-                        <img src={Selected} />
+                        <Grid xs={6} sm={6} md={6} lg={2} xl={2} className={styles.seatsStatus}>
+                        <img src={Selected} alt="selected"/>
                         <p>Selected</p>
 
                            
                         </Grid>
                     
-                        <Grid xs={6} sm={6} md={2} lg={2} xl={2} className={styles.seatsStatus}>
-                        <img src={BookedByLadies} />
+                        <Grid xs={6} sm={6} md={6} lg={2} xl={2} className={styles.seatsStatus}>
+                        <img src={BookedByLadies} alt="bookedbyladies"/>
                         <p>Booked</p>
                               
                         </Grid>
                     
-                        <Grid xs={6} sm={6} md={2} lg={2} xl={2} className={styles.seatsStatus}>
-                        <img src={ForLadies} />
+                        <Grid xs={6} sm={6} md={6} lg={2} xl={2} className={styles.seatsStatus}>
+                        <img src={ForLadies} alt="forladies"/>
                         <p>For Ladies</p>
     
                         </Grid>
                     
-                        <Grid xs={6} sm={6} md={2} lg={2} xl={2} className={styles.seatsStatus}>
-                        <img src={ForMale} /> 
+                        <Grid xs={6} sm={6} md={6} lg={2} xl={2} className={styles.seatsStatus}>
+                        <img src={ForMale} alt="formale"/> 
                         <p>For Male</p>
                               
                         </Grid>
@@ -365,7 +369,7 @@ export const SeatSelection = ({setopenSelectseat}) => {
                 </ArrangementWrapper>
                 <TravelDescription>
                    <DescHeading>
-                        <button className={activeplace && styles.activebuttons} name="activeplace" onClick={handleClick}>Delhi-Jaipur</button>
+                        <button className={activeplace && styles.activebuttons} name="activeplace" onClick={handleClick}>{requirement.source}-{requirement.destination}</button>
                         <button className={activeBordingpoint && styles.activebuttons} name="activeBordingpoint" onClick={handleClick}>Bording Points</button>
                         <button className={activeDroppingpoint && styles.activebuttons} name="activeDroppingpoint" onClick={handleClick}>Dropping Points</button>
 
@@ -373,14 +377,14 @@ export const SeatSelection = ({setopenSelectseat}) => {
                     {
                         activeplace && <SeatConfirmation>
                             <SeatConfirmationHeader>
-                                <p>{"Kamal Travels Regd."}</p>
+                                <p>{requirement.agency_name}</p>
                             </SeatConfirmationHeader>
                             <Bustype>
-                                <p>{"A-C Seater - Sleeper (2+1)"}</p>
+                                <p>{requirement.bus_type}</p>
                             </Bustype>
 
                             <Dates>
-                                <p>{"Date: Thu, 22 Jul, 2021 Time: 03:00 PM - 08:22 PM"}</p>
+                                <p>{`Date: ${requirement.travel_date} ${requirement.time}`}</p>
                             </Dates>
 
                             <SelectCityWrapper>
@@ -389,6 +393,12 @@ export const SeatSelection = ({setopenSelectseat}) => {
                                 </p>
                                 <select name="" id="">
                                     <option>Select Boarding Point</option>
+                                    {
+                                        
+                                        requirement.bording.map(item=>
+                                            <option value={`${item.point}-${item.time}`}>{`${item.point}-${item.time}`}</option>                                          
+                                        )
+                                    }
                                 </select>
                             </SelectCityWrapper>
 
@@ -398,6 +408,12 @@ export const SeatSelection = ({setopenSelectseat}) => {
                                 </p>
                                 <select name="" id="">
                                     <option>Select Dropping Point</option>
+                                    {
+                                        
+                                        requirement.dropping.map(item=>
+                                            <option value={`${item.point}-${item.time}`}>{`${item.point}-${item.time}`}</option>                                          
+                                        )
+                                    }
                                 </select>
                                 <ConfirmButton>Confirm Seats</ConfirmButton>
                             </SelectCityWrapper>
@@ -408,12 +424,12 @@ export const SeatSelection = ({setopenSelectseat}) => {
 
                     {
                         activeBordingpoint&&<BordingPoints>
-                            <Points BordingPoints={true}/>
+                            <Points BordingPoints={true} bording={requirement.bording}/>
                         </BordingPoints>
                     }
                     {
                         activeDroppingpoint&&<DroppingPoints>
-                             <Points BordingPoints={false}/>
+                             <Points BordingPoints={false} bording={requirement.dropping}/>
                         </DroppingPoints>
                     }
 

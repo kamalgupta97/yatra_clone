@@ -1,0 +1,31 @@
+.navbar {
+    background: white;
+    height: 100px;
+}
+
+.navbar img {
+    width: 90px;
+    padding: 7px 0;
+    margin-left: 10%;
+}
+.body {
+    background-color: rgb(238,238,238);
+   
+}
+.bodyWidth {
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+.reviewBox {
+    background: white;
+    margin: 10px;
+    padding: 5px;
+}
+.flex {
+    display: flex;
+}
+.justify {
+    display: flex;
+    justify-content: space-between;
+}

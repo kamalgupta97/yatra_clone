@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import BusSlection from "../Pages/BusSelection/BusSlection";
 import { SeatSelection } from "../Pages/SeatSelection/SeatSelection";
+import {Booking} from "../Components/review/Booking"
 
 const Routes = () => {
   return (
@@ -11,7 +12,7 @@ const Routes = () => {
           <BusSlection />
         </Route>
         <Route exact path="/">
-            <SeatSelection />
+            <Booking />
         </Route>
         
       </Switch>

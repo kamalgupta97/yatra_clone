@@ -80,7 +80,7 @@ const SelectionCard = ({ handleCancelPolicy }) => {
         </CardContent>
       </div>
       {
-      openSelectseat && <SeatSelection/>
+      openSelectseat && <SeatSelection setopenSelectseat={setopenSelectseat}/>
     }
     </Card>
     

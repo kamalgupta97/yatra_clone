@@ -15,11 +15,8 @@ export const SeaterSitting = () => {
     return (
             <Seats>
                    {[1,2,3,4,5,6,7,8,9].map(item=> <Grid container >
-                    <Grid xs={1} sm={1} md={1} lg={1} xl={1} ></Grid>
-                    <Grid xs={1} sm={1} md={1} lg={1} xl={1}></Grid>
-                    <Grid xs={1} sm={1} md={1} lg={1} xl={1}></Grid>
-                    <Grid xs={1} sm={1} md={1} lg={1} xl={1}></Grid>
-                    <Grid xs={1} sm={1} md={1} lg={1} xl={1}></Grid>
+                    <Grid xs={5} sm={5} md={5} lg={5} xl={5} ></Grid>
+               
                           
                         <Grid xs={1} sm={1} md={1} lg={1} xl={1} >
                             <img src={Available} alt="available"/>                            
@@ -38,11 +35,7 @@ export const SeaterSitting = () => {
                     </Grid>)
                        }
                        <Grid container >
-                       <Grid xs={1} sm={1} md={1} lg={1} xl={1} ></Grid>
-                        <Grid xs={1} sm={1} md={1} lg={1} xl={1}></Grid>
-                        <Grid xs={1} sm={1} md={1} lg={1} xl={1}></Grid>
-                        <Grid xs={1} sm={1} md={1} lg={1} xl={1}></Grid>
-                        <Grid xs={1} sm={1} md={1} lg={1} xl={1}></Grid>    
+                       <Grid xs={5} sm={5} md={5} lg={5} xl={5} ></Grid>  
                        <Grid xs={1} sm={1} md={1} lg={1} xl={1} >
                             <img src={Available} alt="available"/>                            
                         </Grid>
@@ -53,10 +46,10 @@ export const SeaterSitting = () => {
                             <img src={Available} alt="available"/>                            
                         </Grid>
                         <Grid xs={1} sm={1} md={1} lg={1} xl={1} >
-                            <img src={Available} alt="available"/>                            
+                            <img src={Booked} alt="Booked"/>                            
                         </Grid>
                         <Grid xs={1} sm={1} md={1} lg={1} xl={1} >
-                            <img src={Available} alt="available"/>                            
+                            <img src={Booked} alt="Booked"/>                            
                         </Grid>
                         </Grid>
                     </Seats>

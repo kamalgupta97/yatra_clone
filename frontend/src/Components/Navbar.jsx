@@ -53,6 +53,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     // justifyContent: "center",
     alignItems: "center",
+    top: 0,
+    left: 0,
+    right: 0,
   },
   navData: {
     flexGrow: 1,

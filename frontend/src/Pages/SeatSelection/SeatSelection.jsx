@@ -14,7 +14,7 @@ import { Points } from './Points';
 
 
 const SeatSelectionWrapper =styled.div`
-
+    
 `
 const SeatSelectionWrapperRight=styled.div`
  
@@ -27,6 +27,7 @@ const DescriptionAnsStatus = styled.div`
     display:flex;
 `
 const H1 = styled.div`
+    color: rgba(0,0,0,0.9); 
     margin-bottom:10px;
     font-size:24px;
     // text-shadow: .2px .2px #000000;
@@ -85,7 +86,7 @@ const TravelDescription=styled.div`
 
 const DescHeading=styled.div`
 background:#f2f2f2;
-height:80px;
+height:60px;
 &>button{
     border:none;
     height:100%;
@@ -93,19 +94,28 @@ height:80px;
     font-size: 14px;
     font-weight:600;
     letter-spacing: 0.5px;
+    padding-left:20px;
+    padding-right:20px;
+    color: rgba(0,0,0,.8);
  }`
 
 
 const SeatConfirmation=styled.div`
 `
-const BordingPoints=styled.div``
-const DroppingPoints=styled.div``
+const BordingPoints=styled.div`
+ padding:10px;
+
+`
+const DroppingPoints=styled.div`
+padding:10px;
+`
 
 const SeatConfirmationHeader = styled.div`
  margin:15px;
  &>p{
      font-size:18px;
      font-weight:600;
+     color: rgba(0,0,0,.8);
  }
 `
 const Bustype = styled.div`
@@ -113,7 +123,7 @@ margin:15px;
 &>p{
     font-size:13px;
     font-weight:600;
-    color:#000;
+    color: rgba(0,0,0,.8);
 }
 `
 const Dates = styled.div`
@@ -121,9 +131,40 @@ margin:15px;
 &>p{
     font-size:13px;
     font-weight:600;
-    color:#000;
+    color: rgba(0,0,0,.8);
+}`
+
+const SelectCityWrapper = styled.div`
+margin:15px;
+&>p{
+    font-size:13px;
+    font-weight:600;
+    color: rgba(0,0,0,.8);
 }
+&>select{
+    width:100%;
+    height:35px;
+    border:1px solid #c4c4c4;
+    padding-left:10px;
+    padding-right:10px;
+    color: rgba(0,0,0,.8);
+}
+
 `
+
+const ConfirmButton = styled.button`
+margin-top:20px;
+border-radius: 4px;
+color: rgba(0,0,0,.5);
+background:#e0e0e0;
+-webkit-box-shadow: 0 0 1px hsla(0,0%,100%,.5);
+border:none;
+padding :12px 24px;
+font-weight:600;
+`
+
+
+
 export const SeatSelection = () => {
     const [activelower,setActivelower] = React.useState(true)
     const [activeplace,setactiveplace] =React.useState(true)
@@ -245,6 +286,26 @@ export const SeatSelection = () => {
                             <Dates>
                                 <p>{"Date: Thu, 22 Jul, 2021 Time: 03:00 PM - 08:22 PM"}</p>
                             </Dates>
+
+                            <SelectCityWrapper>
+                                <p>
+                                    Select Boarding Point
+                                </p>
+                                <select name="" id="">
+                                    <option>Select Boarding Point</option>
+                                </select>
+                            </SelectCityWrapper>
+
+                            <SelectCityWrapper>
+                                <p>
+                                    Select Dropping Point
+                                </p>
+                                <select name="" id="">
+                                    <option>Select Dropping Point</option>
+                                </select>
+                                <ConfirmButton>Confirm Seats</ConfirmButton>
+                            </SelectCityWrapper>
+                            
                         </SeatConfirmation>
 
                     }

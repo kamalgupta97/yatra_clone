@@ -9,7 +9,7 @@
 }
 
 .lower{
-  
+    color: rgba(0,0,0,0.7); 
     border:none;
     width: 50%;
     height: 100%;
@@ -35,7 +35,7 @@
 }
 
 .activebuttons{
-    color:#d64443;
+    color:#d64443 !important;
     border:none;
     background:white !important;
    

@@ -8,13 +8,15 @@ import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import RemoveIcon from "@material-ui/icons/Remove";
 import { useTheme } from "@material-ui/core/styles";
 import { SeatSelection } from "../SeatSelection/SeatSelection";
+import rupee from '../BusSelection/Images/rupee.svg'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 275,
     border: "1px solid",
-    height: "140px",
+    height: "135px",
     margin: "0 20px",
+    fontSize:"13px",
     "&:hover": {
       boxShadow: "-3px -6px 80px -15px rgba(0,0,0,0.47)",
     },
@@ -33,12 +35,29 @@ const useStyles = makeStyles((theme) => ({
     color: "gray",
     marginTop: "4px",
   },
+  Duration_Cont:{
+    display: 'inline-flex',
+    marginLeft:"28px",
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "0px",
+      marginBottom:"0"
+    },
+  },
+  fair_cont:{
+    display: "inline-flex",
+    width: "50%",
+    justifyContent:"space-around"
+  }
+  
 }));
 
 const SelectionCard = ({ handleCancelPolicy }) => {
   const classes = useStyles();
   const theme = useTheme();
   const [openSelectseat,setopenSelectseat]=React.useState(false)
+  const handleSeatSelection = ()=>{
+    setopenSelectseat(!openSelectseat)
+  }
 
   return (
     <Card className={classes.root}>
@@ -51,23 +70,26 @@ const SelectionCard = ({ handleCancelPolicy }) => {
             </div>
           </div>
           <div className={styles.Column2}>
-            <h1>1.00</h1>
+            <h1 style={{marginRight:"8px"}}>1.00</h1>
             <div>
-              <div style={{ display: "inline-flex" }}>
+              <div className={classes.Duration_Cont}>
                 <RemoveIcon fontSize="medium" />
                 <p className={styles.Duration_Para}>4hour</p>
                 <ArrowRightAltIcon fontSize="medium" />
               </div>
-              <p style={{ color: "blue" }}>bording/dropping points</p>
+              <p className={styles.Boarding_Dropping_point}>boarding/dropping points</p>
             </div>
             <h1>5.00</h1>
             <div>
-              <h1 className={styles.Bus_fair}>1345</h1>
-              <p>13 seat left</p>
+             <div className={classes.fair_cont}>
+               <img  width="16%" src={rupee} alt="Rupee Icon" />
+             <h1 className={styles.Bus_fair}>1345</h1>
+             </div>
+              <p className={styles.Seat_left}>13 seat left</p>
             </div>
           </div>
           <div className={styles.Column3}>
-            <Button className={classes.btn} variant="contained" onClick={()=>{setopenSelectseat(true)}}>
+            <Button onClick={handleSeatSelection} className={classes.btn} variant="contained">
               Select seat
             </Button>
             <button
@@ -83,7 +105,6 @@ const SelectionCard = ({ handleCancelPolicy }) => {
       openSelectseat && <SeatSelection setopenSelectseat={setopenSelectseat}/>
     }
     </Card>
-    
   );
 };
 

@@ -25,6 +25,9 @@
     padding: 0 15px;
     grid-area: col3;
 }
+.Boarding_Dropping_point{
+    color: blue;
+}
 
 @media screen and (max-width:420px) {
     .Card_bus_selection {
@@ -43,6 +46,13 @@
         font-size: 12px;
     }
     .Bus_fair {
-        margin-left: 14px;
+        margin-left: 20px;
     }
+    .Seat_left{
+        margin-left: 10px;
+    }
+    .Boarding_Dropping_point{
+        visibility: hidden;
+    }
+    
 }

@@ -7,6 +7,7 @@ import styles from "./BusSelectionCard.module.css";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import RemoveIcon from "@material-ui/icons/Remove";
 import { useTheme } from "@material-ui/core/styles";
+import { SeatSelection } from "../SeatSelection/SeatSelection";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 const SelectionCard = ({ handleCancelPolicy }) => {
   const classes = useStyles();
   const theme = useTheme();
+  const [openSelectseat,setopenSelectseat]=React.useState(false)
 
   return (
     <Card className={classes.root}>
@@ -65,7 +67,7 @@ const SelectionCard = ({ handleCancelPolicy }) => {
             </div>
           </div>
           <div className={styles.Column3}>
-            <Button className={classes.btn} variant="contained">
+            <Button className={classes.btn} variant="contained" onClick={()=>{setopenSelectseat(true)}}>
               Select seat
             </Button>
             <button
@@ -77,7 +79,11 @@ const SelectionCard = ({ handleCancelPolicy }) => {
           </div>
         </CardContent>
       </div>
+      {
+      openSelectseat && <SeatSelection setopenSelectseat={setopenSelectseat}/>
+    }
     </Card>
+    
   );
 };
 

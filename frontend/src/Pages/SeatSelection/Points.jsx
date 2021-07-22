@@ -8,7 +8,7 @@ const HeadingPara = styled.div`
 
 const Heading = styled.div`
     margin-top:10px;
-    width:100%;
+    width:95%;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -21,7 +21,7 @@ const Heading = styled.div`
 
 const StopsTiming = styled.div`
     dmargin-top:10px;
-    width:100%;
+    width:95%;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -36,28 +36,11 @@ const StopsTiming = styled.div`
     
 `
 
-const PointList =[
-    {
-        stop:"Jaisalmer",
-        DepartTime:"10:30 AM"
-    },
-    {
-        stop:"Jaisalmer",
-        DepartTime:"10:30 AM"
-    },
-    {
-        stop:"Jaisalmer",
-        DepartTime:"10:30 AM"
-    },
-    {
-        stop:"Jaisalmer",
-        DepartTime:"10:30 AM"
-    },
-]
 
 
 
-export const Points = ({BordingPoints}) => {
+
+export const Points = ({BordingPoints,bording}) => {
 
     return (
         <div>
@@ -71,18 +54,32 @@ export const Points = ({BordingPoints}) => {
                 <p>Depart Time</p>
             </Heading>
             
-            <StopsTiming>
-            <div>
-            <p>
-            fatehpuri (Shop No 31, Near Old Delhi Railway Station, Shakti Travels,shop no. 31, near Old Delhi railway station, S P Mukherji marg, Fatehpuri 9821012425)
-            </p>
-           
-            </div>
-           
-           <p>
-               01:00 AM
-           </p>
-            </StopsTiming>
+            
+
+            {
+                bording.map(item=>
+                    // <div>
+                    //     {item.point}
+                    // </div>
+
+                    
+                <StopsTiming>
+                <div>
+                <p>
+                    {item.point}
+               </p>
+
+                </div>
+
+                <p>
+                {item.time}
+                </p>
+                </StopsTiming>
+                    )
+            }
+
+
+
             
             
             </div>
@@ -96,18 +93,28 @@ export const Points = ({BordingPoints}) => {
                 <p>Depart Time</p>
             </Heading>
             
-            <StopsTiming>
-            <div>
-            <p>
-            fatehpuri (Shop No 31, Near Old Delhi Railway Station, Shakti Travels,shop no. 31, near Old Delhi railway station, S P Mukherji marg, Fatehpuri 9821012425)
-            </p>
-           
-            </div>
-           
-           <p>
-               01:00 AM
-           </p>
-            </StopsTiming>
+            
+            {
+                bording.map(item=>
+                    // <div>
+                    //     {item.point}
+                    // </div>
+
+                    
+                <StopsTiming>
+                <div>
+                <p>
+                    {item.point}
+               </p>
+
+                </div>
+
+                <p>
+                {item.time}
+                </p>
+                </StopsTiming>
+                    )
+            }
             
             </div>
         }

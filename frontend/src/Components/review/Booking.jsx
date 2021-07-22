@@ -1,82 +1,88 @@
 import React from 'react'
-import yatralogo from "../assets/yatra_logo.svg"
+import yatralogo from "../../assets/yatra_logo.svg"
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
-import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
-import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
+import reviewicon from "../../assets/review.png"
+import adduser from "../../assets/add-user.png"
 import styles from "./Booking.module.css"
+
+
 
 export const Booking = () => {
     return (
-        <div>
+        <div className={styles.body}>
             <nav className={styles.navbar}>
                 <img src={yatralogo} width="200px" alt="img"/>
             </nav>
-            <div className={styles.body}>
             <div className={styles.bodyWidth}>
-               <div className={styles.reviewBox}>
+               <div className={styles.rel}>
                     <div className={styles.justify}>
-                        <div className={styles.flex}>
-                            <DescriptionOutlinedIcon/>
+                        <div className={`${styles.flex} ${styles.gradient}`}>
+                            <img src={reviewicon} alt="img"/>
                             <div>Review Your booking</div>
                         </div>
                         <div>
                             Change Bus
                         </div>
                     </div>
+                    <div className={styles.reviewBox}>
                         <div>
-                            <div>
                             <DirectionsBusIcon/>
                             <div>SHAKTI TRAVELS</div>
                             <div>Ac Sester-sleeper (2+1)</div>
                         </div>
                         <div>
-                            <div>
-                                <div>Delhi</div>
-                                <div>01:00 AM</div>
-                                <div>Sat, 24 Jul 2021</div>
-                            </div>
-                            <div>
-                                <div>5h 15m</div>
-                                <div>|</div>
-                                <div>281km</div>
-                            </div>
-                            <div>
-                                <div>Jaipur</div>
-                                <div>06:15 AM</div>
-                                <div>sat, 24 Jul 2021</div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                |
-                            </div>
-                            <div>
+                            <div className={styles.justify}>
                                 <div>
-                                    <div>Boarding Point & Time</div>
-                                    <div>fatehpur: 01:00 AM</div>
+                                    <div>Delhi</div>
+                                    <div>01:00 AM</div>
+                                    <div>Sat, 24 Jul 2021</div>
+                                </div>
+                                <div className={styles.justify}>
+                                    <div>5h 15m</div>
+                                    <div>|</div>
+                                    <div>281km</div>
                                 </div>
                                 <div>
-                                    <div>Dropping Point & Time</div>
-                                    <div>Near Sindhi Camp: 06:25 AM</div>
+                                    <div>Jaipur</div>
+                                    <div>06:15 AM</div>
+                                    <div>sat, 24 Jul 2021</div>
                                 </div>
                             </div>
-                            <div>
-                                <div>Seat Numbers(s)</div>
-                                <div>SL1</div>
+                            <div className={styles.justify}>
+                                <div>
+                                    |
+                                </div>
+                                <div >
+                                    <div className={styles.boarding}>
+                                        <div>Boarding Point & Time</div>
+                                        <div>fatehpur: 01:00 AM</div>
+                                    </div>
+                                    <div className={styles.boarding}>
+                                        <div>Dropping Point & Time</div>
+                                        <div>Near Sindhi Camp: 06:25 AM</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>Seat Numbers(s)</div>
+                                    <div>SL1</div>
+                                </div>
                             </div>
                         </div>
+                        
                     </div>
-                    <div>
-                        <div>
-                            <PersonAddOutlinedIcon/>
+                    <div className={styles.flex}>
+                        <div className={`${styles.flex} ${styles.gradient}`}>
+                            <img src={adduser} alt="img"/>
                             <div>Enter Traveller Details</div>
-                            <div>|</div>
-                            <div>Sign In</div>
-                            <div>to book faster</div>
                         </div>
+                        <div>|</div>
+                        <div>Sign In</div>
+                        <div>to book faster</div>
+                        
+                        
                     </div>
-                    <div>
-                        <div>
+                    <div className={styles.addBox}>
+                        <div className={styles.justify}>
                             <div>Conatct Details</div>
                             <input type="text" 
                                 placeholder="Email Id"
@@ -87,7 +93,7 @@ export const Booking = () => {
                         </div>
                         <div>Your booking details will be sent to this email address and mobile number.</div>
                         <hr/>
-                        <div>
+                        <div className={styles.justify}>
                             <div>Seat SL1</div>
                             <input type="text" 
                                 placeholder="Traveller Name"
@@ -99,9 +105,11 @@ export const Booking = () => {
 
                             </select>
                         </div>
+                
                     </div>
-                    <botton>Proceeed To Payment</botton>
-               </div>
+                        <button className={styles.button}>Proceeed To Payment</button>
+                </div>
+                
                <div>
                    <div>Fare Details</div>
                    <div>
@@ -127,12 +135,9 @@ export const Booking = () => {
                            <div>Flat 9% off(Max Rs. 200)</div>
                        </div>
                    </div>
-               </div>
-            </div>   
+               </div> 
             </div>
-            <div>
-                
-            </div>
+            
         </div>
     )
 }

@@ -15,6 +15,7 @@ import { Points } from './Points';
 
 
 import { requirement } from './requirement';
+import { SeaterSitting } from './SeaterSitting';
 
 
 
@@ -315,6 +316,8 @@ export const SeatSelection = ({setopenSelectseat}) => {
                             <img src={driver} alt="driver" />
                             
                             </Driver>}
+
+                            <SeaterSitting/>
                     </Sitting>
                     <SeatStatus>
 

@@ -9,15 +9,40 @@ import BookedByLadies from './Images/BookedByladies.png';
 import ForLadies from './Images/ForLadies.png';
 import Selected from './Images/Selected.png';
 import ForMale from './Images/ForMale.png';
+import driver from './Images/Driver.png'
 import { Grid, Typography } from '@material-ui/core';
 import { Points } from './Points';
+import CloseIcon from '@material-ui/icons/Close';
 
 
 const SeatSelectionWrapper =styled.div`
-    
+position:fixed;
+width:100%;
+height:100%;
+opacity:1;
+
+left:0;
+top:0;
+
+`
+
+const CrossIcon = styled.button`
+position: absolute;
+right: 75%;
+top:0;
+color: #fff;
+font-size: 15px;
+z-index: 9999;
+background: #000;
+padding: 11px 17px;
+cursor: pointer;
+font-weight:900;
+border:none;
+&>CloseIcon{
+
 `
 const SeatSelectionWrapperRight=styled.div`
- 
+    background:#fff;
     margin-left:25%;
     
     // height:100vh;
@@ -59,6 +84,19 @@ const Sitting = styled.div`
     background:white;
     width:96%;
     min-height:350px;
+`
+
+const Driver = styled.div`
+    width:55%;
+    display:flex;
+    justify-content:flex-end;
+    
+    margin:auto;
+    // background:red;
+    &>img{
+        padding:10px;
+    }
+
 `
 
 const SeatStatus = styled.div`
@@ -170,6 +208,7 @@ export const SeatSelection = () => {
     const [activeplace,setactiveplace] =React.useState(true)
     const [activeBordingpoint,setactiveBordingpoint] = React.useState(false)
     const [activeDroppingpoint,setactiveDroppingpoint] = React.useState(false)
+    const [open,setOpen] = React.useState(false)
 
     const handleClick=(e)=>{
         if(e.target.name==="activeplace"){
@@ -193,13 +232,14 @@ export const SeatSelection = () => {
         // console.log(activeplace,activeBordingpoint,activeDroppingpoint) at this line why it is giving wrong output
     }
 
-    return (
+    return open?<LoadingIndicator icons={true}/>: (
         <SeatSelectionWrapper>
             {/* {console.log(activeplace,activeBordingpoint,activeDroppingpoint)} */}
            <LoadingIndicator Custwidth={"25%"} icons={false}/>
 
-
+            
            <SeatSelectionWrapperRight>
+           <CrossIcon>✖</CrossIcon>
                 <div>
                     <H1>Seat Preferences</H1>
                 </div>
@@ -214,7 +254,11 @@ export const SeatSelection = () => {
                     </LowerUper>
 
                     <Sitting>
-      
+                           
+                   { activelower &&  <Driver>
+                            <img src={driver} alt="" />
+                            
+                            </Driver>}
                     </Sitting>
                     <SeatStatus>
 

@@ -77,8 +77,7 @@ const H1 = styled.div`
     color: rgba(0,0,0,0.9); 
     margin-bottom:10px;
     font-size:24px;
-    // text-shadow: .2px .2px #000000;
-    
+    // text-shadow: .2px .2px #000000; 
 `
 const ArrangementWrapper = styled.div`
     width:48%;

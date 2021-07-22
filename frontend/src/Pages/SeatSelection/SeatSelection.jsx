@@ -29,7 +29,7 @@ left:0;
 top:0;
 @media (max-width: 800px) {
     overflow-y:scroll;    
-
+}
 `
 
 const CrossIcon = styled.button`

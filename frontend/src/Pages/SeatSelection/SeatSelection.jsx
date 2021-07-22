@@ -203,12 +203,12 @@ font-weight:600;
 
 
 
-export const SeatSelection = () => {
+export const SeatSelection = ({setopenSelectseat}) => {
     const [activelower,setActivelower] = React.useState(true)
     const [activeplace,setactiveplace] =React.useState(true)
     const [activeBordingpoint,setactiveBordingpoint] = React.useState(false)
     const [activeDroppingpoint,setactiveDroppingpoint] = React.useState(false)
-    const [open,setOpen] = React.useState(false)
+    
 
     const handleClick=(e)=>{
         if(e.target.name==="activeplace"){
@@ -232,14 +232,14 @@ export const SeatSelection = () => {
         // console.log(activeplace,activeBordingpoint,activeDroppingpoint) at this line why it is giving wrong output
     }
 
-    return open?<LoadingIndicator icons={true}/>: (
+    return  (
         <SeatSelectionWrapper>
             {/* {console.log(activeplace,activeBordingpoint,activeDroppingpoint)} */}
            <LoadingIndicator Custwidth={"25%"} icons={false}/>
 
             
            <SeatSelectionWrapperRight>
-           <CrossIcon>✖</CrossIcon>
+           <CrossIcon onClick={()=>setopenSelectseat(false)}>✖</CrossIcon>
                 <div>
                     <H1>Seat Preferences</H1>
                 </div>

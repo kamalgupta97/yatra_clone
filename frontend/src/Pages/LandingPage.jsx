@@ -13,7 +13,11 @@ export default function LandingPage() {
           <Box>
             <SearchCard />
           </Box>
-          <Box></Box>
+          <Box>
+            <div>
+              <img src="" alt="" />
+            </div>
+          </Box>
         </Container>
       </Buses>
     </div>

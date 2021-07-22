@@ -236,13 +236,13 @@ export default function PrimarySearchAppBar() {
               </Typography>
             </div>
             <div className={classes.icon}>
-              <Badge
+              {/* <Badge
                 badgeContent={"new"}
                 color="secondary"
                 style={{ opacity: 1 }}
-              >
-                <DriveEtaIcon />
-              </Badge>
+              > */}
+              <DriveEtaIcon />
+              {/* </Badge> */}
               <Typography className={classes.title} variant="h6" noWrap>
                 Cabs
               </Typography>
@@ -290,20 +290,25 @@ export default function PrimarySearchAppBar() {
               className={(classes.title, classes.rightTitle)}
               variant="h6"
               noWrap
+              style={{ cursor: "default" }}
             >
               My Account
             </Typography>
+            {/* <Badge badgeContent={"new"} color="secondary"> */}
             <Typography
               className={(classes.title, classes.rightTitle)}
               variant="h6"
               noWrap
+              style={{ cursor: "pointer" }}
             >
               Support
             </Typography>
+            {/* </Badge> */}
             <Typography
               className={(classes.title, classes.rightTitle)}
               variant="h6"
               noWrap
+              style={{ cursor: "pointer" }}
             >
               Offers
             </Typography>
@@ -311,6 +316,7 @@ export default function PrimarySearchAppBar() {
               className={(classes.title, classes.rightTitle)}
               variant="h6"
               noWrap
+              style={{ cursor: "pointer" }}
             >
               Yatra for Business
             </Typography>

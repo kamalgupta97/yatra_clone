@@ -25,13 +25,13 @@ export const Booking = () => {
                         </div>
                     </div>
                     <div className={styles.reviewBox}>
-                        <div>
-                            <DirectionsBusIcon/>
+                        <div className={styles.bus}>
+                            <DirectionsBusIcon style={{fontSize: "100px", color: "gray"}}/>
                             <div>SHAKTI TRAVELS</div>
                             <div>Ac Sester-sleeper (2+1)</div>
                         </div>
                         <div>
-                            <div className={styles.justify}>
+                            <div className={styles.justifyReview}>
                                 <div>
                                     <div>Delhi</div>
                                     <div>01:00 AM</div>
@@ -39,7 +39,7 @@ export const Booking = () => {
                                 </div>
                                 <div className={styles.justify}>
                                     <div>5h 15m</div>
-                                    <div>|</div>
+                                    <div> | </div>
                                     <div>281km</div>
                                 </div>
                                 <div>
@@ -48,10 +48,8 @@ export const Booking = () => {
                                     <div>sat, 24 Jul 2021</div>
                                 </div>
                             </div>
-                            <div className={styles.justify}>
-                                <div>
-                                    |
-                                </div>
+                            <hr/>
+                            <div className={styles.justifyBoarding}>
                                 <div >
                                     <div className={styles.boarding}>
                                         <div>Boarding Point & Time</div>
@@ -62,7 +60,7 @@ export const Booking = () => {
                                         <div>Near Sindhi Camp: 06:25 AM</div>
                                     </div>
                                 </div>
-                                <div>
+                                <div className={styles.seatnumber}>
                                     <div>Seat Numbers(s)</div>
                                     <div>SL1</div>
                                 </div>
@@ -110,29 +108,33 @@ export const Booking = () => {
                         <button className={styles.button}>Proceeed To Payment</button>
                 </div>
                 
-               <div>
+               <div className={styles.details}>
                    <div>Fare Details</div>
-                   <div>
-                       <div>
+                   <div className={styles.fare}>
+                       <div className={styles.justifyOnward}>
                            <div>Onward Fare(1 Traveller)</div>
                            <div>893</div>
                        </div>
-                       <div>
+                       <div className={styles.justifyPay}>
                            <div>You Pay:</div>
                            <div>893</div>
                        </div>
                    </div>
                    <div>Promo Code</div>
-                   <div>
+                   <div className={styles.promo}>
                        <div>Select a Promo Code</div>
-                       <input type="text" 
-                            placeholder="YOUR PROMO CODE"
-                       />
-                       <button>Apply</button>
                        <div>
+                            <input type="text" 
+                                    placeholder="YOUR PROMO CODE"
+                            />
+                            <button>Apply</button>
+                       </div>
+                       <div className={styles.promocode}>
                            <input type="radio" />
-                           <div>BUSONYATRA</div>
-                           <div>Flat 9% off(Max Rs. 200)</div>
+                           <div>
+                                <div className={styles.code}>BUSONYATRA</div>
+                                <div>Flat 9% off(Max Rs. 200)</div>
+                           </div>
                        </div>
                    </div>
                </div> 

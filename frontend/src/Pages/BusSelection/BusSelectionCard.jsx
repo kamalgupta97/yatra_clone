@@ -95,7 +95,7 @@ const SelectionCard = ({ handleCancelPolicy , agency_name,bus_type,boarding_time
             <h1>{departure_time}</h1>
             <div>
              <div className={classes.fare_cont}>
-               <img className={styles.Bus_fare_icon}  width="13%" src={rupee} alt="Rupee Icon" />
+               <img className={styles.Bus_fare_icon}  width="8%" src={rupee} alt="Rupee Icon" />
              <h1 className={styles.Bus_fare}>{price}</h1>
              </div>
               <p className={styles.Seat_left}>{seat_left}</p>

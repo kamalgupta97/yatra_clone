@@ -1,12 +1,11 @@
 .navbar {
     background: white;
-    height: 60px;
     margin-bottom: 20px;
 }
 
 .navbar img {
     width: 90px;
-    padding: 7px 0;
+    padding: 6px 0;
     margin-left: 10%;
 }
 .body {
@@ -16,7 +15,7 @@
 }
 .bodyWidth {
     display: flex;
-    width: 80%;
+    width: 85%;
     margin: auto;
     gap: 20px;
 }
@@ -26,6 +25,8 @@
     display: flex;
     margin-bottom: 10px;
     border-radius: 7px;
+    justify-content: space-between;
+    padding: 20px 35px;
 }
 .addBox {
     background-color: white;
@@ -43,11 +44,26 @@
 }
 .justify {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
+}
+.justifyReview {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    margin-bottom: 10px;
+}
+.justifyBoarding {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 20px;
 }
 .boarding {
-    margin: 20px 0;
+    margin-bottom: 20px;
+}
+.seatnumber {
+    text-align: center;
 }
 .gradient {
     background-color: #f3ec78;
@@ -62,6 +78,7 @@
 }
 .rel {
     position: relative;
+    width: 70%;
 }
 .button {
     background-color: red;
@@ -77,4 +94,47 @@
     transform: translate(-50%);
     margin-top: 10px;
     margin-bottom: 10px
+}
+.bus {
+    text-align: center;
+}
+.fare {
+    background-color: white;
+    margin: 15px 0 20px;
+}
+.promo {
+    background-color: white;
+    padding: 20px;
+    margin: 15px 0;
+}
+.details {
+    width: 25%;
+    padding-top: 12px;
+}
+.justifyPay {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(244,244,244);
+    padding: 10px;
+}
+.justifyOnward {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.promocode {
+    display: flex;
+    margin: 10px 0;
+    gap: 5px;
+}
+.promocode input {
+    margin-top: 7px;
+}
+.code {
+    border: 1px dashed rgb(2,203,151);
+    width: fit-content;
+    padding: 3px 5px;
+    color: rgb(2,203,151);
+    font-size: 15px;
+    font-weight: 500;
 }

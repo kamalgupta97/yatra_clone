@@ -45,14 +45,20 @@
     .Bus_title {
         font-size: 12px;
     }
-    .Bus_fair {
-        margin-left: 20px;
+    .Bus_fare_icon{
+        width:15%;
     }
+    
+
     .Seat_left{
-        margin-left: 10px;
+     width: 100%;
+     margin-right: 60px
     }
     .Boarding_Dropping_point{
         visibility: hidden;
     }
     
+}
+.Seat_left{
+    margin-left: 40px;
 }

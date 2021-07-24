@@ -9,6 +9,7 @@ import history from '../../assets/history.png'
 import prefilled from '../../assets/prefilled.png'
 import transfechash from '../../assets/transefechash.png'
 import { Otpform } from './Otpform';
+import { useSelector } from 'react-redux';
 
 const BodyWrapper = styled.div`
     background:#f5f5f5;
@@ -237,6 +238,14 @@ const CancellationText = styled.div`
 
 export const SignIn = () => {
     const [openotpform,setotpForm] = React.useState(false)
+    const [mobileNo,setMobileNo] = React.useState("")
+    const state = useSelector(state => state.auth)
+    console.log(state)
+    const handleSubmit =(e)=>{
+        e.preventDefault()
+        setotpForm(true)
+        alert(mobileNo)
+    }
     return (
         <BodyWrapper>
             <SignInWrapper>
@@ -249,18 +258,20 @@ export const SignIn = () => {
                         <UserProfile>
                             <img src={userProfile} alt="" />
                         </UserProfile>
+
+                    <form onSubmit={handleSubmit}>
                         <Label>EMAIL ID / MOBILE NUMBER</Label>
                         <Input> 
-                         <input  type="text" placeholder="EMAIL ID / MOBILE NUMBER"  /> 
+                         <input  type="text" placeholder="EMAIL ID / MOBILE NUMBER" value={mobileNo} required onChange={(e)=>setMobileNo(e.target.value)}/> 
                        
                     </Input>
                     <Button>
-                            <button  onClick={()=>setotpForm(true)}>
+                            <button  >
                                         Continue
                                     </button> 
                     </Button>
                      
-                          
+                    </form> 
                          
                      <TermsandConditions>
                      <Terms>
@@ -363,7 +374,7 @@ export const SignIn = () => {
             </SignInWrapper>
 
             {
-                openotpform && <Otpform setotpForm={setotpForm}/>
+                openotpform && <Otpform setotpForm={setotpForm} mobileNo={mobileNo}/>
             }
         </BodyWrapper>
     )

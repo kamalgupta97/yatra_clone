@@ -20,6 +20,7 @@ import { SeaterSitting } from './SeaterSitting';
 
 
 const SeatSelectionWrapper =styled.div`
+
 position:fixed;
 width:100%;
 height:100%;
@@ -52,7 +53,7 @@ display:flex;
 
 `
 const SeatSelectionWrapperRight=styled.div`
-    background:#fff;
+    background:#fff !important;
     margin-left:24%;
     
     // height:100vh;
@@ -166,7 +167,7 @@ const Para = styled.div`
 `
 
 const TravelDescription=styled.div`
-    
+
     width:52%;
     height:100vh;
     @media (max-width: 800px) {
@@ -203,7 +204,7 @@ height:60px;
 
 
 const SeatConfirmation=styled.div`
- 
+
 @media (max-width: 800px) {
     background:#fff;  
     padding:10px;    
@@ -253,6 +254,7 @@ margin:15px;
 }`
 
 const SelectCityWrapper = styled.div`
+
 margin:15px;
 &>p{
     font-size:13px;
@@ -270,6 +272,42 @@ margin:15px;
 
 `
 
+const AmountandSeats =styled.div`
+    margin:20px 0;
+    display:flex;
+    width:50%;
+    justify-content:space-between;
+    color: rgba(0,0,0,.8);
+`
+const Amount=styled.div`
+    &>p:nth-child(1){
+    font-size:14px;
+    font-weight:600;
+    color: rgba(0,0,0,.6);
+
+    }
+    &>p:nth-child(2){
+        color: rgba(0,0,0,.8);
+        font-size:24px;
+    font-weight:400;
+    }
+`
+const SeatNo=styled.div`
+
+    &>p:nth-child(1){
+        font-size:14px;
+        font-weight:600;
+        color: rgba(0,0,0,.6);
+
+}
+&>p:nth-child(2){
+    color: rgba(0,0,0,.8);
+        font-size:24px;
+    font-weight:400;
+
+}
+`
+
 const ConfirmButton = styled.button`
 margin-top:20px;
 border-radius: 4px;
@@ -280,7 +318,17 @@ border:none;
 padding :12px 24px;
 font-weight:600;
 `
-
+const ConfirmActiveButton = styled.button`
+margin-top:20px;
+border-radius: 4px;
+color: #fff;
+background:#f34f4f!important;
+-webkit-box-shadow: 0 0 1px hsla(0,0%,100%,.5);
+border:none;
+padding :12px 24px;
+font-weight:600;
+cursor:pointer;
+`
 
 
 export const SeatSelection = ({setopenSelectseat}) => {
@@ -288,6 +336,14 @@ export const SeatSelection = ({setopenSelectseat}) => {
     const [activeplace,setactiveplace] =React.useState(true)
     const [activeBordingpoint,setactiveBordingpoint] = React.useState(false)
     const [activeDroppingpoint,setactiveDroppingpoint] = React.useState(false)
+    const [selectedseats,setselectedseats]=React.useState([])
+    const [formatedseatNumbers,setformatedseatNumbers]=React.useState("")
+    React.useEffect(()=>{
+       const numbers= selectedseats.map(item=>item.seatnumber)
+      
+       setformatedseatNumbers(numbers.join(","))
+
+    },[selectedseats])
     
 
     const handleClick=(e)=>{
@@ -340,7 +396,7 @@ export const SeatSelection = ({setopenSelectseat}) => {
                             
                             </Driver>}
 
-                            <SeaterSitting/>
+                            <SeaterSitting setselectedseats={setselectedseats} selectedseats={selectedseats}/>
                     </Sitting>
                     <SeatStatus>
 
@@ -441,7 +497,24 @@ export const SeatSelection = ({setopenSelectseat}) => {
                                         )
                                     }
                                 </select>
-                                <ConfirmButton>Confirm Seats</ConfirmButton>
+                                {console.log(selectedseats)}
+                                   { selectedseats[0]?<> <AmountandSeats>
+                                        <Amount>
+                                            <p>Total Amount</p>
+                                            <p>₹ 3900</p>
+                                        </Amount>
+                                        <SeatNo>
+                                            <p>Seats No:</p>
+                                            <p>{formatedseatNumbers}</p>
+                                        </SeatNo>
+                                    </AmountandSeats>
+                                    <ConfirmActiveButton>Confirm Seats</ConfirmActiveButton>
+                                     </>:
+                                   
+                                     <ConfirmButton disabled>Confirm Seats</ConfirmButton>
+                                    }
+                               
+                              
                             </SelectCityWrapper>
                             
                         </SeatConfirmation>
@@ -450,12 +523,12 @@ export const SeatSelection = ({setopenSelectseat}) => {
 
                     {
                         activeBordingpoint&&<BordingPoints>
-                            <Points BordingPoints={true} bording={requirement.bording}/>
+                            <Points BordingPoints={true} bording={requirement.bording} selectedseats={selectedseats}/>
                         </BordingPoints>
                     }
                     {
                         activeDroppingpoint&&<DroppingPoints>
-                             <Points BordingPoints={false} bording={requirement.dropping}/>
+                             <Points BordingPoints={false} bording={requirement.dropping} selectedseats={selectedseats}/>
                         </DroppingPoints>
                     }
 

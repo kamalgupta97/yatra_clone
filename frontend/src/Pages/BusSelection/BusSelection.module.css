@@ -7,3 +7,16 @@
     outline: none;
     border-bottom: 1px solid black;
 }
+.nav_bus_selection{
+    display: inline-flex;
+    width: 35%;
+    justify-content: space-evenly;
+    margin-left: 41%;
+}
+
+@media screen and (max-width:480px) {
+    .nav_bus_selection{
+        visibility: hidden;
+    }
+    
+}

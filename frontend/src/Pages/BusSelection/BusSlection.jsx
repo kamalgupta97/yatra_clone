@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import SelectionCard from "./BusSelectionCard";
 import CancelationPolicy from "./CancelationPolicy";
 import data from "./data";
+import Toolbar from "@material-ui/core/Toolbar";
 import styled from "styled-components";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button ,Typography } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { makeStyles } from "@material-ui/core/styles";
 import styles from './BusSelection.module.css'
@@ -32,6 +33,11 @@ const SearchContainer = styled.div`
     }
 `;
 const useStyles = makeStyles((theme) => ({
+  navData: {
+    flexGrow: 1,
+    width: "100%",
+    maxWidth: "1300px",
+  },
   btn: {
     background: "red",
     width:"150px",
@@ -51,7 +57,8 @@ const useStyles = makeStyles((theme) => ({
   },
   date__format:{
     [theme.breakpoints.down("sm")]: {
-      marginRight:"60px"
+      marginRight:"60px",
+    
     
     },
   }
@@ -74,9 +81,28 @@ const BusSlection = () => {
   return (
     <>
        <div className={styles.search} >
+       <div>
+       <Toolbar className={classes.navData}>
+          <img
+          style={{marginLeft:"130px"}}
+            width="88px"
+            height="35px"
+            src="https://cdn.freelogovectors.net/wp-content/uploads/2019/02/yatra_logo.png"
+            alt="yatra_logo"
+          />
+          <div className={styles.nav_bus_selection}>
+          <Typography>Hi Bhargavi</Typography>
+          <Typography>Support</Typography>
+          <Typography>Recent Search</Typography>
+          <Typography>Offer</Typography>
+          </div>
+
+          </Toolbar>
+       </div>
+
         <SearchContainer>
           <div>
-         <img width="65px" src={busImg} alt="Bus" />
+         <img width="45px" src={busImg} alt="Bus" />
           </div>
           <div>
             <p>From</p>

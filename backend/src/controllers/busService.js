@@ -8,7 +8,7 @@ const getBusService = async (req, res) => {
 };
 
 const postBusDetails = async (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
   const postData = await BusServices.create(req.body);
   res.status(201).json({ data: postData });
 };
@@ -21,7 +21,7 @@ const deleteBusDetails = async (req, res) => {
 
 const eachBusDetail = async (req, res) => {
   const id = req.params.id;
-  console.log("id in eachBusDetail", id);
+  //console.log("id in eachBusDetail", id);
   const dataObj = await BusServices.findById(id);
   res.status(200).json(dataObj);
 };

@@ -40,7 +40,7 @@ const StopsTiming = styled.div`
 
 
 
-export const Points = ({BordingPoints,bording,selectedseats}) => {
+export const Points = ({BordingPoints,bording}) => {
     
     return (
         <div>

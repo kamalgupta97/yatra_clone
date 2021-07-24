@@ -15,6 +15,11 @@ export const FooterStyle = styled.div`
 
   .left {
     width: 280px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .mid {
@@ -26,6 +31,11 @@ export const FooterStyle = styled.div`
 
   .right {
     width: 250px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .footerBottom {

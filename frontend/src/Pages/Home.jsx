@@ -4,6 +4,7 @@ import CountriesOpen from "../Components/Buses/CountriesOpen";
 import DiscountCard from "../Components/Buses/DiscountCard";
 import SearchCard from "../Components/Buses/SearchCard";
 import WhyYatra from "../Components/Buses/WhyYatra";
+import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import { Buses } from "../Styles/Home";
 
@@ -52,6 +53,9 @@ export default function Home() {
           </div>
           <div>
             <WhyYatra />
+          </div>
+          <div style={{marginTop: "200px"}}>
+            <Footer />
           </div>
         </div>
       </Buses>

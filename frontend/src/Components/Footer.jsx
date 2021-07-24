@@ -8,11 +8,11 @@ export default function Footer() {
       url: "https://www.facebook.com/Yatra",
     },
     {
-      img: "https://i.pinimg.com/474x/ee/4b/ec/ee4bec98e284c251b885707a470ad3b8.jpg",
+      img: "https://www.iconninja.com/files/125/255/644/twitter-tweet-social-logo-icon.svg",
       url: "https://twitter.com/YatraOfficial",
     },
     {
-      img: "https://w7.pngwing.com/pngs/936/468/png-transparent-youtube-logo-youtube-logo-computer-icons-subscribe-angle-rectangle-airplane.png",
+      img: "https://www.iconpacks.net/icons/2/free-youtube-logo-icon-2431-thumb.png",
       url: "https://www.youtube.com/user/yatratravel",
     },
     {
@@ -21,10 +21,14 @@ export default function Footer() {
       url: "https://www.instagram.com/yatradotcom/",
     },
   ];
+
   return (
     <FooterStyle>
       <div className="footerTop">
-        <div className="left"></div>
+        <div className="left">
+          <img src="/images/footerLeft.png" alt="" />
+        </div>
+
         <div className="mid">
           {social.map((item, ind) => (
             <img
@@ -38,7 +42,10 @@ export default function Footer() {
             />
           ))}
         </div>
-        <div className="right"></div>
+
+        <div className="right">
+          <img src="/images/footerRight.png" alt="" />
+        </div>
       </div>
       <div className="footerBottom">
         <p className="copyright">

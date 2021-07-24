@@ -9,13 +9,17 @@ const busSchema = new Schema({
     type: String,
     required: true,
   },
+  seatnumber: { 
+    type: [Number],
+    required: true
+  },
   departureTime: {
     type: String,
     required: true,
   },
   rating: {
     type: [Number],
-    required: true,
+    required: false,
   },
   totalSeats: {
     type: Number,
@@ -32,7 +36,7 @@ const busSchema = new Schema({
   },
   liveTracking: {
     type: Number,
-    required: true,
+    required: false,
   },
   busServices: {
     type: Schema.Types.ObjectId,

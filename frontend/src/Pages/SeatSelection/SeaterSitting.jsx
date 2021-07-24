@@ -1,76 +1,124 @@
-import { Grid } from '@material-ui/core';
+import { Grid, Paper } from '@material-ui/core';
 import React from 'react';
 import Available from './Images/Available.png';
 import Booked from './Images/Booked.png';
 import Selected from './Images/Selected.png';
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
+import {seats} from './requirement';
+
+
+import sleeper_available from './Images/sleeper_available.png'
+import booked_sleeper from './Images/booked_sleeper.png'
+import sleeper_selected from './Images/sleeper_selected.png'
+
+
 
 const Seats =styled.div`
   
 
 `
-const useStyles = makeStyles({
-    root: {
-    //   background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-      border: 0,
-      borderRadius: 3,
-    //   boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-      color: 'white',
-      height: 48,
-      padding: '0 0 0 250px',
-   
-        
+const useStyles = makeStyles((theme) => ({
+    root:{
+        marginLeft:200,
+        width:180
     },
-    grids:{
-        
-        background:'red',
+    paper: {
+      padding: theme.spacing(2),
+      margin: theme.spacing(1),
+      cursor:"pointer",
     }
-  });
+  }));
 
 
-export const SeaterSitting = () => {
+export const SeaterSitting = ({setselectedseats,selectedseats}) => {
+    let bustype="semisleeper"
     const classes = useStyles();
+    const [busseats,setbuseats] = React.useState(seats)
+    const handleClick =(i) =>{
+        setbuseats([...busseats])
+        if(busseats[i].available==="selected")
+          {
+              busseats[i].available=true
+          }
+        else if(selectedseats.length<6)
+          {
+              busseats[i].available="selected"
+             
+          }
+          const selected_seats = busseats.filter((item)=>item.available==="selected")
+          setselectedseats(selected_seats)
+}
+
+  
+
     return (
             <Seats>
-                   {[1,2,3,4,5,6,7,8,9].map(item=> <Grid container className={classes.root} >
+            
+            {
+                       ( bustype==="seater" || bustype==="semisleeper" ) &&
+                <Grid container className={classes.root} >
+                  
                   
                
-                          
-                        <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.grids}>
-                            <img src={Available} alt="available"/>                            
-                        </Grid>
-                        <Grid xs={1} sm={1} md={1} lg={1} xl={1} >
-                            <img src={Available} alt="available"/>                            
-                        </Grid>
-                        <Grid xs={1} sm={1} md={1} lg={1} xl={1}></Grid>
-                        <Grid xs={1} sm={1} md={1} lg={1} xl={1} >
-                            <img src={Available} alt="available"/>                            
-                        </Grid>
-                        <Grid xs={1} sm={1} md={1} lg={1} xl={1} >
-                            <img src={Available} alt="available"/>                            
-                        </Grid>
+                {busseats.map((item,i)=>  
+                {
+                  return  ( busseats[i].available==="selected")?
+                    <Grid xs={3} sm={3} md={3} lg={3} xl={3} item key={i} onClick={()=>handleClick(i)} >
+                    <img  className={classes.paper} src={Selected} alt="available" />
+                    </Grid>
+                    : (busseats[i].available)?
+                    <Grid xs={3} sm={3} md={3} lg={3} xl={3} item key={i} onClick={()=>handleClick(i)} >
+                    <img  className={classes.paper} src={Available} alt="available" />
+                    </Grid>
+                    :
+                    <Grid xs={3} sm={3} md={3} lg={3} xl={3} item key={i} onClick={()=>handleClick(i)} >
+                    <img  className={classes.paper} src={Booked} alt="available" />
+                    </Grid>
+
+                }
+                
+              
+        )}
+   
                         
-                    </Grid>)
-                       }
-                       <Grid container  className={classes.root}>
-                       
-                       <Grid xs={1} sm={1} md={1} lg={1} xl={1} >
-                            <img src={Booked} alt="Booked"/>                            
-                        </Grid>
-                        <Grid xs={1} sm={1} md={1} lg={1} xl={1} >
-                            <img src={Booked} alt="Booked"/>                            
-                        </Grid>
-                        <Grid xs={1} sm={1} md={1} lg={1} xl={1} >
-                            <img src={Booked} alt="Booked"/>                            
-                        </Grid>
-                        <Grid xs={1} sm={1} md={1} lg={1} xl={1} >
-                            <img src={Booked} alt="Booked"/>                            
-                        </Grid>
-                        <Grid xs={1} sm={1} md={1} lg={1} xl={1} >
-                            <img src={Booked} alt="Booked"/>                            
-                        </Grid>
-                        </Grid>
+             
+                        
+                    </Grid>
+}
+
+                    {
+                        bustype==="Sleeper" &&
+                        <Grid container className={classes.root} >
+                  
+                  
+               
+                        {busseats.map((item,i)=>  
+                        {
+                          return  ( busseats[i].available==="selected")?
+                            <Grid xs={4} sm={4} md={4} lg={4} xl={4} item key={i} onClick={()=>handleClick(i)} >
+                            <img  className={classes.paper} src={sleeper_selected} alt="available" />
+                            </Grid>
+                            : (busseats[i].available)?
+                            <Grid xs={4} sm={4} md={4} lg={4} xl={4} item key={i} onClick={()=>handleClick(i)} >
+                            <img  className={classes.paper} src={sleeper_available} alt="available" />
+                            </Grid>
+                            :
+                            <Grid xs={4} sm={4} md={4} lg={4} xl={4} item key={i} onClick={()=>handleClick(i)} >
+                            <img  className={classes.paper} src={booked_sleeper} alt="available" />
+                            </Grid>
+        
+                        }
+                        
+                      
+                )}
+           
+                                
+                            
+                                
+                            </Grid>
+                    }
+
                     </Seats>
     )
 }

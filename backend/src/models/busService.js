@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const busSchema = new mongoose.Schema({
   vehicle: String,
   available: Boolean,
-  source: String,
-  seater: Number,
+  //source: String,
+  //seater: Number,
   //   music: Boolean,
   charging: Boolean,
   WiFi: Boolean,

@@ -41,3 +41,14 @@ export const requirement = {
 
 
 // const bus_types = "Non-AC Seater" || "AC Seater" || "AC Sleeper" || "Non-AC Sleeper" || "AC SemiSleeper" || "Non-AC SemiSleeper";
+
+export const seats = new Array(30).fill(0).map((a, i) => ({seatnumber:i+1,available:true}));
+
+// seats[0].available(false)
+// console.log(seats)
+
+
+// Booked 
+// Selected
+// Empty
+

@@ -4,6 +4,7 @@ import BusSlection from "../Pages/BusSelection/BusSlection";
 import { SeatSelection } from "../Pages/SeatSelection/SeatSelection";
 import {Booking} from "../Components/review/Booking"
 import { SignIn } from "../Pages/Authentication/SignIn";
+import PaymentSection from "../Pages/PaymentSection/PaymentSection";
 
 const Routes = () => {
   return (
@@ -18,7 +19,9 @@ const Routes = () => {
         <Route exact path="/booking">
             <Booking />
         </Route>
-        
+        <Route exact path='/payment'>
+        <PaymentSection/>
+        </Route>
       </Switch>
     </>
   );

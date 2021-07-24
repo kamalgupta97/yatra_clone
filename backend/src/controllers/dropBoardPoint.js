@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const postLocation = async (req, res) => {
+    //console.log(req.body)
     const postData = await DropBoards.create(req.body);
     res.status(201).json({ data: postData });
 };

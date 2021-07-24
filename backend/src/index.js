@@ -1,9 +1,7 @@
 const express = require("express");
-
-const passport = require("./config/passport");
-
 const app = express();
 app.use(express.json());
+const passport = require("./config/passport");
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -16,6 +14,19 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((user, done) => {
     done(null, user)
 })
+
+const busServiceController = require("./controllers/busService");
+const bookingController = require("./controllers/booking");
+const customerController = require("./controllers/customer");
+const routeController = require("./controllers/route");
+const dropBoardPointController = require("./controllers/dropBoardPoint");
+
+app.use("/api/busservice", busServiceController);
+app.use("/api/booking", bookingController);
+app.use("/api/customers", customerController);
+app.use("/api/routes", routeController);
+app.use("/api/location", dropBoardPointController);
+
 
 app.get('/auth/google',
   passport.authenticate('google', { scope: 
@@ -34,6 +45,6 @@ app.get('/auth/google/callback',
 
 app.post("/signup", signup);
 app.post("/signin", signin);
-app.get("/users", user)
+// app.get("/users", user)
 
 module.exports = app;

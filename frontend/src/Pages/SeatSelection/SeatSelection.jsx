@@ -203,6 +203,7 @@ height:60px;
 
 
 const SeatConfirmation=styled.div`
+ 
 @media (max-width: 800px) {
     background:#fff;  
     padding:10px;    

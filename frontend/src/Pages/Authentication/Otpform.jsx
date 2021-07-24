@@ -75,7 +75,8 @@ const Button=styled.div`
 `
 
 const Resend = styled.div`
-    height:10%;    
+    height:10%;  
+    color:#3cbbf8;
 `
 
 
@@ -86,9 +87,15 @@ const Resend = styled.div`
 
 
 
-export const Otpform = ({setotpForm}) => {
+export const Otpform = ({setotpForm,mobileNo}) => {
+    const [otp,setOtp]=React.useState("")
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+        alert(otp)
+    }
     return (
         <Loader>
+            <form onSubmit={handleSubmit}>
             <Form>
                 <Heading>
                         <p>Verify Your Mobile Number</p>
@@ -104,22 +111,26 @@ export const Otpform = ({setotpForm}) => {
                 </Para>
                 
                 <Number>
-                        <h4>+91 9368134122</h4>
+                        <h4>+91 {mobileNo}</h4>
                 </Number>
+                
                 <Input>
-                  <TextField id="standard-basic" label="Enter Mobile Otp" />
+                  <TextField id="standard-basic" label="Enter Mobile Otp" onChange={(e)=>setOtp(e.target.value)} required/>
                 </Input>
 
                 <Button>
-                    <button>
+                    <button >
                         Submit
                     </button>
                 </Button>
+           
                 <Resend>
                         Resend
                 </Resend>
             
             </Form>
+            </form>
+
      </Loader>
     )
 }

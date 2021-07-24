@@ -1,27 +1,23 @@
 import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
+import { makeStyles, createStyles , withStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-
+import StepLabel from '@material-ui/core/StepLabel'
 
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       width: '100%',
-      margin: theme.spacing(3),
-      color: "green"
+      margin: theme.spacing(1),
     },
-    stepper:{
-      width: "100%",
-        color: "green"
-    },
+  
     instructions: {
       marginTop: theme.spacing(1),
       marginBottom: theme.spacing(1),
     },
   }),
 );
+
 
 function getSteps() {
   return ['Review', 'Travellers', 'Payment'];
@@ -34,10 +30,10 @@ export default function HorizontalStepper() {
 
   return (
     <div className={classes.root}>
-      <Stepper activeStep={activeStep}  className={classes.stepper}  alternativeLabel>
+      <Stepper activeStep={activeStep}  alternativeLabel>
         {steps.map((label) => (
           <Step key={label}>
-            <StepLabel>{label}</StepLabel>
+            <StepLabel >{label}</StepLabel>
           </Step>
         ))}
       </Stepper>

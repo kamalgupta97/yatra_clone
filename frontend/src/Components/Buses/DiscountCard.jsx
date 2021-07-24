@@ -1,5 +1,6 @@
 import React from "react";
 import Carousel from "react-elastic-carousel";
+import DiscountCardImg from "./DiscountCardImg";
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
@@ -26,14 +27,16 @@ export default function DiscountCard() {
   return (
     <>
       <div style={{ display: "flex" }}>
-        <p>Bus Discount For You</p>
-        <p>VIEW ALL</p>
+        <p className="card-heading">Bus Discount For You</p>
+        <p className="view-all-cardTop">
+          <a href="#">VIEW ALL</a>
+        </p>
         <div></div>
       </div>
       <div>
         <Carousel breakPoints={breakPoints}>
           {cardData.map((item, id) => (
-            <img src={item.img} alt="" key={id} />
+            <DiscountCardImg item={item} id={id} />
           ))}
         </Carousel>
       </div>

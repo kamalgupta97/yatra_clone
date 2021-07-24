@@ -4,9 +4,9 @@ import Carousel from "react-elastic-carousel";
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
-  { width: 400, itemsToShow: 2, itemsToScroll: 2 },
-  { width: 600, itemsToShow: 3 },
-  { width: 800, itemsToShow: 4 },
+  { width: 340, itemsToShow: 2, itemsToScroll: 2 },
+  { width: 510, itemsToShow: 3 },
+  { width: 680, itemsToShow: 4 },
 ];
 
 export default function CountriesOpen() {
@@ -39,11 +39,12 @@ export default function CountriesOpen() {
   return (
     <>
       <div style={{ display: "flex" }}>
-        <p>Countries Open for Travel</p>
-        <p>VIEW ALL</p>
-        <div></div>
+        <p className="card-heading">Countries Open for Travel</p>
+        <p className="view-all-cardTop">
+          <a href="#">VIEW ALL</a>
+        </p>
       </div>
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative", margin: "25px auto" }}>
         <Carousel breakPoints={breakPoints}>
           {countryData.map((item, id) => (
             <CountryCard key={id} country={item} />

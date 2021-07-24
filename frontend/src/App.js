@@ -1,13 +1,8 @@
-
-
 import Routes from "./Routes/Routes";
 
-
 function App() {
- 
   return (
-    <div >
-     
+    <div>
       <Routes />
     </div>
   );

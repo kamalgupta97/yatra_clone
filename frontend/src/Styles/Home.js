@@ -31,22 +31,32 @@ export const Buses = styled.div`
   .rec-arrow-right,
   .rec-arrow-left {
     position: absolute;
-    top: 30vh;
+    /* top: 0vh; */
     background: #ffffff;
     border: 1px solid #ffffff;
     border-radius: 5px;
+    background: #666666;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 40px;
+    z-index: 0;
+    position: absolute;
   }
 
   .rec-arrow-right {
     right: 0;
   }
 
-  /* .rec-arrow-right:hover{
-      background: 
-  } */
+  .rec-arrow-right:hover,
+  .rec-arrow-left:hover {
+    background: #666666;
+  }
 
   .rec-arrow-left {
-    right: 60px;
+    /* right: 60px; */
   }
 
   .currentNews {
@@ -58,20 +68,43 @@ export const Buses = styled.div`
     align-items: center;
   }
 
+  .card-heading {
+    font-size: 20px;
+    color: #333333;
+  }
+
+  .view-all-cardTop {
+    margin-top: 3px;
+    margin-left: 20px;
+
+    a {
+      text-decoration: none;
+      color: #2a92c5;
+      font-size: 14px;
+    }
+  }
+
   .coupon-and-guide {
     display: flex;
     gap: 12px;
   }
 
   .countiesOpen {
-    height: 32vh;
-    border: 1px solid;
+    height: auto;
     margin: 30px auto;
   }
 
   .busDiscount {
-    height: 28vh;
-    border: 1px solid;
+    height: auto;
     margin: 30px auto;
+  }
+
+  .discountCard-img {
+    margin: 15px auto;
+    cursor: pointer;
+  }
+
+  .discountCard-img:hover {
+    box-shadow: 0px 0.5px 3px 1px grey;
   }
 `;

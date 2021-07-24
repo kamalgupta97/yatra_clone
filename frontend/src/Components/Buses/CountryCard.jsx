@@ -5,18 +5,18 @@ const CountryCards = styled.div`
   .card {
     width: 160px;
     border-radius: 5px;
+    height: auto;
   }
   .card:hover {
     transform: scale(1.05);
     transition-duration: 1s;
-    box-shadow: 1px 1px 2px 1px #e7e7e7;
+    box-shadow: 0px 0.5px 3px 1px #e7e7e7;
   }
 `;
 
 export default function CountryCard({ country }) {
   return (
     <CountryCards>
-      
       <div className="card">
         <div style={{ position: "relative" }}>
           <img style={{ borderRadius: "5px" }} src={country.img} alt="" />

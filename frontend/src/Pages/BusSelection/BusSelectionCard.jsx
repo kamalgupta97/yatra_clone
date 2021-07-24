@@ -32,7 +32,12 @@ const useStyles = makeStyles((theme) => ({
   btn: {
     background: "red",
     color: "white",
-    // cursor: 'pointer',
+    cursor: 'pointer',
+    border: "none",
+    outline: "none",
+    width:"130px",
+    height: "30px",
+    borderRadius:"10px",
     "&:hover":{
       background:"#A30000"
     },
@@ -102,9 +107,9 @@ const SelectionCard = ({ handleCancelPolicy , agency_name,bus_type,boarding_time
             </div>
           </div>
           <div className={styles.Column3}>
-            <Button onClick={handleSeatSelection} className={classes.btn} variant="contained">
+            <button  onClick={handleSeatSelection} className={classes.btn} variant="contained">
               Select seat
-            </Button>
+            </button>
             <button
               className={classes.Cancel_policy_btn}
               onClick={handleCancelPolicy}

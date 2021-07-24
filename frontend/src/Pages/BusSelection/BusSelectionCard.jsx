@@ -107,7 +107,9 @@ const SelectionCard = ({ handleCancelPolicy , agency_name,bus_type,boarding_time
             </div>
           </div>
           <div className={styles.Column3}>
+
             <button  onClick={handleSeatSelection} className={classes.btn} variant="contained">
+
               Select seat
             </button>
             <button

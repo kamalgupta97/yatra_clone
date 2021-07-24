@@ -36,28 +36,24 @@ export const SeaterSitting = ({setselectedseats,selectedseats}) => {
     const classes = useStyles();
     const [busseats,setbuseats] = React.useState(seats)
     const handleClick =(i) =>{
-        // alert(i)
         setbuseats([...busseats])
-        if(selectedseats.length<6){
-        if(busseats[i].available==="selected"){
-            busseats[i].available=true
-        }
-        else{
-            busseats[i].available="selected"
-        }
-
-
-        
-      
+        if(busseats[i].available==="selected")
+          {
+              busseats[i].available=true
+          }
+        else if(selectedseats.length<6)
+          {
+              busseats[i].available="selected"
+             
+          }
           const selected_seats = busseats.filter((item)=>item.available==="selected")
           setselectedseats(selected_seats)
-        }
+}
 
-     
-        console.log(seats)
-    }
+  
+
     return (
-            <Seats>{console.log(seats)}
+            <Seats>
             
             {
                        ( bustype==="seater" || bustype==="semisleeper" ) &&

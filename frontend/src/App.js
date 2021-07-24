@@ -1,13 +1,14 @@
-//import DatePicker from "./Components/Buses/DatePicker";
-import Home from "./Pages/Home";
-import LandingPage from "./Pages/LandingPage";
+
+
+import Routes from "./Routes/Routes";
+
 
 function App() {
+ 
   return (
-    <div>
-      {/* <LandingPage /> */}
-      {/* <DatePicker /> */}
-      <Home />
+    <div >
+     
+      <Routes />
     </div>
   );
 }

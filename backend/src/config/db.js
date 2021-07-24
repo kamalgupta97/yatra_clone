@@ -1,10 +1,15 @@
 const mongoose = require("mongoose");
+
 const connect = () => {
-  return mongoose.connect("mongodb://127.0.0.1:27017/yatra_clone", {
-    useCreateIndex: true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-  });
+  return mongoose.connect(
+    "mongodb+srv://yatraclone:12345@cluster0.pzwds.mongodb.net/test?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+    }
+  );
 };
+
 module.exports = connect;

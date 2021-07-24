@@ -1,0 +1,140 @@
+.navbar {
+    background: white;
+    margin-bottom: 20px;
+}
+
+.navbar img {
+    width: 90px;
+    padding: 6px 0;
+    margin-left: 10%;
+}
+.body {
+    background-color: rgb(238,238,238);
+    height: 100vh;
+   
+}
+.bodyWidth {
+    display: flex;
+    width: 85%;
+    margin: auto;
+    gap: 20px;
+}
+.reviewBox {
+    background: white;
+    padding: 5px;
+    display: flex;
+    margin-bottom: 10px;
+    border-radius: 7px;
+    justify-content: space-between;
+    padding: 20px 35px;
+}
+.addBox {
+    background-color: white;
+    padding: 5px;
+    margin: bottom 10px;
+    border-radius: 7px;
+}
+.flex {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+.flex img { 
+    width: 35px
+}
+.justify {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.justifyReview {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    margin-bottom: 10px;
+}
+.justifyBoarding {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 20px;
+}
+.boarding {
+    margin-bottom: 20px;
+}
+.seatnumber {
+    text-align: center;
+}
+.gradient {
+    background-color: #f3ec78;
+    background-image: linear-gradient(45deg, rgb(125,67,97), rgb(233,91,101));
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+.rel {
+    position: relative;
+    width: 70%;
+}
+.button {
+    background-color: red;
+    color: white;
+    font-size: 15px;
+    font-weight: 600px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+.bus {
+    text-align: center;
+}
+.fare {
+    background-color: white;
+    margin: 15px 0 20px;
+}
+.promo {
+    background-color: white;
+    padding: 20px;
+    margin: 15px 0;
+}
+.details {
+    width: 25%;
+    padding-top: 12px;
+}
+.justifyPay {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(244,244,244);
+    padding: 10px;
+}
+.justifyOnward {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.promocode {
+    display: flex;
+    margin: 10px 0;
+    gap: 5px;
+}
+.promocode input {
+    margin-top: 7px;
+}
+.code {
+    border: 1px dashed rgb(2,203,151);
+    width: fit-content;
+    padding: 3px 5px;
+    color: rgb(2,203,151);
+    font-size: 15px;
+    font-weight: 500;
+}

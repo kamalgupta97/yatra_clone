@@ -1,0 +1,64 @@
+.Card_bus_selection {
+    display: grid;
+    grid-auto-columns: 0.5fr 1.2fr 0.3fr;
+    align-items: center;
+    grid-template-areas: 'col1 col2 col3';
+    background-color: #fcfcfc;
+}
+
+.Column1 {
+    margin-bottom: 15px;
+    padding: 0 15px;
+    grid-area: col1;
+}
+
+.Column2 {
+    display: inline-flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+    padding: 0 15px;
+    grid-area: col2;
+}
+
+.Column3 {
+    margin-bottom: 15px;
+    padding: 0 15px;
+    grid-area: col3;
+}
+.Boarding_Dropping_point{
+    color: blue;
+}
+
+@media screen and (max-width:420px) {
+    .Card_bus_selection {
+        grid-auto-columns: 2fr 2.5fr 0.5fr;
+        grid-template-areas: 'col2 col2' 'col1 col3';
+        font-size: 10px;
+    }
+    .Card_bus_selection>.Column2 {
+        margin: 0 10px;
+        margin-bottom: 15px;
+    }
+    .Duration_Para {
+        margin-top: 3px;
+    }
+    .Bus_title {
+        font-size: 12px;
+    }
+    .Bus_fare_icon{
+        width:15%;
+    }
+    
+
+    .Seat_left{
+     width: 100%;
+     margin-right: 60px
+    }
+    .Boarding_Dropping_point{
+        visibility: hidden;
+    }
+    
+}
+.Seat_left{
+    margin-left: 40px;
+}

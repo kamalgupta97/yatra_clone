@@ -1,0 +1,45 @@
+.activelower{
+    color:#d64443;
+    border:none;
+    background:white;
+    width: 50%;
+    height: 100%;
+    font-size: 14px;
+    font-weight:600;
+}
+
+.lower{
+    color: rgba(0,0,0,0.7); 
+    border:none;
+    width: 50%;
+    height: 100%;
+    font-size: 14px;
+    font-weight:600;
+   
+}
+
+.seatsStatus{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.seatsStatus p{
+    font-size: 12px;
+}   
+.seatsStatusContainer{
+    width: 90% !important;
+    margin: auto;
+    padding-top:10px;
+}
+
+.activebuttons{
+    color:#d64443 !important;
+    border:none;
+    background:white !important;
+   
+}
+.nonactivebuttons{
+    background: none;
+}

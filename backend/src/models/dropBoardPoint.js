@@ -12,3 +12,4 @@ const dropBoardSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("DropBoards", dropBoardSchema);
+// for seggesions

@@ -40,5 +40,5 @@ const busSchema = new Schema({
     required: true,
   },
 });
-
+//date
 module.exports = mongoose.model("Buses", busSchema);

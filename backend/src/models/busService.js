@@ -4,8 +4,10 @@ const busSchema = new mongoose.Schema({
   available: Boolean,
   source: String,
   seater: Number,
-//   music: Boolean,
+  //   music: Boolean,
   charging: Boolean,
+  WiFi: Boolean,
+  Ac: Boolean,
 });
 
 module.exports = mongoose.model("BusServices", busSchema);

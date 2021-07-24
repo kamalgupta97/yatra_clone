@@ -5,10 +5,10 @@ const customerSchema = new Schema({
     type: String,
     required: true,
   },
-  //   googleId: {
-  //     type: String,
-  //     required: false,
-  //   },
+  IdProof: {
+    type: String,
+    required: false,
+  },
   age: {
     type: Number,
     required: false,

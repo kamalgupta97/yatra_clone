@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   btn: {
     background: "red",
     color: "white",
-    cursor: 'pointer',
+    // cursor: 'pointer',
     "&:hover":{
       background:"#A30000"
     },

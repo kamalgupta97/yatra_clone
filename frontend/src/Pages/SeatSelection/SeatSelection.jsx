@@ -55,6 +55,7 @@ display:flex;
 const SeatSelectionWrapperRight=styled.div`
     background:#fff !important;
     margin-left:24%;
+    z-index: 9999;
     
     // height:100vh;
     padding:20px;
@@ -204,7 +205,7 @@ height:60px;
 
 
 const SeatConfirmation=styled.div`
-
+z-index: 9999;
 @media (max-width: 800px) {
     background:#fff;  
     padding:10px;    
@@ -230,6 +231,7 @@ padding:10px;
 `
 
 const SeatConfirmationHeader = styled.div`
+z-index: 9999;
  margin:15px;
  &>p{
      font-size:18px;
@@ -254,7 +256,7 @@ margin:15px;
 }`
 
 const SelectCityWrapper = styled.div`
-
+z-index: 99999;
 margin:15px;
 &>p{
     font-size:13px;

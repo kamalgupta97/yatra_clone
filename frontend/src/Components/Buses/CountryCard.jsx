@@ -16,11 +16,7 @@ const CountryCards = styled.div`
 export default function CountryCard({ country }) {
   return (
     <CountryCards>
-      {/* <div style={{ display: "flex" }}>
-        <p>Countries Open for Travel</p>
-        <p>VIEW ALL</p>
-        <div></div>
-      </div> */}
+      
       <div className="card">
         <div style={{ position: "relative" }}>
           <img style={{ borderRadius: "5px" }} src={country.img} alt="" />

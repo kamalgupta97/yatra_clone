@@ -1,5 +1,13 @@
 import React from "react";
 import CountryCard from "./CountryCard";
+import Carousel from "react-elastic-carousel";
+
+const breakPoints = [
+  { width: 1, itemsToShow: 1 },
+  { width: 400, itemsToShow: 2, itemsToScroll: 2 },
+  { width: 600, itemsToShow: 3 },
+  { width: 800, itemsToShow: 4 },
+];
 
 export default function CountriesOpen() {
   const countryData = [
@@ -29,10 +37,19 @@ export default function CountriesOpen() {
     },
   ];
   return (
-    <div>
-      {countryData.map((item, id) => (
-        <CountryCard key={id} country={item} />
-      ))}
-    </div>
+    <>
+      <div style={{ display: "flex" }}>
+        <p>Countries Open for Travel</p>
+        <p>VIEW ALL</p>
+        <div></div>
+      </div>
+      <div style={{ position: "relative" }}>
+        <Carousel breakPoints={breakPoints}>
+          {countryData.map((item, id) => (
+            <CountryCard key={id} country={item} />
+          ))}
+        </Carousel>
+      </div>
+    </>
   );
 }

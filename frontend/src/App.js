@@ -1,11 +1,13 @@
 //import DatePicker from "./Components/Buses/DatePicker";
+import Home from "./Pages/Home";
 import LandingPage from "./Pages/LandingPage";
 
 function App() {
   return (
     <div>
-      <LandingPage />
+      {/* <LandingPage /> */}
       {/* <DatePicker /> */}
+      <Home />
     </div>
   );
 }

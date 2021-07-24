@@ -2,6 +2,24 @@ import styled from "styled-components";
 
 export const Buses = styled.div`
   background-color: #fdfbfb;
+  max-width: 1350px;
+  height: 90vh;
+  margin-top: 10vh;
+
+  .leftSide {
+    width: "40%";
+    height: "85vh";
+    border: "1px solid";
+    background: red;
+    position: fixed;
+  }
+
+  .landing {
+    width: "100%";
+    margin: "auto";
+    border: "1px solid";
+    background: grey;
+  }
 
   .currentNews {
     margin: 30px 0;

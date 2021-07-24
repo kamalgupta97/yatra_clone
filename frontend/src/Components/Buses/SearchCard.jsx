@@ -11,10 +11,11 @@ import DatePicker from "./DatePicker";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
-    position: "fixed",
-    minHeight: "88vh",
+    width: "100%",
     marginTop: 30,
+    boxShadow: "0px .5px 3px .5px grey",
+    height: "80vh",
+    background: "#ffffff",
   },
 
   title: {
@@ -23,9 +24,13 @@ const useStyles = makeStyles({
     color: "#333333",
   },
   inputText: {
-    // fontSize: 20,
-    // fontWeight: 550,
-    // color: "#333333",
+    width: "42.3%",
+  },
+  content: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    height: "100%",
   },
 });
 
@@ -37,48 +42,56 @@ export default function SearchCard() {
 
   return (
     <Card className={classes.root}>
-      <CardContent>
-        <h4 className={classes.title}>Book Bus Tickets</h4>
+      <CardContent className={classes.content}>
         <Box>
-          <TextField
-            className={classes.inputText}
-            value={depart}
-            id="standard-basic"
-            label="Depart From"
-            onChange={(e) => setDepart(e.target.value)}
-          />
-          <IconButton
-            onClick={() => {
-              var temp = depart;
-              setDepart(going);
-              setGoing(temp);
-            }}
-          >
-            <SyncAltIcon
-              style={{
-                color: "#CE2A35",
-                border: "1px solid #CE2A35",
-                padding: "5px",
-                borderRadius: "50%",
-              }}
+          <h4 className={classes.title}>Book Bus Tickets</h4>
+          <Box>
+            <TextField
+              className={classes.inputText}
+              value={depart}
+              id="standard-basic"
+              label="Depart From"
+              onChange={(e) => setDepart(e.target.value)}
             />
-          </IconButton>
-          <TextField
-            className={classes.inputText}
-            value={going}
-            id="standard-basic"
-            label="Going To"
-            onChange={(e) => setGoing(e.target.value)}
-          />
+            <IconButton
+              onClick={() => {
+                var temp = depart;
+                setDepart(going);
+                setGoing(temp);
+              }}
+            >
+              <SyncAltIcon
+                style={{
+                  color: "#CE2A35",
+                  border: "1px solid #CE2A35",
+                  padding: "5px",
+                  borderRadius: "50%",
+                }}
+              />
+            </IconButton>
+            <TextField
+              className={classes.inputText}
+              value={going}
+              id="standard-basic"
+              label="Going To"
+              onChange={(e) => setGoing(e.target.value)}
+            />
+          </Box>
+          <Box>
+            <DatePicker />
+          </Box>
         </Box>
-        <Box>
-          <DatePicker />
-        </Box>
-        <Box>
+        <Box
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "flex-end",
+            margin: "0 0 4rem 0",
+          }}
+        >
           <Button
+            className="searchButton"
             style={{
-              margin: "57vh 1% 5% 67%",
-              position: "relative",
               padding: "10px 5px",
             }}
             variant="contained"

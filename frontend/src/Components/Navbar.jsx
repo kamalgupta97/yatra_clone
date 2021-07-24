@@ -51,6 +51,8 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: " 0px 0px 5px 3px #dddcdc",
     color: "#000000",
     display: "flex",
+    // width: "100%",
+    // maxWidth: "1350px",
     // justifyContent: "center",
     alignItems: "center",
     top: 0,
@@ -59,7 +61,8 @@ const useStyles = makeStyles((theme) => ({
   },
   navData: {
     flexGrow: 1,
-    maxWidth: "1350px",
+    width: "100%",
+    maxWidth: "1300px",
   },
   icon: {
     textAlign: "center",
@@ -191,7 +194,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="sticky" className={classes.header}>
+      <AppBar position="fixed" className={classes.header}>
         <Toolbar className={classes.navData}>
           <img
             width="88px"

@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import { Box, IconButton, TextField } from "@material-ui/core";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
 import DatePicker from "./DatePicker";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -37,8 +38,25 @@ const useStyles = makeStyles({
 export default function SearchCard() {
   const classes = useStyles();
 
-  let [depart, setDepart] = useState("A");
-  let [going, setGoing] = useState("B");
+  const [depart, setDepart] = useState("A");
+  const [going, setGoing] = useState("B");
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const [searchData, setSearchData] = useState({});
+  const history = useHistory();
+
+  const handleSearchBus = () => {
+    const payload = {
+      depart,
+      going,
+      selectedDate,
+    };
+
+    setSearchData(payload);
+    history.push("/busselection");
+  };
+
+  console.log(searchData);
 
   return (
     <Card className={classes.root}>
@@ -78,7 +96,10 @@ export default function SearchCard() {
             />
           </Box>
           <Box>
-            <DatePicker />
+            <DatePicker
+              selectedDate={selectedDate}
+              setSelectedDate={setSelectedDate}
+            />
           </Box>
         </Box>
         <Box
@@ -96,6 +117,7 @@ export default function SearchCard() {
             }}
             variant="contained"
             color="secondary"
+            onClick={handleSearchBus}
           >
             Search Buses →
           </Button>

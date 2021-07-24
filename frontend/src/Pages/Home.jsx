@@ -9,6 +9,8 @@ import Navbar from "../Components/Navbar";
 import { Buses } from "../Styles/Home";
 
 export default function Home() {
+
+    
   return (
     <>
       <div>

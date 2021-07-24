@@ -338,14 +338,13 @@ export const SeatSelection = ({setopenSelectseat}) => {
     const [activeplace,setactiveplace] =React.useState(true)
     const [activeBordingpoint,setactiveBordingpoint] = React.useState(false)
     const [activeDroppingpoint,setactiveDroppingpoint] = React.useState(false)
-    const [selectedseats,setselectedseats]=React.useState([])
-    const [formatedseatNumbers,setformatedseatNumbers]=React.useState("")
-    React.useEffect(()=>{
-       const numbers= selectedseats.map(item=>item.seatnumber)
-      
-       setformatedseatNumbers(numbers.join(","))
+    const [selected,setSelected]= React.useState([])
 
-    },[selectedseats])
+    React.useEffect(()=>{
+      
+  
+
+    },[])
     
 
     const handleClick=(e)=>{
@@ -398,7 +397,7 @@ export const SeatSelection = ({setopenSelectseat}) => {
                             
                             </Driver>}
 
-                            <SeaterSitting setselectedseats={setselectedseats} selectedseats={selectedseats}/>
+                            <SeaterSitting  selected={selected} setSelected={setSelected}/>
                     </Sitting>
                     <SeatStatus>
 
@@ -499,15 +498,15 @@ export const SeatSelection = ({setopenSelectseat}) => {
                                         )
                                     }
                                 </select>
-                                {console.log(selectedseats)}
-                                   { selectedseats[0]?<> <AmountandSeats>
+                                {/* {console.log(selectedseats)} */}
+                                   { true?<> <AmountandSeats>
                                         <Amount>
                                             <p>Total Amount</p>
                                             <p>₹ 3900</p>
                                         </Amount>
                                         <SeatNo>
                                             <p>Seats No:</p>
-                                            <p>{formatedseatNumbers}</p>
+                                            <p>{selected.join(",")}</p>
                                         </SeatNo>
                                     </AmountandSeats>
                                     <ConfirmActiveButton>Confirm Seats</ConfirmActiveButton>
@@ -525,12 +524,12 @@ export const SeatSelection = ({setopenSelectseat}) => {
 
                     {
                         activeBordingpoint&&<BordingPoints>
-                            <Points BordingPoints={true} bording={requirement.bording} selectedseats={selectedseats}/>
+                            <Points BordingPoints={true} bording={requirement.bording} />
                         </BordingPoints>
                     }
                     {
                         activeDroppingpoint&&<DroppingPoints>
-                             <Points BordingPoints={false} bording={requirement.dropping} selectedseats={selectedseats}/>
+                             <Points BordingPoints={false} bording={requirement.dropping} />
                         </DroppingPoints>
                     }
 

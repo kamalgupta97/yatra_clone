@@ -114,7 +114,7 @@ export default function PrimarySearchAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const state = useSelector(state => state)
+  const state = useSelector(state => state.auth)
   
 
   const isMenuOpen = Boolean(anchorEl);
@@ -284,34 +284,10 @@ export default function PrimarySearchAppBar() {
               </Typography>
             </div>
           </Tabs>
-          {/* <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton> */}
-          {/* <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
-          </Typography> */}
+         
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            {/* <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-              My Account
-              </Badge>
-            </IconButton> */}
-            {/* <Typography
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              My Account
-            </Typography> */}
+          
             <Typography
               className={(classes.title, classes.rightTitle)}
               variant="h6"
@@ -319,7 +295,10 @@ export default function PrimarySearchAppBar() {
               style={{ cursor: "default" }}
               onMouseEnter={() => setDropProfile(true)}
             >
-              {state.isAuth ? state.user : "My Account"}
+             {state.isAuth ? state.user : "My Account"}
+             {
+               console.log(state.isAuth,state.user)
+             }
               {/* <div>
                 <Myprofile />
               </div> */}

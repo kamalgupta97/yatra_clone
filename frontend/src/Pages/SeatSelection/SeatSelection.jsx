@@ -17,6 +17,9 @@ import { Points } from './Points';
 import { requirement } from './requirement';
 import { SeaterSitting } from './SeaterSitting';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import {getSelectedData} from '../../Redux/Bus/busAction'
 
 
 
@@ -367,6 +370,17 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
                 })
 
     },[])
+
+    const history = useHistory()  
+    const dispatch = useDispatch()
+    const handleBook=()=>{
+        const payload={
+            bus_id,
+            selected
+        }
+        dispatch(getSelectedData(payload))
+       history.push("/booking")
+    }
     
 
     const handleClick=(e)=>{
@@ -532,7 +546,7 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
                                             <p>{selected.join(",")}</p>
                                         </SeatNo>
                                     </AmountandSeats>
-                                    <ConfirmActiveButton>Confirm Seats</ConfirmActiveButton>
+                                    <ConfirmActiveButton onClick={handleBook}>Confirm Seats</ConfirmActiveButton>
                                      </>:
                                    
                                      <ConfirmButton disabled>Confirm Seats</ConfirmButton>

@@ -2,3 +2,6 @@ export const BUS_REQUEST ="BUS_REQUEST";
 export const BUS_SUCCESS = "BUS_SUCCESS";
 export const BUS_FAILURE = "BUS_FAILURE";
 export const SAVE_SEARCHDATA= "SAVE_SEARCHDATA";
+
+
+export const SELECTED_SEATS ="SELECTED_SEATS";

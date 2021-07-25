@@ -5,6 +5,7 @@ import {
   BUS_FAILURE,
   BUS_SUCCESS,
   SAVE_SEARCHDATA,
+  SELECTED_SEATS, 
 } from "./busActionType";
 
 const busRequest = () => {
@@ -31,6 +32,13 @@ const saveSearchData = (payload) => {
   };
 };
 
+const selectedseatsData =(payload)=>{
+  return {
+    type:SELECTED_SEATS,
+    payload
+  }
+}
+
 export const getBusesData = (payload) => (dispatch) => {
   dispatch(saveSearchData(payload));
   dispatch(busRequest());
@@ -49,4 +57,9 @@ export const getBusesData = (payload) => (dispatch) => {
     .catch((err) => {
       dispatch(busFailure(err));
     });
+};
+
+
+export const getSelectedData=(payload)=>(dispatch)=>{
+      dispatch(selectedseatsData(payload))
 };

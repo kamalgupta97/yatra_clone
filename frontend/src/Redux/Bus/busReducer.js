@@ -4,6 +4,7 @@ import {
   BUS_FAILURE,
   BUS_SUCCESS,
   SAVE_SEARCHDATA,
+  SELECTED_SEATS
 } from "./busActionType";
 
 const init = {
@@ -11,6 +12,7 @@ const init = {
   isError: false,
   saved_searchdata: {},
   data: {},
+  selected_seats_data:{}
 };
 
 export const busReducer = (state = init, { type, payload }) => {
@@ -41,6 +43,12 @@ export const busReducer = (state = init, { type, payload }) => {
         ...state,
         saved_searchdata: payload,
       };
+    }
+    case SELECTED_SEATS:{
+      return {
+        ...state,
+        selected_seats_data:payload
+      }
     }
 
     default:

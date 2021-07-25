@@ -5,10 +5,15 @@ import reviewicon from "../../assets/review.png";
 import adduser from "../../assets/add-user.png";
 import styles from "./Booking.module.css";
 import Footer from "../Footer";
+import { useSelector } from "react-redux";
 
 export const Booking = () => {
   const country = ["+91", "+92", "+62", "+65", "+81","+67"]
   const age = ["age", 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]
+  const state = useSelector(state => state.bus)
+  React.useEffect(()=>{
+      console.log(state)
+  })
   return (
     <>
       <div className={styles.body}>

@@ -8,6 +8,7 @@ import styles from "./Payment.module.css";
 import { height } from "@material-ui/system";
 import Payment_pay from "./Payment_pay";
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
+import StripeContainer from "./PaymentOptions/StripeContainer ";
 
 const useStyles = makeStyles((theme) => ({
     root:{
@@ -123,7 +124,7 @@ const PaymentSection = () => {
           </div>
           <div className={styles.payment_Right_subcont} >
               {
-                  credit ?  <Payment_pay/> : null
+                  credit ? <StripeContainer/> :     <Payment_pay/> 
               }
 
           </div>

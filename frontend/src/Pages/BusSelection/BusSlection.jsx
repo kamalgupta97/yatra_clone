@@ -362,10 +362,10 @@ const BusSlection = () => {
     </div>
 
       <h1 style={{ textAlign: "left",margin:"20px 10px 20px 150px",fontSize:"28px"}}>We have got {state && state?.data?.bus?.length} Results</h1>
-      {state?.data?.bus?.map((item, id) => {
+      {state?.data?.bus?.map((item) => {
         return (
           <SelectionCard
-            key={id}
+            key={item._id}
             handleCancelPolicy={handleCancelPolicy}
             {...item}
             openSelectseat={openSelectseat} setopenSelectseat={setopenSelectseat}

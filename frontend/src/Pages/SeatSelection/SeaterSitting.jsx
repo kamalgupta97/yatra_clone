@@ -32,14 +32,14 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-export const SeaterSitting = ({setSelected,selected}) => {
+export const SeaterSitting = ({setSelected,selected,booked}) => {
+  console.log(booked,"Bookes")
     let bustype="Sleeper"
     const classes = useStyles();
   
 
-    let booked =[1,2,3,4]
-    console.log(totalsleeperseats)
-    console.log(totalsittngseats)
+    // console.log(totalsleeperseats)
+    // console.log(totalsittngseats)
       
     const handleClick =(item) =>{
       if(selected.length<6){
@@ -63,14 +63,14 @@ export const SeaterSitting = ({setSelected,selected}) => {
             <Seats>
             
             {
-                       ( bustype==="seater" || bustype==="semisleeper" ) &&
+                       ( bustype==="seater" || bustype==="semi sleeper" ) &&
                 <Grid container className={classes.root} >
                   
                   
                
                 {totalsittngseats.map((item)=>  
                 {
-                  return  ( selected.includes(item) )?
+                  return  ( selected.includes(item) )?  
                     <Grid xs={3} sm={3} md={3} lg={3} xl={3} item key={item} onClick={()=>handleClick(item)} >
                     <img  className={classes.paper} src={Selected} alt="available" />
                     </Grid>

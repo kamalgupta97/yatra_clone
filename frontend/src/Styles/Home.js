@@ -44,6 +44,7 @@ export const Buses = styled.div`
     height: 40px;
     z-index: 0;
     position: absolute;
+    display: none;
   }
 
   .rec-arrow-right {

@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "#CE2A35",
       opacity: 1,
-      //   borderBottom: "3px solid #CE2A35 ",
+      // borderBottom: "3px solid #CE2A35 ",
     },
     "&$selected": {
       color: "#CE2A35",
@@ -96,6 +96,14 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "14px",
       borderRadius: "30px",
     },
+  },
+
+  buses: {
+    color: "#CE2A35",
+    opacity: "1.0 !important",
+    fontSize: "14px",
+    borderBottom: "3px solid #CE2A35 ",
+    textAlign: "center",
   },
 }));
 
@@ -233,7 +241,7 @@ export default function PrimarySearchAppBar() {
                 Villas & Stays
               </Typography>
             </div>
-            <div className={classes.icon}>
+            <div className={(classes.icon, classes.buses)}>
               <DirectionsBusIcon />
               <Typography className={classes.title} variant="h6">
                 Buses

@@ -85,6 +85,11 @@ const BusSlection = () => {
   // sending data to redux for finding buses________________________
   const dispatch = useDispatch()
   const state = useSelector(state => state.bus)
+  const serached_data = useSelector(state => state.bus.saved_searchdata)
+  React.useEffect(()=>{
+   
+    console.log(serached_data,"BUS SELECTION _____________________")
+  },[])
   
   const handleSubmit =()=>{
     
@@ -94,7 +99,7 @@ const BusSlection = () => {
       arrivalLocation:to,
       selectedDate,
     };
-    console.log(payload,"BUS SELECTION __________________")
+    // console.log(payload)
     dispatch(getBusesData(payload))
     console.log(state)
 
@@ -127,13 +132,13 @@ const BusSlection = () => {
           <div>
             <p>From</p>
 
-            <TextField variant='standard'  className={classes.search__input_from} type="text" value={from} onChange={(e)=>setFrom(e.target.value)} />
+            <TextField variant='standard'  className={classes.search__input_from} type="text" defaultValue={serached_data.departureLocation} onChange={(e)=>setFrom(e.target.value)} />
 
           </div>
 
           <div>
             <p>To</p>
-          <TextField variant='standard'className={classes.search__input_from} type="text"  value={to} onChange={(e)=>setTo(e.target.value)} />
+          <TextField variant='standard'className={classes.search__input_from} type="text"  defaultValue={serached_data.arrivalLocation} onChange={(e)=>setTo(e.target.value)} />
 
           </div>
           <div>
@@ -145,7 +150,7 @@ const BusSlection = () => {
           id="date-picker-dialog"
           label="Date"
           formatDate={(date) => moment(date).format('DD-MM-YYYY')}
-          value={selectedDate}
+          defaultValue={serached_data.selectedDate}
           onChange={handleDateChange}
           KeyboardButtonProps={{
             'aria-label': 'change date',

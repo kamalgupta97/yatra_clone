@@ -41,8 +41,8 @@ const useStyles = makeStyles({
 export default function SearchCard() {
   const classes = useStyles();
 
-  const [departureLocation, setDepartureLocation] = useState("Mumbai");
-  const [arrivalLocation, setArrivalLocation] = useState("Bangalore");
+  const [departureLocation, setDepartureLocation] = useState("surat");
+  const [arrivalLocation, setArrivalLocation] = useState("jaipur");
   const [selectedDate, setSelectedDate] = useState(new Date());
   //new Date().toJSON().slice(0,10)
   const [searchData, setSearchData] = useState({});
@@ -51,7 +51,6 @@ export default function SearchCard() {
 
   const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
   //selectedDate: moment(selectedDate).format("DD-MM-YYYY"),
   const handleSearchBus = () => {
     const payload = {
@@ -59,7 +58,6 @@ export default function SearchCard() {
       arrivalLocation,
       selectedDate,
     };
-
 
     setSearchData(payload);
     dispatch(getBusesData(payload));

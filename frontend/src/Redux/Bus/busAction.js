@@ -44,8 +44,9 @@ export const getBusesData = (payload) => (dispatch) => {
     )
     .then((res) => {
       dispatch(busSuccess(res.data));
+      console.log(res.data);
     })
     .catch((err) => {
-      dispatch(busFailure());
+      dispatch(busFailure(err));
     });
 };

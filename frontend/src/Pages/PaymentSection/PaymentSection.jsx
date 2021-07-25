@@ -9,6 +9,7 @@ import { height } from "@material-ui/system";
 import Payment_pay from "./Payment_pay";
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import StripeContainer from "./PaymentOptions/StripeContainer ";
+import  Footer from '../../Components/Footer'
 
 const useStyles = makeStyles((theme) => ({
     root:{
@@ -184,6 +185,10 @@ const PaymentSection = () => {
          </div>
 
       </Box>
+      <br></br><br></br>
+
+      <Footer/>
+      
     </div>
   );
 };

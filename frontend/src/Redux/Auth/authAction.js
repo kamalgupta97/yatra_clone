@@ -1,4 +1,5 @@
 
+import axios from "axios";
 import {
     LOGIN_REQUEST,
     LOGIN_FAILURE,
@@ -6,6 +7,10 @@ import {
     SIGNUP_SUCCESS,
     SIGNUP_FAILURE,
     SIGNUP_REQUEST,
+
+    OTP_VERIFICATION_SUCCESS,
+    OTP_VERIFICATION_FAILURE,
+    OTP_VERIFICATION_REQUEST,
   } from "./authActionType";
 
 
@@ -20,11 +25,51 @@ import {
       payload: payload,
     };
   };
-  const loginFailure = () => {
+  const loginFailure = (payload) => {
     return {
       type: LOGIN_FAILURE,
+      payload
     };
   };
+
+
+
+  const otpVerificationRequest = () => {
+    return {
+      type: OTP_VERIFICATION_REQUEST,
+    
+    };
+  };
+  const otpVerificationSuccess = (payload) => {
+    return {
+      type: OTP_VERIFICATION_SUCCESS,
+      payload: payload,
+    };
+  };
+  const otpVerificationFailure = (payload) => {
+    return {
+      type: OTP_VERIFICATION_FAILURE,
+      payload
+    };
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const signupRequest = (payload) => {
     return {
       type: SIGNUP_REQUEST,
@@ -46,7 +91,26 @@ import {
 
 
 
-  export const getLogin=()=>{
-      loginSuccess()
+  export const getLogin=(payload)=>(dispatch)=>{
+      dispatch(loginRequest())
+
+      return axios.post("http://localhost:7777/login",{mobile:payload})
+      .then(res=>{
+        dispatch(loginSuccess(res.data))
+      })
+      .catch(err=>{
+        dispatch(loginFailure(err))
+      })
   }
   
+
+  export const verifyOtp =(payload)=>(dispatch)=>{
+    dispatch(otpVerificationRequest())
+    return axios.post("http://localhost:7777/verify",payload)
+    .then(res=>{
+      dispatch(otpVerificationSuccess(res.data))
+    })
+    .catch(err=>{
+      dispatch(otpVerificationFailure(err))
+    })
+  }

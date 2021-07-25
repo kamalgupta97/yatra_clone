@@ -51,6 +51,7 @@ export default function SearchCard() {
 
   const dispatch = useDispatch();
 
+  const dispatch = useDispatch()
   //selectedDate: moment(selectedDate).format("DD-MM-YYYY"),
   const handleSearchBus = () => {
     const payload = {
@@ -59,8 +60,10 @@ export default function SearchCard() {
       selectedDate,
     };
 
+
     setSearchData(payload);
     dispatch(getBusesData(payload));
+
     history.push("/busselection");
   };
 

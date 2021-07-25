@@ -5,6 +5,8 @@ import TextField from '@material-ui/core/TextField';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import OTP from '../../assets/otp.png';
 import background from '../../assets/background.png'
+import { useDispatch, useSelector } from 'react-redux';
+import { verifyOtp } from '../../Redux/Auth/authAction';
 
 
 const Loader = styled.div`
@@ -89,9 +91,18 @@ const Resend = styled.div`
 
 export const Otpform = ({setotpForm,mobileNo}) => {
     const [otp,setOtp]=React.useState("")
+    const dispatch = useDispatch()
+    const state = useSelector(state => state.auth)
+    console.log(state)
     const handleSubmit=(e)=>{
         e.preventDefault()
         alert(otp)
+        const payload ={
+            mobile:mobileNo,
+            OTPcode:otp
+        }
+        dispatch(verifyOtp(payload))
+
     }
     return (
         <Loader>

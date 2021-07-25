@@ -9,7 +9,8 @@ import history from '../../assets/history.png'
 import prefilled from '../../assets/prefilled.png'
 import transfechash from '../../assets/transefechash.png'
 import { Otpform } from './Otpform';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getLogin } from '../../Redux/Auth/authAction';
 
 const BodyWrapper = styled.div`
     background:#f5f5f5;
@@ -240,11 +241,16 @@ export const SignIn = () => {
     const [openotpform,setotpForm] = React.useState(false)
     const [mobileNo,setMobileNo] = React.useState("")
     const state = useSelector(state => state.auth)
+
     console.log(state)
+    const dispatch = useDispatch()
     const handleSubmit =(e)=>{
         e.preventDefault()
+   
+        dispatch(getLogin(mobileNo))
         setotpForm(true)
-        alert(mobileNo)
+        
+        
     }
     return (
         <BodyWrapper>

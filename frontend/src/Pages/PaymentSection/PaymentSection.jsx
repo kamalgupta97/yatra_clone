@@ -60,6 +60,9 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1),
         backgroundColor: theme.palette.background.paper,
       },
+      color_para:{
+        color:"#666666"
+      }
      
   }
 
@@ -102,7 +105,7 @@ const PaymentSection = () => {
          <h3 style={{color:"#b8b8b8"}}>Book your Bus in 3 simple steps</h3>
          </div>
           <div >
-            <Typography>Hi Bhargavi</Typography>
+            <Typography>Hi {"user"}</Typography>
           </div>
          </div>
         </Toolbar>
@@ -146,21 +149,27 @@ const PaymentSection = () => {
         {open ? (
           <div className={classes.dropdown}>
           <div className={styles.booking_content}>
-          hwteutyu <br></br>
-            etywtu <br></br>
-            etywuryu <br></br>
-            tywruryu <br></br>
-            teyryu <br></br>
-            wrtgey  <br></br>
-            wtu <br></br>
-            etywuryu <br></br>
-            tywruryu <br></br>
-            teyryu <br></br>
-            wrtgey  <br></br>wtu <br></br>
-            etywuryu <br></br>
-            tywruryu <br></br>
-            teyryu <br></br>
-            wrtgey  <br></br>
+         <div style={{padding:"10px 5px"}}>
+         <h4>Onward Journey</h4>
+         </div>
+         
+        <div style={{padding:"5px 5px"}}>
+        <h5>{"source"}-{"destination"}</h5>
+        <p className={classes.color_para}>{"date"}</p>
+        </div>
+          <div style={{padding:"5px 5px"}}>
+          <h5>{"agency name"}</h5>
+         <p className={classes.color_para}>{"bustype"}</p>
+          </div>
+          <div style={{padding:"5px 5px"}}>
+          <h5>Seat No</h5>
+         <p className={classes.color_para}>{"selected seat"}</p>
+            
+          </div>
+        <div style={{padding:"5px 5px"}}>
+         <h5>Boarding point</h5>
+         <p className={classes.color_para}>{"boarding point"}</p>
+         </div>
           </div>
           </div>
         ) : null}
@@ -175,12 +184,12 @@ const PaymentSection = () => {
                 <div  className={styles.payment_detail} >
                     <div className={styles.payment_detail_cont1} >
                         <p>Onward fare</p>
-                        <p>687</p>
+                        <p>{"price"}</p>
                     </div>
                     <div className={styles.payment_detail_line} ></div>
                     <div className={styles.payment_detail_cont2}>
                         <h2 >You Pay</h2>
-                        <h2 style={{color:"#333333"}} >687</h2>
+                        <h2 style={{color:"#333333"}}>{"price"}</h2>
                     </div>
                     <div  className={styles.payment_detail_line}  ></div>
 

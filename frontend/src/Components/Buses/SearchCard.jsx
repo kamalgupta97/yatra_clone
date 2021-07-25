@@ -41,7 +41,7 @@ const useStyles = makeStyles({
 export default function SearchCard() {
   const classes = useStyles();
 
-  const [departureLocation, setDepartureLocation] = useState("surat");
+  const [departureLocation, setDepartureLocation] = useState("delhi");
   const [arrivalLocation, setArrivalLocation] = useState("jaipur");
   const [selectedDate, setSelectedDate] = useState(new Date());
   //new Date().toJSON().slice(0,10)

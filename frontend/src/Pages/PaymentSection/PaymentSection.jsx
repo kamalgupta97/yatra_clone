@@ -66,8 +66,7 @@ const useStyles = makeStyles((theme) => ({
 
 const PaymentSection = () => {
     const [credit , setCredit] = useState(true)
-    const [debit , setDebit] = useState(false)
-    const [amazon , setAmazon] =  useState(false)
+    const [pay , setPay] =  useState(false)
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -78,13 +77,14 @@ const PaymentSection = () => {
   const handleClickAway = () => {
     setOpen(false);
   };
-  const handleClickAmazon =()=>{
-      setAmazon(true)
+  const handleClickCredit = ()=>{
+    setCredit(true)
   }
-  const handleClickDebit = ()=>{
-      setDebit(true)
+  const handleClickPay =()=>{
+    setCredit(false)
+    setPay(true)
   }
-
+  
   return (
     <div className={classes.root}>
       <div style={{backgroundColor:"white"}}>
@@ -110,16 +110,16 @@ const PaymentSection = () => {
       <Box className={classes.payment_modal}>
          <div className={styles.payment_Left_cont}  >
          <div className={styles.payment_Left_subcont}  >
-          <Button  className={classes.payment_btn} variant="contained">Credit Card</Button>
-          <Button onClick={handleClickDebit} className={classes.payment_btn} variant="contained">Debit Card</Button>
-          <Button  className={classes.payment_btn} variant="contained">UPI</Button>
-          <Button onClick={handleClickDebit} className={classes.payment_btn} variant="contained">NETB</Button>
-           <Button onClick={handleClickDebit} className={classes.payment_btn} variant="contained">PayPal</Button>
-          <Button onClick={handleClickAmazon} className={classes.payment_btn} variant="contained">Amazon Pay</Button>
-          <Button onClick={handleClickDebit} className={classes.payment_btn} variant="contained">Google Pay</Button>
-          <Button onClick={handleClickAmazon} className={classes.payment_btn} variant="contained">PhonePe</Button>
-          <Button onClick={handleClickAmazon} className={classes.payment_btn} variant="contained">Paytm</Button>
-          <Button onClick={handleClickDebit} className={classes.payment_btn} variant="contained">Mobile Wallet</Button>
+          <Button onClick={handleClickCredit} className={classes.payment_btn} variant="contained">Credit Card</Button>
+          <Button onClick={handleClickPay} className={classes.payment_btn} variant="contained">Debit Card</Button>
+          <Button  onClick={handleClickPay} className={classes.payment_btn} variant="contained">UPI</Button>
+          <Button onClick={handleClickPay} className={classes.payment_btn} variant="contained">NETB</Button>
+           <Button onClick={handleClickPay} className={classes.payment_btn} variant="contained">PayPal</Button>
+          <Button onClick={handleClickPay} className={classes.payment_btn} variant="contained">Amazon Pay</Button>
+          <Button onClick={handleClickPay} className={classes.payment_btn} variant="contained">Google Pay</Button>
+          <Button onClick={handleClickPay} className={classes.payment_btn} variant="contained">PhonePe</Button>
+          <Button onClick={handleClickPay} className={classes.payment_btn} variant="contained">Paytm</Button>
+          <Button onClick={handleClickPay} className={classes.payment_btn} variant="contained">Mobile Wallet</Button>
      
           </div>
           <div className={styles.payment_Right_subcont} >

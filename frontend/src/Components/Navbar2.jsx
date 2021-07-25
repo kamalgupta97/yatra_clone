@@ -48,13 +48,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: " 0px 0px 5px 3px #dddcdc",
     color: "#000000",
     display: "flex",
-    // width: "100%",
-    // maxWidth: "1350px",
-    // justifyContent: "center",
     alignItems: "center",
-    top: 0,
-    left: 0,
-    right: 0,
   },
   navData: {
     flexGrow: 1,
@@ -184,7 +178,7 @@ export default function Navbar2() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="fixed" className={classes.header}>
+      <AppBar className={classes.header}>
         <Toolbar className={classes.navData}>
           <img
             width="88px"
@@ -254,7 +248,7 @@ export default function Navbar2() {
       {dropProfile && (
         <div
           style={{
-            marginTop: "-3vh",
+            marginTop: "0vh",
             position: "absolute",
             zIndex: 1,
             right: "25%",

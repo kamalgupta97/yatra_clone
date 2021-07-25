@@ -69,7 +69,7 @@ export default function SearchCard() {
       <CardContent className={classes.content}>
         <Box>
           <h4 className={classes.title}>Book Bus Tickets</h4>
-          <Box>
+          <Box style={{ marginTop: "15px" }}>
             <TextField
               className={classes.inputText}
               value={departureLocation}

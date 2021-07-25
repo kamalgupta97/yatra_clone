@@ -13,6 +13,7 @@ import "date-fns";
 import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
 import moment from "moment";
+import Navbar2 from "../../Components/Navbar2";
 
 import {
   MuiPickersUtilsProvider,
@@ -56,6 +57,8 @@ const useStyles = makeStyles((theme) => ({
   },
   search__input_from: {
     borderBottom: "white",
+    fontWeight: "500",
+    color: "#ffffff !important",
   },
   date__format: {
     [theme.breakpoints.down("sm")]: {
@@ -68,6 +71,8 @@ const BusSlection = () => {
   const classes = useStyles();
 
   let saved_searchdata = useSelector((state) => state.bus.saved_searchdata);
+  React.useEffect(() => {}, []);
+
   let departureLocation = saved_searchdata.departureLocation;
   let arrivalLocation = saved_searchdata.arrivalLocation;
   let date = saved_searchdata.selectedDate;
@@ -109,7 +114,7 @@ const BusSlection = () => {
     <>
       <div className={styles.search}>
         <div>
-          <Toolbar className={classes.navData}>
+          {/* <Toolbar className={classes.navData}>
             <img
               style={{ marginLeft: "130px" }}
               width="88px"
@@ -123,10 +128,11 @@ const BusSlection = () => {
               <Typography>Recent Search</Typography>
               <Typography>Offer</Typography>
             </div>
-          </Toolbar>
+          </Toolbar> */}
+          <Navbar2 />
         </div>
 
-        <SearchContainer>
+        <SearchContainer style={{ marginTop: "7vh" }}>
           <div>
             <img width="45px" src={busImg} alt="Bus" />
           </div>

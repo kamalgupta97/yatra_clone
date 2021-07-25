@@ -7,7 +7,26 @@ import styles from "./PaymentForm.module.css";
 import PaymentSucces from "./PaymentSucces";
 import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
 import { useDispatch, useSelector } from "react-redux";
+import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
 // import { setPaymentSucceeded } from "../../Redux/Auth/authAction";
+const useStyles = makeStyles((theme) => ({
+  btn: {
+    background: "red",
+    width: "150px",
+    color: "white",
+    cursor: "pointer",
+    marginLeft:"40%",
+    "&:hover": {
+      background: "#A30000",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "10px",
+    },
+  },
+ 
+}));
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
@@ -30,6 +49,7 @@ const CARD_OPTIONS = {
 };
 
 export default function PaymentForm() {
+  const classes = useStyles();
   const [success, setSuccess] = useState(false);
   const [isLoading, setisLoading] = React.useState(false);
   const [isError, setisError] = React.useState(false);
@@ -137,7 +157,7 @@ export default function PaymentForm() {
                   <CardElement options={CARD_OPTIONS} />
                 </div>
               </fieldset>
-              <button>Pay</button>
+              <Button  className={classes.btn} variant="contained" color="secondary">Pay Now</Button>
             </form>
           )}
         </div>

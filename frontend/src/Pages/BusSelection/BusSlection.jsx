@@ -7,20 +7,20 @@ import styled from "styled-components";
 import { TextField, Button, Typography } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { makeStyles } from "@material-ui/core/styles";
-import styles from './BusSelection.module.css'
-import busImg from './Images/bus_searchbar.png'
-import 'date-fns';
-import Grid from '@material-ui/core/Grid';
-import DateFnsUtils from '@date-io/date-fns';
-import moment from 'moment'
+import styles from "./BusSelection.module.css";
+import busImg from "./Images/bus_searchbar.png";
+import "date-fns";
+import Grid from "@material-ui/core/Grid";
+import DateFnsUtils from "@date-io/date-fns";
+import moment from "moment";
 
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
-
-} from '@material-ui/pickers';
+} from "@material-ui/pickers";
 import { getBusesData } from "../../Redux/Bus/busAction";
 import { useDispatch, useSelector } from "react-redux";
+import Footer from "../../Components/Footer";
 
 const SearchContainer = styled.div`
   display: grid;
@@ -55,10 +55,15 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "10px",
     },
   },
-  search__input_from: {
-    borderBottom: "white",
+  inputForm: {
+    borderBottom: "1px solid white",
+    color: "white",
+    
   },
   date__format: {
+    color: "#c0c0c0",
+    borderBottom: "1px solid white",
+
     [theme.breakpoints.down("sm")]: {
       marginRight: "60px",
     },
@@ -74,8 +79,6 @@ const BusSlection = () => {
   const [to, setTo] = useState("");
 
   const handleDateChange = (date) => {
-    
-
     setSelectedDate(date);
   };
   const handleCancelPolicy = () => {
@@ -83,27 +86,24 @@ const BusSlection = () => {
   };
 
   // sending data to redux for finding buses________________________
-  const dispatch = useDispatch()
-  const state = useSelector(state => state.bus)
-  const serached_data = useSelector(state => state.bus.saved_searchdata)
-  React.useEffect(()=>{
-   
-    console.log(serached_data,"BUS SELECTION _____________________")
-  },[])
-  
-  const handleSubmit =()=>{
-    
-      // selectedDate:selectedDate.toLocaleDateString()
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.bus);
+  const serached_data = useSelector((state) => state.bus.saved_searchdata);
+  React.useEffect(() => {
+    console.log(serached_data, "BUS SELECTION _____________________");
+  }, []);
+
+  const handleSubmit = () => {
+    // selectedDate:selectedDate.toLocaleDateString()
     const payload = {
-      departureLocation:from,
-      arrivalLocation:to,
+      departureLocation: from,
+      arrivalLocation: to,
       selectedDate,
     };
     // console.log(payload)
-    dispatch(getBusesData(payload))
-    console.log(state)
-
-  }
+    dispatch(getBusesData(payload));
+    console.log(state);
+  };
   return (
     <>
       <div className={styles.search}>
@@ -130,39 +130,51 @@ const BusSlection = () => {
             <img width="45px" src={busImg} alt="Bus" />
           </div>
           <div>
-            <p>From</p>
+            <p style={{ color: "#c0c0c0" }}>From</p>
 
-            <TextField variant='standard'  className={classes.search__input_from} type="text" defaultValue={serached_data.departureLocation} onChange={(e)=>setFrom(e.target.value)} />
-
+            <TextField
+              variant="standard"
+              className={classes.inputForm}
+              type="text"
+              defaultValue={serached_data.departureLocation}
+              onChange={(e) => setFrom(e.target.value)}
+            />
           </div>
 
           <div>
-            <p>To</p>
-          <TextField variant='standard'className={classes.search__input_from} type="text"  defaultValue={serached_data.arrivalLocation} onChange={(e)=>setTo(e.target.value)} />
-
+            <p  style={{ color: "#c0c0c0" }}>To</p>
+            <TextField
+              variant="standard"
+              className={classes.inputForm}
+              type="text"
+              defaultValue={serached_data.arrivalLocation}
+              onChange={(e) => setTo(e.target.value)}
+            />
           </div>
           <div>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <Grid container justifyContent="space-around">
-        <KeyboardDatePicker
-        className={classes.date__format}
-          margin="normal"
-          id="date-picker-dialog"
-          label="Date"
-          formatDate={(date) => moment(date).format('DD-MM-YYYY')}
-          defaultValue={serached_data.selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-        />
-
-        
-      </Grid>
-    </MuiPickersUtilsProvider>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <Grid container justifyContent="space-around">
+                <KeyboardDatePicker
+                  className={classes.date__format}
+                  margin="normal"
+                  id="date-picker-dialog"
+                  label="Date"
+                  formatDate={(date) => moment(date).format("DD-MM-YYYY")}
+                  defaultValue={serached_data.selectedDate}
+                  onChange={handleDateChange}
+                  KeyboardButtonProps={{
+                    "aria-label": "change date",
+                  }}
+                />
+              </Grid>
+            </MuiPickersUtilsProvider>
           </div>
 
-          <Button variant="contained" className={classes.btn} onClick={handleSubmit}>
+          <Button
+            variant="contained"
+            className={classes.btn}
+            onClick={handleSubmit}
+          >
             Find
           </Button>
         </SearchContainer>
@@ -178,6 +190,7 @@ const BusSlection = () => {
           />
         );
       })}
+      <Footer />
       {showCancelPolicy ? <CancelationPolicy /> : null}
     </>
   );

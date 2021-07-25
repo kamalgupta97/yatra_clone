@@ -16,6 +16,7 @@ import { Points } from './Points';
 
 import { requirement } from './requirement';
 import { SeaterSitting } from './SeaterSitting';
+import axios from 'axios';
 
 
 
@@ -239,7 +240,7 @@ z-index: 9999;
      color: rgba(0,0,0,.8);
  }
 `
-const Bustype = styled.div`
+const Bustypes = styled.div`
 margin:15px;
 &>p{
     font-size:13px;
@@ -333,16 +334,37 @@ cursor:pointer;
 `
 
 
-export const SeatSelection = ({setopenSelectseat}) => {
+export const SeatSelection = ({operator,source,destination,setopenSelectseat,bustype,dropping_point,boardingpoint,fare,bus_id,date,bookedseats,departtime,arrivaltime}) => {
     const [activelower,setActivelower] = React.useState(true)
     const [activeplace,setactiveplace] =React.useState(true)
     const [activeBordingpoint,setactiveBordingpoint] = React.useState(false)
     const [activeDroppingpoint,setactiveDroppingpoint] = React.useState(false)
     const [selected,setSelected]= React.useState([])
+    const [droppingpoints,setDroppingpoints]=React.useState([])
+    const [boardingpoints,setboardingpoints]=React.useState([])
 
     React.useEffect(()=>{
       
-  
+        console.log(operator,dropping_point,boardingpoint,fare,bus_id,bustype,date,bookedseats,arrivaltime)
+        axios.get(`http://localhost:2244/stops/points?city=${"surat"}&busid=${bus_id}`).then(res=>{
+            console.log(res.data)
+            setboardingpoints(res.data.points)
+            console.log(boardingpoints ,"STATE boardingpoints")
+        })
+        .catch(err=>
+            {
+                console.log(err)
+            })
+
+            axios.get(`http://localhost:2244/stops/points?city=${"jaipur"}&busid=${bus_id}`).then(res=>{
+                console.log(res.data)
+                setDroppingpoints(res.data.points)
+                console.log(droppingpoints,"STATE droppingpoints")
+            })
+            .catch(err=>
+                {
+                    console.log(err)
+                })
 
     },[])
     
@@ -397,7 +419,7 @@ export const SeatSelection = ({setopenSelectseat}) => {
                             
                             </Driver>}
 
-                            <SeaterSitting  selected={selected} setSelected={setSelected}/>
+                            <SeaterSitting  selected={selected} setSelected={setSelected} booked={bookedseats} bus_id={bus_id}/>
                     </Sitting>
                     <SeatStatus>
 
@@ -460,14 +482,14 @@ export const SeatSelection = ({setopenSelectseat}) => {
                     {
                         activeplace && <SeatConfirmation>
                             <SeatConfirmationHeader>
-                                <p>{requirement.agency_name}</p>
+                                <p>{operator}</p>
                             </SeatConfirmationHeader>
-                            <Bustype>
-                                <p>{requirement.bus_type}</p>
-                            </Bustype>
+                            <Bustypes>
+                                <p>{bustype}</p>
+                            </Bustypes>
 
                             <Dates>
-                                <p>{`Date: ${requirement.travel_date} ${requirement.time}`}</p>
+                                <p>{`Date: ${date}  ${departtime}:00 - ${arrivaltime}:00 `}</p>
                             </Dates>
 
                             <SelectCityWrapper>
@@ -478,7 +500,7 @@ export const SeatSelection = ({setopenSelectseat}) => {
                                     <option>Select Boarding Point</option>
                                     {
                                         
-                                        requirement.bording.map(item=>
+                                        boardingpoints?.map(item=>
                                             <option value={`${item.point}-${item.time}`}>{`${item.point}-${item.time}`}</option>                                          
                                         )
                                     }
@@ -493,16 +515,17 @@ export const SeatSelection = ({setopenSelectseat}) => {
                                     <option>Select Dropping Point</option>
                                     {
                                         
-                                        requirement.dropping.map(item=>
+                                        droppingpoints.map(item=>
                                             <option value={`${item.point}-${item.time}`}>{`${item.point}-${item.time}`}</option>                                          
                                         )
                                     }
                                 </select>
                                 {/* {console.log(selectedseats)} */}
-                                   { true?<> <AmountandSeats>
+                                   { selected.length>0?<> <AmountandSeats>
                                         <Amount>
                                             <p>Total Amount</p>
-                                            <p>₹ 3900</p>
+                                           
+                                            <p>₹ {isNaN(selected.length*Number(fare))?0:selected.length*Number(fare)}</p>
                                         </Amount>
                                         <SeatNo>
                                             <p>Seats No:</p>
@@ -524,12 +547,12 @@ export const SeatSelection = ({setopenSelectseat}) => {
 
                     {
                         activeBordingpoint&&<BordingPoints>
-                            <Points BordingPoints={true} bording={requirement.bording} />
+                            <Points BordingPoints={true} bording={boardingpoints} />
                         </BordingPoints>
                     }
                     {
                         activeDroppingpoint&&<DroppingPoints>
-                             <Points BordingPoints={false} bording={requirement.dropping} />
+                             <Points BordingPoints={false} bording={droppingpoints} />
                         </DroppingPoints>
                     }
 

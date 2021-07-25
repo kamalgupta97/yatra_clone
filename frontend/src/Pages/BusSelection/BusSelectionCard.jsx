@@ -69,14 +69,15 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 
-const SelectionCard = ({openSelectseat,setopenSelectseat, handleCancelPolicy , operator,bustype,departtime,arrivaltime,duration,fare,availableseat }) => {
+const SelectionCard = ({_id,openSelectseat,setopenSelectseat, handleCancelPolicy , operator,bustype,departtime,arrivaltime,duration,fare,availableseat,destination,source,date,bookedseats}) => {
   const classes = useStyles();
   const theme = useTheme();
  
-  const handleSeatSelection = ()=>{
+  const handleSeatSelection = (_id)=>{
     setopenSelectseat(!openSelectseat)
+    // alert(_id)
   }
-// console.log(data)
+
   return (
     <Card className={classes.root}>
       <div className={styles.CardWrapper}>
@@ -108,7 +109,7 @@ const SelectionCard = ({openSelectseat,setopenSelectseat, handleCancelPolicy , o
           </div>
           <div className={styles.Column3}>
 
-            <button  onClick={handleSeatSelection} className={classes.btn} variant="contained">
+            <button  onClick={()=>handleSeatSelection(_id)} className={classes.btn} variant="contained">
 
               Select seat
             </button>
@@ -120,11 +121,15 @@ const SelectionCard = ({openSelectseat,setopenSelectseat, handleCancelPolicy , o
             </button>
           </div>
         </CardContent>
+        {
+      
+    }
       </div>
       {
-      openSelectseat && <SeatSelection setopenSelectseat={setopenSelectseat}/>
+      openSelectseat && <SeatSelection setopenSelectseat={setopenSelectseat} operator={operator} bus_id={_id} fare={fare} boardingpoint={source}  dropping_point={destination} bustype={bustype} date={date} bookedseats={bookedseats} arrivaltime={arrivaltime} departtime={departtime}/>
     }
     </Card>
+    
   );
 };
 

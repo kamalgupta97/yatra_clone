@@ -8,7 +8,7 @@ import {
   } from "./authActionType";
 
   const init={
-      name:"Kamal"
+      name:[]
   }
 
   export const authReducer = (state = init, { type, payload }) => {
@@ -22,6 +22,7 @@ import {
       case LOGIN_FAILURE:
         return {
           ...state,
+          name:payload
          
         };
       case LOGIN_SUCCESS:

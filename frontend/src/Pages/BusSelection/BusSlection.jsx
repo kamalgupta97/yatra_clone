@@ -16,7 +16,11 @@ import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
-} from "@material-ui/pickers";
+
+} from '@material-ui/pickers';
+import { getBusesData } from "../../Redux/Bus/busAction";
+import { useDispatch, useSelector } from "react-redux";
+
 const SearchContainer = styled.div`
   display: grid;
   grid-auto-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -74,6 +78,20 @@ const BusSlection = () => {
   const handleCancelPolicy = () => {
     setShowCancelPolicy(!showCancelPolicy);
   };
+
+  // sending data to redux for finding buses________________________
+  const dispatch = useDispatch()
+  const state = useSelector(state => state.bus)
+  const handleSubmit =()=>{
+    const payload={
+      from,
+      to,
+      selectedDate
+    }
+    dispatch(getBusesData(payload))
+    console.log(state)
+
+  }
   return (
     <>
       <div className={styles.search}>
@@ -101,20 +119,15 @@ const BusSlection = () => {
           </div>
           <div>
             <p>From</p>
-            <TextField
-              variant="standard"
-              className={classes.search__input_from}
-              type="text"
-            />
+
+            <TextField variant='standard'  className={classes.search__input_from} type="text" value={from} onChange={(e)=>setFrom(e.target.value)} />
+
           </div>
 
           <div>
             <p>To</p>
-            <TextField
-              variant="standard"
-              className={classes.search__input_from}
-              type="text"
-            />
+          <TextField variant='standard'className={classes.search__input_from} type="text"  value={to} onChange={(e)=>setTo(e.target.value)} />
+
           </div>
           <div>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -135,7 +148,7 @@ const BusSlection = () => {
             </MuiPickersUtilsProvider>
           </div>
 
-          <Button variant="contained" className={classes.btn}>
+          <Button variant="contained" className={classes.btn} onClick={handleSubmit}>
             Find
           </Button>
         </SearchContainer>

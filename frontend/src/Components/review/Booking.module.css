@@ -27,12 +27,15 @@
     border-radius: 7px;
     justify-content: space-between;
     padding: 20px 35px;
+    gap: 7px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .addBox {
     background-color: white;
     padding: 5px;
     margin: bottom 10px;
     border-radius: 7px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .flex {
     display: flex;
@@ -46,6 +49,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 5px;
 
 }
 .justifyReview {
@@ -98,14 +102,21 @@
 .bus {
     text-align: center;
 }
+.bus main {
+    font-size: 15px;
+}
 .fare {
     background-color: white;
     margin: 15px 0 20px;
+    border-radius: 7px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .promo {
     background-color: white;
     padding: 20px;
     margin: 15px 0;
+    border-radius: 7px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .details {
     width: 25%;
@@ -137,4 +148,18 @@
     color: rgb(2,203,151);
     font-size: 15px;
     font-weight: 500;
+}
+.bluefont {
+    color: rgb(65,152,211);
+    cursor: pointer;
+}
+.bigboldfont {
+    font-size: 25px;
+    font-weight: bold;
+}
+.boldfont {
+    font-weight: bold;
+}
+.grayfont {
+    color: rgb(107,104,131);
 }

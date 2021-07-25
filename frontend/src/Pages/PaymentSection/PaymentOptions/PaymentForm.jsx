@@ -9,6 +9,7 @@ import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { LoadingIndicator } from "../../../Components/LoadingIndicator/LoadingIndicator";
 
 // import { setPaymentSucceeded } from "../../Redux/Auth/authAction";
 const useStyles = makeStyles((theme) => ({
@@ -119,7 +120,7 @@ export default function PaymentForm() {
       {!success ? (
         <div>
           {isLoading ? (
-          < div>...loading</div>
+          <LoadingIndicator/>
           ) : isInvalid ? (
             <div>
               {!closeInvalid && (

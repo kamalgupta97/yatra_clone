@@ -16,6 +16,7 @@ import DirectionsBusIcon from "@material-ui/icons/DirectionsBus";
 import DriveEtaIcon from "@material-ui/icons/DriveEta";
 import BeachAccessIcon from "@material-ui/icons/BeachAccess";
 import { useHistory } from "react-router-dom";
+import Myprofile from "./Myprofile";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -311,6 +312,9 @@ export default function PrimarySearchAppBar() {
               style={{ cursor: "default" }}
             >
               My Account
+              {/* <div>
+                <Myprofile />
+              </div> */}
             </Typography>
             {/* <Badge badgeContent={"new"} color="secondary"> */}
             <Typography

@@ -10,6 +10,8 @@ import SyncAltIcon from "@material-ui/icons/SyncAlt";
 import DatePicker from "./DatePicker";
 import { useHistory } from "react-router-dom";
 import moment from "moment";
+import { useDispatch } from "react-redux";
+import { getBusesData } from "../../Redux/Bus/busAction";
 
 const useStyles = makeStyles({
   root: {
@@ -39,33 +41,15 @@ const useStyles = makeStyles({
 export default function SearchCard() {
   const classes = useStyles();
 
-  var today = new Date();
-  var dd = today.getDate();
-
-  var mm = today.getMonth() + 1;
-  var yyyy = today.getFullYear();
-  if (dd < 10) {
-    dd = "0" + dd;
-  }
-
-  if (mm < 10) {
-    mm = "0" + mm;
-  }
-  // today = mm + "-" + dd + "-" + yyyy;
-  // console.log(today);
-  // today = mm + "/" + dd + "/" + yyyy;
-  // console.log(today);
-  // today = dd + "-" + mm + "-" + yyyy;
-  // console.log(today);
-  today = dd + "/" + mm + "/" + yyyy;
-
   const [departureLocation, setDepartureLocation] = useState("Mumbai");
   const [arrivalLocation, setArrivalLocation] = useState("Bangalore");
   const [selectedDate, setSelectedDate] = useState(new Date());
   //new Date().toJSON().slice(0,10)
   const [searchData, setSearchData] = useState({});
   const history = useHistory();
-  console.log(searchData);
+  // console.log(searchData);
+
+  const dispatch = useDispatch();
 
   //selectedDate: moment(selectedDate).format("DD-MM-YYYY"),
   const handleSearchBus = () => {
@@ -76,6 +60,7 @@ export default function SearchCard() {
     };
 
     setSearchData(payload);
+    dispatch(getBusesData(payload));
     history.push("/busselection");
   };
 

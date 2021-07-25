@@ -7,6 +7,8 @@ import styles from "./Booking.module.css";
 import Footer from "../Footer";
 
 export const Booking = () => {
+  const country = ["+91", "+92", "+62", "+65", "+81","+67"]
+  const age = ["age", 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]
   return (
     <>
       <div className={styles.body}>
@@ -77,21 +79,47 @@ export const Booking = () => {
               <div>to book faster</div>
             </div>
             <div className={styles.addBox}>
-              <div className={styles.justify}>
-                <div className={styles.boldfont}>Contact Details</div>
-                <input type="text" placeholder="Email Id" />
-                <select></select>
+              <div className={styles.justifycontact}>
+                <sub className={styles.boldfont}>Contact Details</sub>
+                <div className={styles.subcontent}>
+                  <input className={styles.emailId} type="text" placeholder="Email Id" />
+                  <div className={styles.mobile}>
+                    <select>
+                        {
+                          country.map(item => (
+                            <option value={item}>{item}</option>
+                          ))
+                        }
+                    </select>
+                    <div>|</div>
+                    <input type="text" placeholder="Mobile number" />
+                  </div>
+                </div>
               </div>
-              <div>
+              <div className={styles.center}>
                 Your booking details will be sent to this email address and
                 mobile number.
               </div>
               <hr />
-              <div className={styles.justify}>
-                <div className={styles.boldfont}>Seat SL1</div>
-                <input type="text" placeholder="Traveller Name" />
-                <select></select>
-                <select></select>
+              <div className={styles.seatdetails}>
+                <main >
+                  <sub className={styles.boldfont}>Seat SL1</sub>
+                  <div className={styles.subcontent}>
+                    <input type="text" placeholder="Traveller Name" />
+                    <select>
+                      <option value="">Select Gender</option>
+                      <option value="male">Male</option>
+                      <option value ="female">Female</option>
+                    </select>
+                    <select>
+                        {
+                          age.map(item => (
+                            <option value={item}>{item}</option>
+                          ))
+                        }
+                    </select>
+                  </div>
+                </main>
               </div>
             </div>
             <button className={styles.button}>Proceeed To Payment</button>
@@ -126,8 +154,9 @@ export const Booking = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
+      
     </>
   );
 };

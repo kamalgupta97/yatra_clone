@@ -17,6 +17,7 @@ import DriveEtaIcon from "@material-ui/icons/DriveEta";
 import BeachAccessIcon from "@material-ui/icons/BeachAccess";
 import { useHistory } from "react-router-dom";
 import Myprofile from "./Myprofile";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -113,6 +114,8 @@ export default function PrimarySearchAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const state = useSelector(state => state)
+  
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -316,7 +319,7 @@ export default function PrimarySearchAppBar() {
               style={{ cursor: "default" }}
               onMouseEnter={() => setDropProfile(true)}
             >
-              My Account
+              {state.isAuth ? state.user : "My Account"}
               {/* <div>
                 <Myprofile />
               </div> */}

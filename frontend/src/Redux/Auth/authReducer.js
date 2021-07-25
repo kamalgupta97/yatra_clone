@@ -12,7 +12,8 @@ import {
   } from "./authActionType";
 
   const init={
-      
+      isAuth: false,
+      user: "kamal"
   }
 
   export const authReducer = (state = init, { type, payload }) => {
@@ -33,7 +34,8 @@ import {
        
         return {
           ...state,
-          payload
+          payload,
+          isAuth: true
        
      
         };

@@ -70,7 +70,7 @@ export default function SearchCard() {
     const payload = {
       departureLocation,
       arrivalLocation,
-      selectedDate,
+      selectedDate: selectedDate,
     };
 
     setSearchData(payload);

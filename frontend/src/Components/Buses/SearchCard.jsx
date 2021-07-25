@@ -9,6 +9,7 @@ import { Box, IconButton, TextField } from "@material-ui/core";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
 import DatePicker from "./DatePicker";
 import { useHistory } from "react-router-dom";
+import moment from 'moment'
 
 const useStyles = makeStyles({
   root: {
@@ -70,7 +71,7 @@ export default function SearchCard() {
     const payload = {
       departureLocation,
       arrivalLocation,
-      selectedDate,
+      selectedDate:moment(selectedDate).format('DD-MM-YYYY'),
     };
 
     setSearchData(payload);

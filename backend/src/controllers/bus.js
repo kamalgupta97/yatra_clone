@@ -2,33 +2,39 @@ const Bus = require("../models/bus");
 const express = require("express");
 const router = express.Router();
 
-const getBusService = async (req, res) => {
+const getBus = async (req, res) => {
   const getData = await Bus.find({});
   res.status(200).json({ data: getData });
 };
 
-const postBusDetails = async (req, res) => {
-  //console.log(req.body);
+const postBus = async (req, res) => {
+  console.log(req.body);
   const postData = await Bus.create(req.body);
   res.status(201).json({ data: postData });
 };
 
-const deleteBusDetails = async (req, res) => {
+const deleteBus = async (req, res) => {
   const id = req.params.id;
   const dataObj = await Bus.findByIdAndDelete(id);
   res.status(201).json({ data: dataObj });
 };
 
-const eachBusDetail = async (req, res) => {
+const eachBus = async (req, res) => {
   const id = req.params.id;
-  //console.log("id in eachBusDetail", id);
+  console.log("id in eachBusDetail", id);
   const dataObj = await Bus.findById(id);
   res.status(200).json(dataObj);
 };
+const eachBusUpdate = async (req, res) => {
+  const id = req.params.id;
+  const dataObj = await Bus.findByIdAndUpdate(id, req.body);
+  res.status(200).json(dataObj);
+};
 
-router.get("/", getBusService);
-router.post("/", postBusDetails);
-router.delete("/:id", deleteBusDetails);
-router.get("/:id", eachBusDetail);
+router.get("/", getBus);
+router.post("/", postBus);
+router.delete("/:id", deleteBus);
+router.get("/:id", eachBus);
+router.patch("/:id", eachBusUpdate);
 
 module.exports = router;

@@ -100,7 +100,7 @@ const BusSlection = () => {
 
   React.useEffect(() => {
     dispatch(getBusesData(saved_searchdata));
-    !state.isLoading && console.log(state, "state");
+  // !state.isLoading &&console.log(state, "state");  
   }, []);
 
   // saved_searchdata = state.saved_searchdata;
@@ -122,6 +122,9 @@ const BusSlection = () => {
   };
   return (
     <>
+    {
+      console.log(state && state?.data?.bus?.map(item=>item))
+    }
       <div className={styles.search}>
         <div>
           {/* <Toolbar className={classes.navData}>

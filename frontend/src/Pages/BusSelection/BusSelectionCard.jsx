@@ -69,10 +69,10 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 
-const SelectionCard = ({ handleCancelPolicy , agency_name,bus_type,boarding_time,departure_time,duration,price,seat_left }) => {
+const SelectionCard = ({openSelectseat,setopenSelectseat, handleCancelPolicy , operator,bustype,departtime,arrivaltime,duration,fare,availableseat }) => {
   const classes = useStyles();
   const theme = useTheme();
-  const [openSelectseat,setopenSelectseat]=React.useState(false)
+ 
   const handleSeatSelection = ()=>{
     setopenSelectseat(!openSelectseat)
   }
@@ -83,12 +83,12 @@ const SelectionCard = ({ handleCancelPolicy , agency_name,bus_type,boarding_time
         <CardContent className={styles.Card_bus_selection}>
           <div className={styles.Column1}>
             <div>
-              <h1 className={styles.Bus_title}>{agency_name}</h1>
-              <p style={{ color: "green" }}>{bus_type}</p>
+              <h1 className={styles.Bus_title}>{operator}</h1>
+              <p style={{ color: "green" }}>{bustype}</p>
             </div>
           </div>
           <div className={styles.Column2}>
-            <h1 style={{marginRight:"8px"}}>{boarding_time}</h1>
+            <h1 style={{marginRight:"8px"}}>{departtime}:00</h1>
             <div>
               <div className={classes.Duration_Cont}>
                 <RemoveIcon fontSize="medium" />
@@ -97,13 +97,13 @@ const SelectionCard = ({ handleCancelPolicy , agency_name,bus_type,boarding_time
               </div>
               <p className={styles.Boarding_Dropping_point}>boarding/dropping points</p>
             </div>
-            <h1>{departure_time}</h1>
+            <h1>{arrivaltime}:00</h1>
             <div>
              <div className={classes.fare_cont}>
-               <img className={styles.Bus_fare_icon}  width="8%" src={rupee} alt="Rupee Icon" />
-             <h1 className={styles.Bus_fare}>{price}</h1>
+           
+             <h1 className={styles.Bus_fare}>₹{fare}</h1>
              </div>
-              <p className={styles.Seat_left}>{seat_left}</p>
+              <p className={styles.Seat_left}>{availableseat} Seats Left</p>
             </div>
           </div>
           <div className={styles.Column3}>

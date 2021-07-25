@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
 
 const BusSlection = () => {
   const classes = useStyles();
-
+  const [openSelectseat,setopenSelectseat]=React.useState(false)
   let saved_searchdata = useSelector((state) => state.bus.saved_searchdata);
 
   let departureLocation = saved_searchdata.departureLocation;
@@ -127,22 +127,8 @@ const BusSlection = () => {
     }
       <div className={styles.search}>
         <div>
-          {/* <Toolbar className={classes.navData}>
-            <img
-              style={{ marginLeft: "130px" }}
-              width="88px"
-              height="35px"
-              src="https://cdn.freelogovectors.net/wp-content/uploads/2019/02/yatra_logo.png"
-              alt="yatra_logo"
-            />
-            <div className={styles.nav_bus_selection}>
-              <Typography>Hi Bhargavi</Typography>
-              <Typography>Support</Typography>
-              <Typography>Recent Search</Typography>
-              <Typography>Offer</Typography>
-            </div>
-          </Toolbar> */}
-          <Navbar2 />
+         
+         { !openSelectseat && <Navbar2 />}
         </div>
 
         <SearchContainer style={{ marginTop: "7vh" }}>
@@ -200,13 +186,14 @@ const BusSlection = () => {
         </SearchContainer>
       </div>
 
-      <h1 style={{ textAlign: "center" }}>Bus selection</h1>
-      {data.map((item, id) => {
+      <h1 style={{ textAlign: "left",margin:"20px 10px 20px 150px",fontSize:"28px"}}>We have got {state && state?.data?.bus?.length} Results</h1>
+      {state?.data?.bus?.map((item, id) => {
         return (
           <SelectionCard
             key={id}
             handleCancelPolicy={handleCancelPolicy}
             {...item}
+            openSelectseat={openSelectseat} setopenSelectseat={setopenSelectseat}
           />
         );
       })}

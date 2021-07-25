@@ -85,13 +85,15 @@ const BusSlection = () => {
   // sending data to redux for finding buses________________________
   const dispatch = useDispatch()
   const state = useSelector(state => state.bus)
+  
   const handleSubmit =()=>{
-    const payload={
-      from,
-      to,
+    
       // selectedDate:selectedDate.toLocaleDateString()
-      selectedDate:moment(selectedDate).format('DD-MM-YYYY')
-    }
+    const payload = {
+      departureLocation:from,
+      arrivalLocation:to,
+      selectedDate,
+    };
     console.log(payload,"BUS SELECTION __________________")
     dispatch(getBusesData(payload))
     console.log(state)

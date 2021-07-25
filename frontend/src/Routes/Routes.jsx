@@ -6,6 +6,8 @@ import { Booking } from "../Components/review/Booking";
 import { SignIn } from "../Pages/Authentication/SignIn";
 import PaymentSection from "../Pages/PaymentSection/PaymentSection";
 import Home from "../Pages/Home";
+import PaymentForm from "../Pages/PaymentSection/PaymentOptions/PaymentForm";
+import StripeContainer from "../Pages/PaymentSection/PaymentOptions/StripeContainer ";
 
 const Routes = () => {
   return (
@@ -16,6 +18,7 @@ const Routes = () => {
         </Route>
         <Route exact path="/">
           <Home />
+      
         </Route>
         <Route exact path="/booking">
           <Booking />
@@ -26,6 +29,7 @@ const Routes = () => {
         <Route exact path="/signin">
           <SignIn />
         </Route>
+       
       </Switch>
     </>
   );

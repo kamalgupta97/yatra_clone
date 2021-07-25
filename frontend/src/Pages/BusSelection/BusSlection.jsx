@@ -7,11 +7,12 @@ import styled from "styled-components";
 import { TextField, Button, Typography } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { makeStyles } from "@material-ui/core/styles";
-import styles from "./BusSelection.module.css";
-import busImg from "./Images/bus_searchbar.png";
-import "date-fns";
-import Grid from "@material-ui/core/Grid";
-import DateFnsUtils from "@date-io/date-fns";
+import styles from './BusSelection.module.css'
+import busImg from './Images/bus_searchbar.png'
+import 'date-fns';
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
+import moment from 'moment'
 
 import {
   MuiPickersUtilsProvider,
@@ -73,6 +74,8 @@ const BusSlection = () => {
   const [to, setTo] = useState("");
 
   const handleDateChange = (date) => {
+    
+
     setSelectedDate(date);
   };
   const handleCancelPolicy = () => {
@@ -86,8 +89,10 @@ const BusSlection = () => {
     const payload={
       from,
       to,
-      selectedDate
+      // selectedDate:selectedDate.toLocaleDateString()
+      selectedDate:moment(selectedDate).format('DD-MM-YYYY')
     }
+    console.log(payload,"BUS SELECTION __________________")
     dispatch(getBusesData(payload))
     console.log(state)
 
@@ -130,22 +135,24 @@ const BusSlection = () => {
 
           </div>
           <div>
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <Grid container justifyContent="space-around">
-                <KeyboardDatePicker
-                  className={classes.date__format}
-                  margin="normal"
-                  id="date-picker-dialog"
-                  label="Date"
-                  format="dd/MM/yyyy"
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                  KeyboardButtonProps={{
-                    "aria-label": "change date",
-                  }}
-                />
-              </Grid>
-            </MuiPickersUtilsProvider>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <Grid container justifyContent="space-around">
+        <KeyboardDatePicker
+        className={classes.date__format}
+          margin="normal"
+          id="date-picker-dialog"
+          label="Date"
+          formatDate={(date) => moment(date).format('DD-MM-YYYY')}
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
+        />
+
+        
+      </Grid>
+    </MuiPickersUtilsProvider>
           </div>
 
           <Button variant="contained" className={classes.btn} onClick={handleSubmit}>

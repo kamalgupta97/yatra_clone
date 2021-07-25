@@ -282,7 +282,7 @@ export const SignIn = () => {
                      </TermsandConditions>
                     
                     <GoogleButton>
-                        <img src="https://secure.yatra.com/content/social/images/btn_google_signin_dark_normal_web.png" alt=""/>
+                        <a href="http://localhost:2244/auth/google" target="_blank"><img   src="https://secure.yatra.com/content/social/images/btn_google_signin_dark_normal_web.png" alt=""/></a>
                     </GoogleButton>
 
                     </FormWrapper>

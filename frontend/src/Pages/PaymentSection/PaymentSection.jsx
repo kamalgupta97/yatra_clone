@@ -9,7 +9,10 @@ import { height } from "@material-ui/system";
 import Payment_pay from "./Payment_pay";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import StripeContainer from "./PaymentOptions/StripeContainer ";
-import Footer from "../../Components/Footer";
+
+import  Footer from '../../Components/Footer'
+import { useSelector } from "react-redux";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,10 +67,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PaymentSection = () => {
-  const [credit, setCredit] = useState(true);
-  const [pay, setPay] = useState(false);
+
+  const [credit , setCredit] = useState(true)
+  const [pay , setPay] =  useState(false)
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const state = useSelector((state => state.bus))
+  
+  const {selected_seats_data, data} = state
+  const total = selected_seats_data.selected.length
+  console.log(total, data.bus[0].fare)
+  const totalfare = total*(Number(data.bus[0].fare))
 
   const handleClick = () => {
     setOpen((prev) => !prev);
@@ -194,19 +205,58 @@ const PaymentSection = () => {
         <div className={styles.payment_Right_cont}>
           <div>
             <ClickAwayListener onClickAway={handleClickAway}>
-              <div
-                style={{ marginBottom: "30px" }}
-                className={classes.dropdown_root}
-              >
-                <div className={styles.booking_summary} onClick={handleClick}>
-                  Booking Summary
+
+      <div  style={{marginBottom:"30px"}} className={classes.dropdown_root}>
+        <div  className={styles.booking_summary}  onClick={handleClick}>
+          Booking Summary
+        </div>
+        {open ? (
+          <div className={classes.dropdown}>
+          <div className={styles.booking_content}>
+         <div style={{padding:"10px 5px"}}>
+         <h4>Onward Journey</h4>
+         </div>
+         
+        <div style={{padding:"5px 5px"}}>
+        <h5>{`${data.bus[0].source}-${data.bus[0].destination}`}</h5>
+        <p className={classes.color_para}>{data.bus[0].date}</p>
+        </div>
+          <div style={{padding:"5px 5px"}}>
+          <h5>{`${data.bus[0].operator}`}</h5>
+         <p className={classes.color_para}>{data.bus[0].bustype}</p>
+          </div>
+          <div style={{padding:"5px 5px"}}>
+          <h5>Seat No</h5>
+         <p className={classes.color_para}>{selected_seats_data.selected.join(", ")}</p>
+            
+          </div>
+        <div style={{padding:"5px 5px"}}>
+         <h5>Boarding point</h5>
+         <p className={classes.color_para}>{"lal bagh delhi"}</p>
+         </div>
+          </div>
+          </div>
+        ) : null}
+      </div>
+    </ClickAwayListener>
+                
+            </div>
+            <div>
+                <div className={styles.booking_summary}>
+                    Payment Details
                 </div>
-                {open ? (
-                  <div className={classes.dropdown}>
-                    <div className={styles.booking_content}>
-                      <div style={{ padding: "10px 5px" }}>
-                        <h4>Onward Journey</h4>
-                      </div>
+                <div  className={styles.payment_detail} >
+                    <div className={styles.payment_detail_cont1} >
+                        <p>Onward fare</p>
+                        <p>₹{totalfare}</p>
+                    </div>
+                    <div className={styles.payment_detail_line} ></div>
+                    <div className={styles.payment_detail_cont2}>
+                        <h2 >You Pay</h2>
+                        <h2 style={{color:"#333333"}}>₹{totalfare}</h2>
+                    </div>
+                    <div  className={styles.payment_detail_line}  ></div>
+
 
                       <div style={{ padding: "5px 5px" }}>
                         <h5>

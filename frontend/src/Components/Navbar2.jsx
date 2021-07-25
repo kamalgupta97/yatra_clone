@@ -11,6 +11,7 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 
 import { useHistory } from "react-router-dom";
 import Myprofile from "./Myprofile";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -101,6 +102,8 @@ export default function Navbar2() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
+  const state = useSelector(state => state.auth)
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -198,7 +201,7 @@ export default function Navbar2() {
               style={{ cursor: "default" }}
               onMouseEnter={() => setDropProfile(true)}
             >
-              My Account
+              {state.isAuth ? state.user : "My Account"}
             </Typography>
             {/* <Badge badgeContent={"new"} color="secondary"> */}
             <Typography

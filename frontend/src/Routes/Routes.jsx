@@ -23,6 +23,9 @@ const Routes = () => {
         <Route exact path="/payment">
           <PaymentSection />
         </Route>
+        <Route exact path="/signin">
+          <SignIn />
+        </Route>
       </Switch>
     </>
   );

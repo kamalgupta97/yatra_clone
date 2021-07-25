@@ -15,6 +15,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import DirectionsBusIcon from "@material-ui/icons/DirectionsBus";
 import DriveEtaIcon from "@material-ui/icons/DriveEta";
 import BeachAccessIcon from "@material-ui/icons/BeachAccess";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -192,6 +193,8 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
+  const history = useHistory();
+
   return (
     <div className={classes.grow}>
       <AppBar position="fixed" className={classes.header}>
@@ -201,6 +204,7 @@ export default function PrimarySearchAppBar() {
             height="35px"
             src="https://cdn.freelogovectors.net/wp-content/uploads/2019/02/yatra_logo.png"
             alt="yatra_logo"
+            onClick={() => history.push("/")}
           />
 
           <Tabs

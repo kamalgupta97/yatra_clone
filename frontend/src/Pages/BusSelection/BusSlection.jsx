@@ -4,7 +4,7 @@ import CancelationPolicy from "./CancelationPolicy";
 import data from "./data";
 import Toolbar from "@material-ui/core/Toolbar";
 import styled from "styled-components";
-import { TextField, Button ,Typography } from "@material-ui/core";
+import { TextField, Button, Typography } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { makeStyles } from "@material-ui/core/styles";
 import styles from './BusSelection.module.css'
@@ -17,9 +17,11 @@ import moment from 'moment'
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
+
 } from '@material-ui/pickers';
 import { getBusesData } from "../../Redux/Bus/busAction";
 import { useDispatch, useSelector } from "react-redux";
+
 const SearchContainer = styled.div`
   display: grid;
   grid-auto-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -27,13 +29,13 @@ const SearchContainer = styled.div`
   align-items: center;
   padding: 20px 100px;
   gap: 15px;
-  justify-content:space-space-around;
+  justify-content: space-space-around;
   /* height: ; */
-    background-image:linear-gradient(270deg,#43264e 0,#9a243e 72%);
-    @media screen and (max-width:420px){
-  grid-template-areas: 'col1' 'col2' 'col3' 'col4''col5';
-      padding: 5px 45px;
-    }
+  background-image: linear-gradient(270deg, #43264e 0, #9a243e 72%);
+  @media screen and (max-width: 420px) {
+    grid-template-areas: "col1" "col2" "col3" "col4" "col5";
+    padding: 5px 45px;
+  }
 `;
 const useStyles = makeStyles((theme) => ({
   navData: {
@@ -43,28 +45,24 @@ const useStyles = makeStyles((theme) => ({
   },
   btn: {
     background: "red",
-    width:"150px",
+    width: "150px",
     color: "white",
-    cursor: 'pointer',
-    "&:hover":{
-      background:"#A30000"
+    cursor: "pointer",
+    "&:hover": {
+      background: "#A30000",
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop:"10px"
-      
-    
+      marginTop: "10px",
     },
   },
-  search__input_from:{
-    borderBottom:"white"
+  search__input_from: {
+    borderBottom: "white",
   },
-  date__format:{
+  date__format: {
     [theme.breakpoints.down("sm")]: {
-      marginRight:"60px",
-    
-    
+      marginRight: "60px",
     },
-  }
+  },
 }));
 
 const BusSlection = () => {
@@ -72,8 +70,8 @@ const BusSlection = () => {
 
   const [showCancelPolicy, setShowCancelPolicy] = useState(false);
   const [selectedDate, setSelectedDate] = React.useState(new Date());
-  const [from , setFrom] = useState("")
-  const [to , setTo] = useState("")
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
 
   const handleDateChange = (date) => {
     
@@ -101,38 +99,40 @@ const BusSlection = () => {
   }
   return (
     <>
-       <div className={styles.search} >
-       <div>
-       <Toolbar className={classes.navData}>
-          <img
-          style={{marginLeft:"130px"}}
-            width="88px"
-            height="35px"
-            src="https://cdn.freelogovectors.net/wp-content/uploads/2019/02/yatra_logo.png"
-            alt="yatra_logo"
-          />
-          <div className={styles.nav_bus_selection}>
-          <Typography>Hi Bhargavi</Typography>
-          <Typography>Support</Typography>
-          <Typography>Recent Search</Typography>
-          <Typography>Offer</Typography>
-          </div>
-
+      <div className={styles.search}>
+        <div>
+          <Toolbar className={classes.navData}>
+            <img
+              style={{ marginLeft: "130px" }}
+              width="88px"
+              height="35px"
+              src="https://cdn.freelogovectors.net/wp-content/uploads/2019/02/yatra_logo.png"
+              alt="yatra_logo"
+            />
+            <div className={styles.nav_bus_selection}>
+              <Typography>Hi Bhargavi</Typography>
+              <Typography>Support</Typography>
+              <Typography>Recent Search</Typography>
+              <Typography>Offer</Typography>
+            </div>
           </Toolbar>
-       </div>
+        </div>
 
         <SearchContainer>
           <div>
-         <img width="45px" src={busImg} alt="Bus" />
+            <img width="45px" src={busImg} alt="Bus" />
           </div>
           <div>
             <p>From</p>
+
             <TextField variant='standard'  className={classes.search__input_from} type="text" value={from} onChange={(e)=>setFrom(e.target.value)} />
+
           </div>
 
           <div>
             <p>To</p>
           <TextField variant='standard'className={classes.search__input_from} type="text"  value={to} onChange={(e)=>setTo(e.target.value)} />
+
           </div>
           <div>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -159,7 +159,7 @@ const BusSlection = () => {
             Find
           </Button>
         </SearchContainer>
-      </div> 
+      </div>
 
       <h1 style={{ textAlign: "center" }}>Bus selection</h1>
       {data.map((item, id) => {

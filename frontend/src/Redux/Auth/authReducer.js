@@ -5,10 +5,14 @@ import {
     SIGNUP_SUCCESS,
     SIGNUP_FAILURE,
     SIGNUP_REQUEST,
+    OTP_VERIFICATION_SUCCESS,
+
+    OTP_VERIFICATION_REQUEST,
+    OTP_VERIFICATION_FAILURE,
   } from "./authActionType";
 
   const init={
-      name:[]
+      
   }
 
   export const authReducer = (state = init, { type, payload }) => {
@@ -22,16 +26,35 @@ import {
       case LOGIN_FAILURE:
         return {
           ...state,
-          name:payload
+          payload
          
         };
       case LOGIN_SUCCESS:
        
         return {
           ...state,
+          payload
        
      
         };
+        case OTP_VERIFICATION_FAILURE:
+          return {
+            ...state,
+            payload
+          
+          };
+        case OTP_VERIFICATION_SUCCESS:
+        
+          return {
+            ...state,
+            payload
+          };
+        case OTP_VERIFICATION_REQUEST:{
+            return{
+                ...state
+            }
+  
+        }
       case SIGNUP_FAILURE:
         return {
           ...state,

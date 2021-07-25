@@ -9,8 +9,13 @@ const useStyles = makeStyles((theme) =>
     root: {
       width: '100%',
       margin: theme.spacing(1),
+      // backgroundColor:"#f2f2f2"
     },
-  
+    stepper:{
+      backgroundColor:"#f2f2f2"
+
+    }
+  ,
     instructions: {
       marginTop: theme.spacing(1),
       marginBottom: theme.spacing(1),
@@ -30,7 +35,7 @@ export default function HorizontalStepper() {
 
   return (
     <div className={classes.root}>
-      <Stepper activeStep={activeStep}  alternativeLabel>
+      <Stepper className={classes.stepper} activeStep={activeStep}  alternativeLabel>
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel >{label}</StepLabel>

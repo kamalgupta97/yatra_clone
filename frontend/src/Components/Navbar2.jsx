@@ -4,17 +4,11 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import Tabs from "@material-ui/core/Tabs";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import FlightIcon from "@material-ui/icons/Flight";
-import HotelIcon from "@material-ui/icons/Hotel";
-import HomeIcon from "@material-ui/icons/Home";
-import DirectionsBusIcon from "@material-ui/icons/DirectionsBus";
-import DriveEtaIcon from "@material-ui/icons/DriveEta";
-import BeachAccessIcon from "@material-ui/icons/BeachAccess";
+
 import { useHistory } from "react-router-dom";
 import Myprofile from "./Myprofile";
 
@@ -109,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function Navbar2() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -161,25 +155,6 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      {/* <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem> */}
       <MenuItem>
         <Typography className={classes.title} variant="h6" noWrap>
           My Account
@@ -214,101 +189,14 @@ export default function PrimarySearchAppBar() {
           <img
             width="88px"
             height="35px"
-            style={{cursor: "pointer"}}
+            style={{ cursor: "pointer" }}
             src="https://cdn.freelogovectors.net/wp-content/uploads/2019/02/yatra_logo.png"
             alt="yatra_logo"
             onClick={() => history.push("/")}
           />
 
-          <Tabs
-            activeStyle={{
-              borderBottom: "5px solid CE2A35",
-              opacity: 1,
-              color: "CE2A35",
-            }}
-            className={classes.iconsNav}
-          >
-            <div className={classes.icon}>
-              <FlightIcon />
-              <Typography className={classes.title} variant="h6">
-                Flights
-              </Typography>
-            </div>
-            <div className={classes.icon}>
-              <HotelIcon />
-              <Typography className={classes.title} variant="h6">
-                Hotels
-              </Typography>
-            </div>
-            <div className={classes.icon}>
-              <HomeIcon />
-              <Typography className={classes.title} variant="h6">
-                Villas & Stays
-              </Typography>
-            </div>
-            <div className={(classes.icon, classes.buses)}>
-              <DirectionsBusIcon />
-              <Typography className={classes.title} variant="h6">
-                Buses
-              </Typography>
-            </div>
-            <div className={classes.icon}>
-              <BeachAccessIcon />
-              <Typography className={classes.title} variant="h6">
-                Holidays
-              </Typography>
-            </div>
-            <div className={classes.icon}>
-              {/* <Badge
-                badgeContent={"new"}
-                color="secondary"
-                style={{ opacity: 1 }}
-              > */}
-              <DriveEtaIcon />
-              {/* </Badge> */}
-              <Typography className={classes.title} variant="h6" noWrap>
-                Cabs
-              </Typography>
-            </div>
-            <div className={classes.icon}>
-              <Typography
-                className={(classes.title, classes.more)}
-                // style={{borderRadius}}
-                variant="h6"
-                noWrap
-              >
-                + more
-              </Typography>
-            </div>
-          </Tabs>
-          {/* <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton> */}
-          {/* <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
-          </Typography> */}
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            {/* <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-              My Account
-              </Badge>
-            </IconButton> */}
-            {/* <Typography
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              My Account
-            </Typography> */}
             <Typography
               className={(classes.title, classes.rightTitle)}
               variant="h6"
@@ -317,9 +205,6 @@ export default function PrimarySearchAppBar() {
               onMouseEnter={() => setDropProfile(true)}
             >
               My Account
-              {/* <div>
-                <Myprofile />
-              </div> */}
             </Typography>
             {/* <Badge badgeContent={"new"} color="secondary"> */}
             <Typography

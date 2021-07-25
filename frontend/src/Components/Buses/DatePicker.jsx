@@ -6,8 +6,19 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
+import moment from "moment";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  date__format: {
+    [theme.breakpoints.down("sm")]: {
+      marginRight: "60px",
+    },
+  },
+}));
 
 export default function DatePicker({ selectedDate, setSelectedDate }) {
+  const classes = useStyles();
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
@@ -15,7 +26,7 @@ export default function DatePicker({ selectedDate, setSelectedDate }) {
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container>
-        <KeyboardDatePicker
+        {/* <KeyboardDatePicker
           style={{ width: "100%" }}
           disableToolbar
           variant="inline"
@@ -23,6 +34,18 @@ export default function DatePicker({ selectedDate, setSelectedDate }) {
           margin="normal"
           id="date-picker-inline"
           label="Depart Date"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            "aria-label": "change date",
+          }}
+        /> */}
+        <KeyboardDatePicker
+          className={classes.date__format}
+          margin="normal"
+          id="date-picker-dialog"
+          label="Date"
+          formatDate={(date) => moment(date).format("DD-MM-YYYY")}
           value={selectedDate}
           onChange={handleDateChange}
           KeyboardButtonProps={{

@@ -14,6 +14,9 @@ import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
 import moment from "moment";
 
+import Navbar2 from "../../Components/Navbar2";
+
+
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
@@ -55,10 +58,12 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "10px",
     },
   },
-  inputForm: {
-    borderBottom: "1px solid white",
-    color: "white",
-    
+
+  search__input_from: {
+    borderBottom: "white",
+    fontWeight: "500",
+    color: "#ffffff !important",
+
   },
   date__format: {
     color: "#c0c0c0",
@@ -73,10 +78,17 @@ const useStyles = makeStyles((theme) => ({
 const BusSlection = () => {
   const classes = useStyles();
 
+  let saved_searchdata = useSelector((state) => state.bus.saved_searchdata);
+  React.useEffect(() => {}, []);
+
+  let departureLocation = saved_searchdata.departureLocation;
+  let arrivalLocation = saved_searchdata.arrivalLocation;
+  let date = saved_searchdata.selectedDate;
+
   const [showCancelPolicy, setShowCancelPolicy] = useState(false);
-  const [selectedDate, setSelectedDate] = React.useState(new Date());
-  const [from, setFrom] = useState("");
-  const [to, setTo] = useState("");
+  const [selectedDate, setSelectedDate] = React.useState(date);
+  const [from, setFrom] = useState(departureLocation);
+  const [to, setTo] = useState(arrivalLocation);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -88,10 +100,15 @@ const BusSlection = () => {
   // sending data to redux for finding buses________________________
   const dispatch = useDispatch();
   const state = useSelector((state) => state.bus);
-  const serached_data = useSelector((state) => state.bus.saved_searchdata);
-  React.useEffect(() => {
-    console.log(serached_data, "BUS SELECTION _____________________");
-  }, []);
+
+  console.log(state, "state");
+
+  // saved_searchdata = state.saved_searchdata;
+  // departureLocation = saved_searchdata.departureLocation;
+  // arrivalLocation = saved_searchdata.arrivalLocation;
+
+  console.log(saved_searchdata);
+
 
   const handleSubmit = () => {
     // selectedDate:selectedDate.toLocaleDateString()
@@ -100,15 +117,16 @@ const BusSlection = () => {
       arrivalLocation: to,
       selectedDate,
     };
-    // console.log(payload)
+
+    console.log(payload, "BUS SELECTION __________________");
     dispatch(getBusesData(payload));
-    console.log(state);
+
   };
   return (
     <>
       <div className={styles.search}>
         <div>
-          <Toolbar className={classes.navData}>
+          {/* <Toolbar className={classes.navData}>
             <img
               style={{ marginLeft: "130px" }}
               width="88px"
@@ -122,32 +140,37 @@ const BusSlection = () => {
               <Typography>Recent Search</Typography>
               <Typography>Offer</Typography>
             </div>
-          </Toolbar>
+          </Toolbar> */}
+          <Navbar2 />
         </div>
 
-        <SearchContainer>
+        <SearchContainer style={{ marginTop: "7vh" }}>
           <div>
             <img width="45px" src={busImg} alt="Bus" />
           </div>
           <div>
-            <p style={{ color: "#c0c0c0" }}>From</p>
+
+            <p>From</p>
 
             <TextField
               variant="standard"
-              className={classes.inputForm}
+              className={classes.search__input_from}
               type="text"
-              defaultValue={serached_data.departureLocation}
+              value={from}
+
               onChange={(e) => setFrom(e.target.value)}
             />
           </div>
 
           <div>
-            <p  style={{ color: "#c0c0c0" }}>To</p>
+
+            <p>To</p>
             <TextField
               variant="standard"
-              className={classes.inputForm}
+              className={classes.search__input_from}
               type="text"
-              defaultValue={serached_data.arrivalLocation}
+              value={to}
+
               onChange={(e) => setTo(e.target.value)}
             />
           </div>
@@ -160,7 +183,9 @@ const BusSlection = () => {
                   id="date-picker-dialog"
                   label="Date"
                   formatDate={(date) => moment(date).format("DD-MM-YYYY")}
-                  defaultValue={serached_data.selectedDate}
+
+                  value={selectedDate}
+
                   onChange={handleDateChange}
                   KeyboardButtonProps={{
                     "aria-label": "change date",

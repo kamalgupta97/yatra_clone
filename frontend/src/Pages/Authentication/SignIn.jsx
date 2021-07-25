@@ -11,6 +11,9 @@ import transfechash from '../../assets/transefechash.png'
 import { Otpform } from './Otpform';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLogin } from '../../Redux/Auth/authAction';
+import axios from 'axios';
+import { useHistory} from "react-router-dom"
+import {loginSuccess} from '../../Redux/Auth/authAction'
 
 const BodyWrapper = styled.div`
     background:#f5f5f5;
@@ -241,9 +244,20 @@ export const SignIn = () => {
     const [openotpform,setotpForm] = React.useState(false)
     const [mobileNo,setMobileNo] = React.useState("")
     const state = useSelector(state => state.auth)
+    const history = useHistory();
+    const dispatch = useDispatch();
+
+    const handleLogin = () => {
+        axios.get("http://localhost:2244/auth/google")
+            .then(res => {
+                console.log(res)
+                dispatch(loginSuccess())
+                history.push("/")
+            })
+    }
 
     console.log(state)
-    const dispatch = useDispatch()
+   
     const handleSubmit =(e)=>{
         e.preventDefault()
    
@@ -287,8 +301,8 @@ export const SignIn = () => {
                         </Terms>
                      </TermsandConditions>
                     
-                    <GoogleButton>
-                        <a href="http://localhost:2244/auth/google" target="_blank"><img   src="https://secure.yatra.com/content/social/images/btn_google_signin_dark_normal_web.png" alt=""/></a>
+                    <GoogleButton onClick={handleLogin}>
+                        <img src="https://secure.yatra.com/content/social/images/btn_google_signin_dark_normal_web.png" alt=""/>
                     </GoogleButton>
 
                     </FormWrapper>

@@ -1,5 +1,6 @@
 import { Box } from "@material-ui/core";
 import React from "react";
+import { useSelector } from "react-redux";
 import CountriesOpen from "../Components/Buses/CountriesOpen";
 import DiscountCard from "../Components/Buses/DiscountCard";
 import SearchCard from "../Components/Buses/SearchCard";
@@ -9,7 +10,8 @@ import Navbar from "../Components/Navbar";
 import { Buses } from "../Styles/Home";
 
 export default function Home() {
-
+  const state = useSelector(state => state.auth)
+  console.log("state line 14", state)
     
   return (
     <>

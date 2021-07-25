@@ -1,4 +1,5 @@
 import React from "react";
+import {useHistory} from "react-router-dom"
 import yatralogo from "../../assets/yatra_logo.svg";
 import DirectionsBusIcon from "@material-ui/icons/DirectionsBus";
 import reviewicon from "../../assets/review.png";
@@ -11,6 +12,18 @@ export const Booking = () => {
   const country = ["+91", "+92", "+62", "+65", "+81","+67"]
   const age = ["age", 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]
   const state = useSelector(state => state.bus)
+
+  const {selected_seats_data, data} = state
+  const total = selected_seats_data.selected.length
+  const totalfare = total*data.bus[0].fare
+  console.log(selected_seats_data, total, totalfare)
+
+  const history = useHistory();
+
+  const handleClick =() => {
+      history.push("/payment")
+  }
+
   React.useEffect(()=>{
       console.log(state)
   })
@@ -34,23 +47,23 @@ export const Booking = () => {
                 <DirectionsBusIcon
                   style={{ fontSize: "100px", color: "rgb(102,102,102)" }}
                 />
-                <div className={styles.boldfont}>SHAKTI TRAVELS</div>
-                <main className={styles.boldfont}>Ac Sester-sleeper (2+1)</main>
+                <div className={styles.boldfont}>{data.bus[0].operator}</div>
+                <main className={styles.boldfont}>{data.bus[0].bustype}</main>
               </div>
               <div>
                 <div className={styles.justifyReview}>
                   <div>
-                    <div>Delhi</div>
+                    <div>{data.bus[0].source}</div>
                     <div className={styles.bigboldfont}>01:00 AM</div>
                     <div className={styles.boldfont}>Sat, 24 Jul 2021</div>
                   </div>
                   <div className={styles.justify}>
-                    <div>5h 15m</div>
+                    <div>{data.bus[0].duration}</div>
                     <div> | </div>
                     <div>281km</div>
                   </div>
                   <div>
-                    <div>Jaipur</div>
+                    <div>{data.bus[0].destination}</div>
                     <div className={styles.bigboldfont}>06:15 AM</div>
                     <div className={styles.boldfont}>sat, 24 Jul 2021</div>
                   </div>
@@ -69,7 +82,7 @@ export const Booking = () => {
                   </div>
                   <div className={styles.seatnumber}>
                     <div className={styles.grayfont}>Seat Numbers(s)</div>
-                    <div>SL1</div>
+                    <div>{selected_seats_data.selected.join(", ")}</div>
                   </div>
                 </div>
               </div>
@@ -107,39 +120,43 @@ export const Booking = () => {
               </div>
               <hr />
               <div className={styles.seatdetails}>
-                <main >
-                  <sub className={styles.boldfont}>Seat SL1</sub>
-                  <div className={styles.subcontent}>
-                    <input type="text" placeholder="Traveller Name" />
-                    <select>
-                      <option value="">Select Gender</option>
-                      <option value="male">Male</option>
-                      <option value ="female">Female</option>
-                    </select>
-                    <select>
-                        {
-                          age.map(item => (
-                            <option value={item}>{item}</option>
-                          ))
-                        }
-                    </select>
-                  </div>
-                </main>
+                {
+                  selected_seats_data.selected.map((el, index) => (
+                    <main >
+                      <sub className={styles.boldfont}>{`Seats ${el}`}</sub>
+                      <div className={styles.subcontent}>
+                        <input type="text" placeholder="Traveller Name" />
+                        <select>
+                          <option value="">Select Gender</option>
+                          <option value="male">Male</option>
+                          <option value ="female">Female</option>
+                        </select>
+                        <select>
+                            {
+                              age.map(item => (
+                                <option value={item}>{item}</option>
+                              ))
+                            }
+                        </select>
+                      </div>
+                    </main>
+                  ))
+                }
               </div>
             </div>
-            <button className={styles.button}>Proceeed To Payment</button>
+            <button onClick={handleClick} className={styles.button}>Proceeed To Payment</button>
           </div>
 
           <div className={styles.details}>
             <div className={styles.boldfont}>Fare Details</div>
             <div className={styles.fare}>
               <div className={styles.justifyOnward}>
-                <div>Onward Fare(1 Traveller)</div>
-                <div>893</div>
+                <div>{`Onward Fare(${total} Traveller): `}</div>
+                <div>₹{totalfare}</div>
               </div>
               <div className={styles.justifyPay}>
                 <div>You Pay:</div>
-                <div>893</div>
+                <div>₹{totalfare}</div>
               </div>
             </div>
             <div className={styles.boldfont}>Promo Code</div>

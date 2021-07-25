@@ -16,7 +16,6 @@ import moment from "moment";
 
 import Navbar2 from "../../Components/Navbar2";
 
-
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
@@ -63,7 +62,6 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: "white",
     fontWeight: "500",
     color: "#ffffff !important",
-
   },
   date__format: {
     color: "#c0c0c0",
@@ -79,7 +77,6 @@ const BusSlection = () => {
   const classes = useStyles();
 
   let saved_searchdata = useSelector((state) => state.bus.saved_searchdata);
-  React.useEffect(() => {}, []);
 
   let departureLocation = saved_searchdata.departureLocation;
   let arrivalLocation = saved_searchdata.arrivalLocation;
@@ -101,14 +98,16 @@ const BusSlection = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.bus);
 
-  console.log(state, "state");
+  React.useEffect(() => {
+    dispatch(getBusesData(saved_searchdata));
+    !state.isLoading && console.log(state, "state");
+  }, []);
 
   // saved_searchdata = state.saved_searchdata;
   // departureLocation = saved_searchdata.departureLocation;
   // arrivalLocation = saved_searchdata.arrivalLocation;
 
-  console.log(saved_searchdata);
-
+  //console.log(saved_searchdata);
 
   const handleSubmit = () => {
     // selectedDate:selectedDate.toLocaleDateString()
@@ -120,7 +119,6 @@ const BusSlection = () => {
 
     console.log(payload, "BUS SELECTION __________________");
     dispatch(getBusesData(payload));
-
   };
   return (
     <>
@@ -149,7 +147,6 @@ const BusSlection = () => {
             <img width="45px" src={busImg} alt="Bus" />
           </div>
           <div>
-
             <p>From</p>
 
             <TextField
@@ -157,20 +154,17 @@ const BusSlection = () => {
               className={classes.search__input_from}
               type="text"
               value={from}
-
               onChange={(e) => setFrom(e.target.value)}
             />
           </div>
 
           <div>
-
             <p>To</p>
             <TextField
               variant="standard"
               className={classes.search__input_from}
               type="text"
               value={to}
-
               onChange={(e) => setTo(e.target.value)}
             />
           </div>
@@ -183,9 +177,7 @@ const BusSlection = () => {
                   id="date-picker-dialog"
                   label="Date"
                   formatDate={(date) => moment(date).format("DD-MM-YYYY")}
-
                   value={selectedDate}
-
                   onChange={handleDateChange}
                   KeyboardButtonProps={{
                     "aria-label": "change date",

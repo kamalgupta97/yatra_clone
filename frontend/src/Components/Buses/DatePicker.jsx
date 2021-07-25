@@ -26,7 +26,7 @@ export default function DatePicker({ selectedDate, setSelectedDate }) {
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container>
-        {/* <KeyboardDatePicker
+        <KeyboardDatePicker
           style={{ width: "100%" }}
           disableToolbar
           variant="inline"
@@ -39,8 +39,8 @@ export default function DatePicker({ selectedDate, setSelectedDate }) {
           KeyboardButtonProps={{
             "aria-label": "change date",
           }}
-        /> */}
-        <KeyboardDatePicker
+        />
+        {/* <KeyboardDatePicker
           className={classes.date__format}
           margin="normal"
           id="date-picker-dialog"
@@ -51,7 +51,7 @@ export default function DatePicker({ selectedDate, setSelectedDate }) {
           KeyboardButtonProps={{
             "aria-label": "change date",
           }}
-        />
+        /> */}
       </Grid>
     </MuiPickersUtilsProvider>
     // <MuiPickersUtilsProvider utils={DateFnsUtils}>

@@ -110,7 +110,10 @@ const PaymentSection = () => {
       <Stepper_payment />
       <Box className={classes.payment_modal}>
          <div className={styles.payment_Left_cont}  >
-         <div className={styles.payment_Left_subcont}  >
+        <div>
+          <div className={styles.payment_method} >Payment Method</div>
+       <div className={styles.payment_Subcont}>
+       <div className={styles.payment_Left_subcont}  >
           <Button onClick={handleClickCredit} className={classes.payment_btn} variant="contained">Credit Card</Button>
           <Button onClick={handleClickPay} className={classes.payment_btn} variant="contained">Debit Card</Button>
           <Button  onClick={handleClickPay} className={classes.payment_btn} variant="contained">UPI</Button>
@@ -129,6 +132,8 @@ const PaymentSection = () => {
               }
 
           </div>
+       </div>
+        </div>
 
          </div>
          <div className={styles.payment_Right_cont}  >

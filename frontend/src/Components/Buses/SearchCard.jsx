@@ -38,25 +38,44 @@ const useStyles = makeStyles({
 export default function SearchCard() {
   const classes = useStyles();
 
-  const [depart, setDepart] = useState("A");
-  const [going, setGoing] = useState("B");
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  var today = new Date();
+  var dd = today.getDate();
 
+  var mm = today.getMonth() + 1;
+  var yyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  // today = mm + "-" + dd + "-" + yyyy;
+  // console.log(today);
+  // today = mm + "/" + dd + "/" + yyyy;
+  // console.log(today);
+  // today = dd + "-" + mm + "-" + yyyy;
+  // console.log(today);
+  today = dd + "/" + mm + "/" + yyyy;
+
+  const [departureLocation, setDepartureLocation] = useState("Mumbai");
+  const [arrivalLocation, setArrivalLocation] = useState("Bangalore");
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  //new Date().toJSON().slice(0,10)
   const [searchData, setSearchData] = useState({});
   const history = useHistory();
+  console.log(searchData);
 
   const handleSearchBus = () => {
     const payload = {
-      depart,
-      going,
+      departureLocation,
+      arrivalLocation,
       selectedDate,
     };
 
     setSearchData(payload);
-    history.push("/busselection");
+    // history.push("/busselection");
   };
-
-  console.log(searchData);
 
   return (
     <Card className={classes.root}>
@@ -66,16 +85,16 @@ export default function SearchCard() {
           <Box>
             <TextField
               className={classes.inputText}
-              value={depart}
+              value={departureLocation}
               id="standard-basic"
               label="Depart From"
-              onChange={(e) => setDepart(e.target.value)}
+              onChange={(e) => setDepartureLocation(e.target.value)}
             />
             <IconButton
               onClick={() => {
-                var temp = depart;
-                setDepart(going);
-                setGoing(temp);
+                var temp = departureLocation;
+                setDepartureLocation(arrivalLocation);
+                setArrivalLocation(temp);
               }}
             >
               <SyncAltIcon
@@ -89,10 +108,10 @@ export default function SearchCard() {
             </IconButton>
             <TextField
               className={classes.inputText}
-              value={going}
+              value={arrivalLocation}
               id="standard-basic"
               label="Going To"
-              onChange={(e) => setGoing(e.target.value)}
+              onChange={(e) => setArrivalLocation(e.target.value)}
             />
           </Box>
           <Box>

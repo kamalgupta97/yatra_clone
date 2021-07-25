@@ -7,7 +7,10 @@ import {
   } from "./busActionType";
 
   const init={
-    saved_searchdata:{}
+    isLoading:false,
+    isError:false,
+    saved_searchdata:{},
+    data:{}
     
   }
 
@@ -15,20 +18,26 @@ import {
     switch (type) {
       case BUS_REQUEST:{
           return{
-              ...state
+              ...state,
+              isLoading:true,
           }
 
       }
       case BUS_FAILURE:
         return {
           ...state,
+
+          payload,
+          isError:true,
+          isLoading:false,
          
         };
       case BUS_SUCCESS:
        
         return {
           ...state,
-         payload
+          data:payload,
+          isLoading:false,
        
      
         };

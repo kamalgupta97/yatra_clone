@@ -11,6 +11,7 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import StripeContainer from "./PaymentOptions/StripeContainer ";
 import  Footer from '../../Components/Footer'
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
     root:{
         backgroundColor:"#f2f2f2",
@@ -89,6 +90,8 @@ const PaymentSection = () => {
     setPay(true)
   }
   
+  const history = useHistory();
+  
   return (
     <div className={classes.root}>
       <div style={{backgroundColor:"white"}}>
@@ -99,6 +102,7 @@ const PaymentSection = () => {
             height="35px"
             src="https://cdn.freelogovectors.net/wp-content/uploads/2019/02/yatra_logo.png"
             alt="yatra_logo"
+onClick={() => history.push("/")}
           />
          <div  className={styles.nav_payment_section}>
          <div>

@@ -10,6 +10,8 @@ import SyncAltIcon from "@material-ui/icons/SyncAlt";
 import DatePicker from "./DatePicker";
 import { useHistory } from "react-router-dom";
 import moment from "moment";
+import { useDispatch } from "react-redux";
+import { getBusesData } from "../../Redux/Bus/busAction";
 
 const useStyles = makeStyles({
   root: {
@@ -67,6 +69,7 @@ export default function SearchCard() {
   const history = useHistory();
   console.log(searchData);
 
+  const dispatch = useDispatch()
   //selectedDate: moment(selectedDate).format("DD-MM-YYYY"),
   const handleSearchBus = () => {
     const payload = {
@@ -74,8 +77,8 @@ export default function SearchCard() {
       arrivalLocation,
       selectedDate,
     };
-
-    setSearchData(payload);
+    dispatch(getBusesData(payload))
+    // setSearchData(payload);
     history.push("/busselection");
   };
 

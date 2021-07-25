@@ -30,6 +30,8 @@
     font-size: 16px;
     line-height: 24px;
     padding: 0px 15px;
+    display: flex;
+    align-items: center;
     
 
 }
@@ -90,18 +92,21 @@
     
 }
 .payment_detail_cont1{
-    display: inline-flex;
-    justify-content: space-between;
+    display: flex;
+    justify-content: space-around;
     color: #666666;
     width: 96%;
-    margin: 10px 4px;
+    margin: 0px 4px 10;
+    padding: 10px 0 10px 0;
+    gap: 65px;
 }
 .payment_detail_cont2{
-    display: inline-flex;
-    justify-content: space-between;
+    display: flex;
+    justify-content: space-around;
     color: #666666;
     width: 96%;
-    margin: 30px 4px;
+    margin: 20px 4px 30px;
+    gap: 60px;
 }
 .payment_detail_line{
     background-color:#e2e2e2 ;

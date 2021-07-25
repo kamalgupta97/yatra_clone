@@ -7,7 +7,7 @@ export default function PaymentSucces() {
        <div className={styles.succeswrapper}>
             <div className={styles.Success}>
             <img width="600px" src={success}/>
-                <h1 style={{color:"#11bf71"}}>Payemnt Successful</h1>
+                <h1 style={{color:"#11bf71"}}>Payment Successful</h1>
             
             </div>
        </div>

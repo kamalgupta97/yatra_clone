@@ -18,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     cursor: "pointer",
     marginLeft:"40%",
+    border: "none",
+    outline: "none",
+    height: "30px",
+    borderRadius:"15px",
     "&:hover": {
       background: "#A30000",
     },
@@ -32,8 +36,8 @@ const CARD_OPTIONS = {
   iconStyle: "solid",
   style: {
     base: {
-      iconColor: "#623381",
-      color: "#623381",
+      iconColor: "#2449df",
+      color: "#2449df",
       fontWeight: 500,
       fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
       fontSize: "16px",
@@ -157,7 +161,7 @@ export default function PaymentForm() {
                   <CardElement options={CARD_OPTIONS} />
                 </div>
               </fieldset>
-              <Button  className={classes.btn} variant="contained" color="secondary">Pay Now</Button>
+              <button  className={classes.btn} variant="contained" color="secondary">Pay Now</button>
             </form>
           )}
         </div>

@@ -21,6 +21,7 @@
     height:100%;
     background-color:rgba(128, 128, 128, 0.363);
     z-index: 1000;
+    color: rgb(221, 54, 54);
 }
 
 .failure img{

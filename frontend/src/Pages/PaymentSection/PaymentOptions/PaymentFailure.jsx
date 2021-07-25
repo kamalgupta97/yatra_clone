@@ -6,7 +6,7 @@ export default function PaymentFailure({src,text}) {
         <div  className={styles.failurewrapper}>
               <div className={styles.failure}>
                   <img src={src} alt="" />
-                <h1>{text}</h1>
+                <h1  style={{color:"red"}} >{text}</h1>
             </div>
 
         </div>

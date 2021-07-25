@@ -2,10 +2,12 @@ import {
     BUS_REQUEST,
     BUS_FAILURE,
     BUS_SUCCESS,
+    SAVE_SEARCHDATA
     
   } from "./busActionType";
 
   const init={
+    saved_searchdata:{}
     
   }
 
@@ -30,6 +32,12 @@ import {
        
      
         };
+        case SAVE_SEARCHDATA:{
+          return {
+            ...state,
+            saved_searchdata:payload
+          }
+        }
      
       default:
         return state;

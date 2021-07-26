@@ -179,12 +179,15 @@ const CancellationWrapper = styled.div`
 
 const CancellationPolicy = styled.div`
   height: 95%;
-  width: 90%;
+  width: 85%;
   // box-shadow: 0 2px 2px #cdcdcd;
 
   border-radius: 10px;
   background: #fef2d8; //#feeab8
   margin: auto;
+  @media (max-width: 800px) {
+    margin:50px auto;
+  }
 `;
 const CancellationPolicyHeading = styled.div`
   background: #feeab8;

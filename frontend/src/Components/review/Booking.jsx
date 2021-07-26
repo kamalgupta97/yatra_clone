@@ -54,8 +54,8 @@ export const Booking = () => {
                 <div className={styles.justifyReview}>
                   <div>
                     <div>{data.bus[0].source}</div>
-                    <div className={styles.bigboldfont}>01:00 AM</div>
-                    <div className={styles.boldfont}>Sat, 24 Jul 2021</div>
+                    <div className={styles.bigboldfont}>{data.bus[0].departtime}:00</div>
+                    <div className={styles.boldfont}>{data.bus[0].date}</div>
                   </div>
                   <div className={styles.justify}>
                     <div>{data.bus[0].duration}</div>

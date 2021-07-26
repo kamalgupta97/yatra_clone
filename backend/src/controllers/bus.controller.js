@@ -24,7 +24,7 @@ router.get("/route", async (req, res) => {
     const from = req.query.from;
     const to = req.query.to
     const date =req.query.date;
-    console.log(from, to, date)
+    //console.log(from, to, date)
     try{
         const bus = await Bus.find({$and: [{"source": from}, {"destination": to}, {"date": date}]}).lean().exec();
         res.status(200).json({bus})

@@ -25,7 +25,7 @@ export const Booking = () => {
   }
 
   React.useEffect(()=>{
-      console.log(state)
+      //console.log(state)
   })
   return (
     <>

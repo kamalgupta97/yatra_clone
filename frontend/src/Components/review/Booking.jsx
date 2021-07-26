@@ -173,6 +173,20 @@ export const Booking = () => {
                   <div>Flat 9% off(Max Rs. 200)</div>
                 </div>
               </div>
+              <div className={styles.promocode}>
+                <input type="radio" />
+                <div>
+                  <div className={styles.code}>SUMMERYATRA</div>
+                  <div>Flat 20% off(Max Rs. 500)</div>
+                </div>
+              </div>
+              <div className={styles.promocode}>
+                <input type="radio" />
+                <div>
+                  <div className={styles.code}>MONSOONYATRA</div>
+                  <div>Flat 12% off</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

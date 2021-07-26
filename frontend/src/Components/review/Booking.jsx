@@ -65,7 +65,7 @@ export const Booking = () => {
                   <div>
                     <div>{data.bus[0].destination}</div>
                     <div className={styles.bigboldfont}>{data.bus[0].arrivaltime}</div>
-                    <div className={styles.boldfont}>sat, 24 Jul 2021</div>
+                    <div className={styles.boldfont}>{data.bus[0].date}</div>
                   </div>
                 </div>
                 <hr />
@@ -116,7 +116,7 @@ export const Booking = () => {
               </div>
               <div className={styles.center}>
                 Your booking details will be sent to this email address and
-                mobile number.
+                mobile number
               </div>
               <hr />
               <div className={styles.seatdetails}>

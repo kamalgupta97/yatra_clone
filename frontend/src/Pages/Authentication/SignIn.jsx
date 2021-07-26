@@ -26,7 +26,7 @@ const BodyWrapper = styled.div`
 const SignInWrapper = styled.div`
   width: 45%;
 
-  height: 85vh;
+  height: 80%;
   margin: auto;
   // background:yellow;
   @media (max-width: 800px) {
@@ -107,18 +107,19 @@ const Label = styled.div`
 `;
 
 const Input = styled.div`
-  background: red;
+  // background: red;
   margin: 30px auto;
-  width: 300px;
+  width: 100%;
 
   & > input {
-    width: 100%;
+    width: 87%;
     height: 40px;
     border: none;
     border-radius: 3px;
     box-shadow: 0 2px 2px #cdcdcd;
     papdding: 10px;
     padding-left: 10px;
+    margin: 0 5%;
     ::placeholder,
     ::-webkit-input-placeholder {
       color: #cdcdcd;
@@ -126,16 +127,16 @@ const Input = styled.div`
   }
 `;
 const Button = styled.div`
-  background: red;
-  width: 313px;
+  // background: red;
+  width: 100%;
 
-  margin: 20px 20px 0 22px;
+  margin: 30px auto;
 
   & > button {
-    width: 100%;
+    width: 90%;
     height: 40px;
     border: none;
-    margin: auto;
+    margin: 0 5%;
     border-radius: 3px;
     box-shadow: 0 2px 2px #cdcdcd;
     background: #ea2330;

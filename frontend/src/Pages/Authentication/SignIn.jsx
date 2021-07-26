@@ -250,7 +250,7 @@ export const SignIn = () => {
     const handleLogin = () => {
         axios.get("http://localhost:2244/auth/google")
             .then(res => {
-                console.log(res)
+                //console.log(res)
                 dispatch(loginSuccess())
                 history.push("/")
             })

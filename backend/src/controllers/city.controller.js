@@ -13,7 +13,7 @@ router.get("/all", async (req, res) => {
 router.get("/id/:id", async (req, res) => {
     try{
         const city = await City.findById(req.params.id).lean().exec();
-        res.status(400).json({city})
+        res.status(200).json({city})
     } catch (err) {
         res.status(400).json({message: err.message})
     }
@@ -26,7 +26,7 @@ router.get("/", async (req, res) => {
         city.forEach(el => {
             all.push(el.city)
         })
-        res.status(400).json({all})
+        res.status(200).json({all})
     } catch (err) {
         res.status(400).json({message: err.message})
     }
@@ -41,7 +41,7 @@ router.post("/", async (req, res) => {
 router.patch("/:id/update", async (req, res) => {
     try{
         const city = await City.findByIdAndUpdate(req.params.id, req.body, {new: true})
-        res.status(400).json({city})
+        res.status(200).json({city})
     } catch (err) {
         res.status(400).json({message: err.message})
     }
@@ -50,7 +50,7 @@ router.patch("/:id/update", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     try {
         const city = await City.findByIdAndDelete(req.params.id)
-        res.status(400).json({city})
+        res.status(200).json({city})
     } catch (err) {
         res.status(400).json({message: err.message})
 

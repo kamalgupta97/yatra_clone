@@ -67,7 +67,7 @@ const signin = async (req, res) => {
 //.select("-password")
 const user = async (req, res) => {
     const users = await User.find().lean().exec();
-
+    console.log(users)
     return res.status(200).json({data: users})
 }
 

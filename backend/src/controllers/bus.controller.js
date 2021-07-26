@@ -5,7 +5,7 @@ const Bus = require ("../models/bus.model")
 
 
 router.get("/", async (req, res) => {
-    console.log("req 8", req.params)
+    //console.log("req 8", req.params)
     const buses = await Bus.find().lean().exec();
 
     return res.status(200).json({data: buses})

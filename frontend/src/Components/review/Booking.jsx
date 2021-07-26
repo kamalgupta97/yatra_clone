@@ -24,9 +24,9 @@ export const Booking = () => {
       history.push("/payment")
   }
 
-  React.useEffect(()=>{
-      //console.log(state)
-  })
+  // React.useEffect(()=>{
+  //     //console.log(state)
+  // })
   return (
     <>
       <div className={styles.body}>

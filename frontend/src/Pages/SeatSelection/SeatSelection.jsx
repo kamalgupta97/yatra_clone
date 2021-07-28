@@ -359,6 +359,9 @@ export const SeatSelection = ({operator,source,destination,setindividualmodalope
     const [selected,setSelected]= React.useState([])
     const [droppingpoints,setDroppingpoints]=React.useState([])
     const [boardingpoints,setboardingpoints]=React.useState([])
+    const [selectedDroppingpoint,setselectedDroppingpoint]=React.useState("")
+    const [selectedBordingpoint,setselectedBordingpoint]=React.useState("")
+
 
     React.useEffect(()=>{
       
@@ -528,7 +531,7 @@ export const SeatSelection = ({operator,source,destination,setindividualmodalope
                                 <p>
                                     Select Boarding Point
                                 </p>
-                                <select name="" id="">
+                                <select name="" id="" onChange={(e)=>setselectedBordingpoint(e.target.value)}>
                                     <option>Select Boarding Point</option>
                                     {
                                         
@@ -543,7 +546,7 @@ export const SeatSelection = ({operator,source,destination,setindividualmodalope
                                 <p>
                                     Select Dropping Point
                                 </p>
-                                <select name="" id="">
+                                <select name="" id="" onChange={(e)=>setselectedDroppingpoint(e.target.value)}>
                                     <option>Select Dropping Point</option>
                                     {
                                         
@@ -553,7 +556,11 @@ export const SeatSelection = ({operator,source,destination,setindividualmodalope
                                     }
                                 </select>
                                 {/* {console.log(selectedseats)} */}
-                                   { selected.length>0?<> <AmountandSeats>
+                              
+                                    {
+                                        (selectedDroppingpoint!=="" && setactiveBordingpoint!=="" && selected.length>0)?
+                                        <>
+                                          <AmountandSeats>
                                         <Amount>
                                             <p>Total Amount</p>
                                            
@@ -564,11 +571,14 @@ export const SeatSelection = ({operator,source,destination,setindividualmodalope
                                             <p>{selected.join(",")}</p>
                                         </SeatNo>
                                     </AmountandSeats>
-                                    <ConfirmActiveButton onClick={handleBook}>Confirm Seats</ConfirmActiveButton>
-                                     </>:
-                                   
-                                     <ConfirmButton disabled>Confirm Seats</ConfirmButton>
+                                        <ConfirmActiveButton onClick={handleBook}>Confirm Seats</ConfirmActiveButton>
+                                        </>
+                                        :<ConfirmButton disabled>Confirm Seats</ConfirmButton>
                                     }
+                                    
+                                   
+                                     
+                                  
                                
                               
                             </SelectCityWrapper>

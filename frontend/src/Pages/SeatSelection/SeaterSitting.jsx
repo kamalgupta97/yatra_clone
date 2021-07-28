@@ -32,9 +32,9 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-export const SeaterSitting = ({setSelected,selected,booked}) => {
+export const SeaterSitting = ({setSelected,selected,booked,bustype}) => {
   console.log(booked,"Bookes")
-    let bustype="Sleeper"
+    
     const classes = useStyles();
   
 

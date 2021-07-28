@@ -476,7 +476,7 @@ export const SeatSelection = ({operator,source,destination,setindividualmodalope
                             
                             </Driver>}
 
-                            <SeaterSitting  selected={selected} setSelected={setSelected} booked={bookedseats} _id={_id}/>
+                            <SeaterSitting  selected={selected} setSelected={setSelected} booked={bookedseats} _id={_id} bustype={bustype}/>
                     </Sitting>
                     <SeatStatus>
 
@@ -531,7 +531,7 @@ export const SeatSelection = ({operator,source,destination,setindividualmodalope
                 </ArrangementWrapper>
                 <TravelDescription>
                    <DescHeading>
-                        <button className={activeplace && styles.activebuttons} name="activeplace" onClick={handleClick}>{requirement.source}-{requirement.destination}</button>
+                        <button className={activeplace && styles.activebuttons} name="activeplace" onClick={handleClick}>{source[0].toUpperCase() + source.substring(1)}-{destination[0].toUpperCase() + destination.substring(1)}</button>
                         <button className={activeBordingpoint && styles.activebuttons} name="activeBordingpoint" onClick={handleClick}>Bording Points</button>
                         <button className={activeDroppingpoint && styles.activebuttons} name="activeDroppingpoint" onClick={handleClick}>Dropping Points</button>
 
@@ -558,7 +558,7 @@ export const SeatSelection = ({operator,source,destination,setindividualmodalope
                                     {
                                         
                                         boardingpoints?.map(item=>
-                                            <option value={`${item.point}-${item.time}`}>{`${item.point}-${item.time}`}</option>                                          
+                                            <option value={`${item.point}-${item.time}`}>{`${item.point.toUpperCase()}-${item.time}`}</option>                                          
                                         )
                                     }
                                 </select>
@@ -573,7 +573,7 @@ export const SeatSelection = ({operator,source,destination,setindividualmodalope
                                     {
                                         
                                         droppingpoints.map(item=>
-                                            <option value={`${item.point}-${item.time}`}>{`${item.point}-${item.time}`}</option>                                          
+                                            <option value={`${item.point}-${item.time}`}>{`${item.point.toUpperCase()}-${item.time}`}</option>                                          
                                         )
                                     }
                                 </select>

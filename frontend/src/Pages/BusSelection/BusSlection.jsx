@@ -400,6 +400,7 @@ const BusSlection = () => {
             {...item}
             openSelectseat={openSelectseat}
             setopenSelectseat={setopenSelectseat}
+            allbuses ={state?.data?.bus}
           />
         );
       })}

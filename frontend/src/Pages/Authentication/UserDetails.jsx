@@ -1,14 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import userProfile from "../../assets/user.png";
-import amazon from "../../assets/amazon-.png";
-import calendar from "../../assets/calendar.png";
-import ecash from "../../assets/ecash.png";
-import GST from "../../assets/GST.png";
-import history from "../../assets/history.png";
-import prefilled from "../../assets/prefilled.png";
-import transfechash from "../../assets/transefechash.png";
-import { Otpform } from "./Otpform";
 import { useDispatch, useSelector } from "react-redux";
 import { getLogin, sendOtp } from "../../Redux/Auth/authAction";
 import axios from "axios";

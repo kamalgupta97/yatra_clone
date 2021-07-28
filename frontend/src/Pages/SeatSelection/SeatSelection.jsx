@@ -103,13 +103,25 @@ const LowerUper =styled.div`
     align-items:center;
   
 `
-
+const Lower=styled.div`
+    width:100%;
+    min-height:80px;
+    display:flex;
+    justify-content:center;
+    align-items:center;    
+`
 const Buttons = styled.div`
     width:200px;
     border:1px solid #c4c4c4;
-    height:40px;
-   
-   
+    height:40px; 
+`
+const LowerButtons =styled.div`
+    width:100px;
+    border:1px solid #c4c4c4;
+    height:40px; 
+    &>button{
+        width:100%;
+    }
 `
 const Sitting = styled.div`
     margin:2%;
@@ -440,12 +452,22 @@ export const SeatSelection = ({operator,source,destination,setindividualmodalope
 
                 <DescriptionAnsStatus>
                 <ArrangementWrapper>
-                    <LowerUper>
+                   { 
+                   bustype==="sleeper"?
+                   <LowerUper>
                         <Buttons>
                         <button className={ activelower? styles.activelower : styles.lower} onClick={()=>setActivelower(true)}>Lower Deck</button>
                         <button className={ activelower? styles.lower: styles.activelower  } onClick={()=>setActivelower(false)}>Upper Deck</button>
                         </Buttons>
                     </LowerUper>
+                    :
+                    <Lower>
+                    <LowerButtons>
+                    <button className={ activelower? styles.activelower : styles.lower} onClick={()=>setActivelower(true)}>Lower Deck</button>
+                    </LowerButtons>
+                </Lower>
+
+                    }
 
                     <Sitting>
                            
@@ -517,10 +539,10 @@ export const SeatSelection = ({operator,source,destination,setindividualmodalope
                     {
                         activeplace && <SeatConfirmation>
                             <SeatConfirmationHeader>
-                                <p>{operator}</p>
+                                <p>{operator.toUpperCase()}</p>
                             </SeatConfirmationHeader>
                             <Bustypes>
-                                <p>{bustype}</p>
+                                <p>{bustype.toUpperCase()}</p>
                             </Bustypes>
 
                             <Dates>

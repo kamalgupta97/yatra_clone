@@ -335,9 +335,23 @@ padding :12px 24px;
 font-weight:600;
 cursor:pointer;
 `
+// {
+//     _id
+//     bookedseats,
+//     operator,
+//     source,
+//     destination,
+//     departtime,
+//     arrivaltime,
+//     date,
+//     bustype,
+//     totalseat,
+//     availableseat,
+//     fare,
+//     duration,
+//   }
 
-
-export const SeatSelection = ({operator,source,destination,setopenSelectseat,bustype,dropping_point,boardingpoint,fare,bus_id,date,bookedseats,departtime,arrivaltime}) => {
+export const SeatSelection = ({operator,source,destination,setopenSelectseat,bustype,dropping_point,boardingpoint,fare,_id,date,bookedseats,departtime,arrivaltime}) => {
     const [activelower,setActivelower] = React.useState(true)
     const [activeplace,setactiveplace] =React.useState(true)
     const [activeBordingpoint,setactiveBordingpoint] = React.useState(false)
@@ -348,8 +362,8 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
 
     React.useEffect(()=>{
       
-        console.log(operator,dropping_point,boardingpoint,fare,bus_id,bustype,date,bookedseats,arrivaltime)
-        axios.get(`http://localhost:2244/stops/points?city=${"surat"}&busid=${bus_id}`).then(res=>{
+        console.log(operator,dropping_point,boardingpoint,fare,_id,bustype,date,bookedseats,arrivaltime)
+        axios.get(`http://localhost:2244/stops/points?city=${"surat"}&busid=${_id}`).then(res=>{
             console.log(res.data)
             setboardingpoints(res.data.points)
             console.log(boardingpoints ,"STATE boardingpoints")
@@ -359,7 +373,7 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
                 console.log(err)
             })
 
-            axios.get(`http://localhost:2244/stops/points?city=${"jaipur"}&busid=${bus_id}`).then(res=>{
+            axios.get(`http://localhost:2244/stops/points?city=${"jaipur"}&busid=${_id}`).then(res=>{
                 console.log(res.data)
                 setDroppingpoints(res.data.points)
                 console.log(droppingpoints,"STATE droppingpoints")
@@ -375,7 +389,7 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
     const dispatch = useDispatch()
     const handleBook=()=>{
         const payload={
-            bus_id,
+            _id,
             selected
         }
         dispatch(getSelectedData(payload))
@@ -433,7 +447,7 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
                             
                             </Driver>}
 
-                            <SeaterSitting  selected={selected} setSelected={setSelected} booked={bookedseats} bus_id={bus_id}/>
+                            {/* <SeaterSitting  selected={selected} setSelected={setSelected} booked={bookedseats} _id={_id}/> */}
                     </Sitting>
                     <SeatStatus>
 

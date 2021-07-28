@@ -10,24 +10,28 @@ import prefilled from "../../assets/prefilled.png";
 import transfechash from "../../assets/transefechash.png";
 import { Otpform } from "./Otpform";
 import { useDispatch, useSelector } from "react-redux";
-import { getLogin } from "../../Redux/Auth/authAction";
+import { getLogin, sendOtp } from "../../Redux/Auth/authAction";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { loginSuccess } from "../../Redux/Auth/authAction";
+import Navbar2 from "../../Components/Navbar2";
+ 
 
 const BodyWrapper = styled.div`
   background: #f5f5f5;
   height: 100vh;
   width: 100%;
+  overflow-y: hidden;
   @media (max-width: 800px) {
     height: auto;
   }
 `;
 const SignInWrapper = styled.div`
+
   width: 45%;
 
   height: 80%;
-  margin: auto;
+  margin: 10vh auto;
   // background:yellow;
   @media (max-width: 800px) {
     height: auto;
@@ -191,7 +195,7 @@ const CancellationPolicy = styled.div`
 `;
 const CancellationPolicyHeading = styled.div`
   background: #feeab8;
-  width: 100%;
+  width: 100%;   
   height: 10%;
   border-radius: 10px 10px 0 0;
   text-align: center;
@@ -233,16 +237,20 @@ export const SignIn = () => {
     });
   };
 
-  console.log(state);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(getLogin(mobileNo));
+    dispatch(sendOtp(mobileNo));
     setotpForm(true);
   };
   return (
     <BodyWrapper>
+      <Navbar2/>
+      {
+        console.log(state)
+      }
       <SignInWrapper>
         <HeadingWrapper>
           <p>Welcome to Yatra!</p>
@@ -269,7 +277,7 @@ export const SignIn = () => {
                 <button>Continue</button>
               </Button>
             </form>
-
+                                        
             <TermsandConditions>
               <Terms>
                 By proceeding, you agree with our{" "}
@@ -356,7 +364,7 @@ export const SignIn = () => {
                   <b> Free Meals, Low Cancellation Fee, Free Rescheduling </b>
                   for SME business customers
                 </CancellationText>
-              </CancelationLine>
+              </CancelationLine> 
             </CancellationPolicy>
           </CancellationWrapper>
         </ContentWrapper>

@@ -351,7 +351,7 @@ cursor:pointer;
 //     duration,
 //   }
 
-export const SeatSelection = ({operator,source,destination,setopenSelectseat,bustype,dropping_point,boardingpoint,fare,_id,date,bookedseats,departtime,arrivaltime}) => {
+export const SeatSelection = ({operator,source,destination,setindividualmodalopen,setopenSelectseat,bustype,dropping_point,boardingpoint,fare,_id,date,bookedseats,departtime,arrivaltime}) => {
     const [activelower,setActivelower] = React.useState(true)
     const [activeplace,setactiveplace] =React.useState(true)
     const [activeBordingpoint,setactiveBordingpoint] = React.useState(false)
@@ -418,6 +418,10 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
         }
         // console.log(activeplace,activeBordingpoint,activeDroppingpoint) at this line why it is giving wrong output
     }
+    const handleCross =()=>{
+        setopenSelectseat(false)
+        setindividualmodalopen(false)
+    }
 
     return  (
         <SeatSelectionWrapper>
@@ -426,7 +430,7 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
 
             
            <SeatSelectionWrapperRight>
-           <CrossIcon onClick={()=>setopenSelectseat(false)}>✖</CrossIcon>
+           <CrossIcon onClick={handleCross}>✖</CrossIcon>
                 <div>
                     <H1>Seat Preferences</H1>
                 </div>

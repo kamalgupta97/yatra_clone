@@ -73,8 +73,10 @@ const SelectionCard = ({_id,allbuses,openSelectseat,setopenSelectseat, handleCan
   const classes = useStyles();
   const theme = useTheme();
   const [tobeopen,setTobeopen] = React.useState({})
+  const [individualmodalopen,setindividualmodalopen]=React.useState(false)
   const handleSeatSelection = (_id)=>{
-    setopenSelectseat(!openSelectseat)
+    setopenSelectseat(true)
+    setindividualmodalopen(!individualmodalopen)
     console.log(_id,"LOOF FOR IDS")
     const updated = allbuses.find(item=>item._id===_id)
     setTobeopen(updated)
@@ -139,7 +141,7 @@ const SelectionCard = ({_id,allbuses,openSelectseat,setopenSelectseat, handleCan
 
           // console.log({...tobeopen})
    
-      openSelectseat && <SeatSelection {...tobeopen} setopenSelectseat={setopenSelectseat}  key={tobeopen.id}/>
+          individualmodalopen && <SeatSelection {...tobeopen} setindividualmodalopen={setindividualmodalopen} setopenSelectseat={setopenSelectseat} key={tobeopen.id}/>
     }
     </Card>
     

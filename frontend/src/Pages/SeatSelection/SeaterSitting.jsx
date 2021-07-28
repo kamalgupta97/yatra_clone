@@ -7,11 +7,10 @@ import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import {totalsittngseats} from './requirement';
 import {totalsleeperseats} from './requirement';
+import { SleeperSitting } from './SleeperSitting';
 
 
-import sleeper_available from './Images/sleeper_available.png'
-import booked_sleeper from './Images/booked_sleeper.png'
-import sleeper_selected from './Images/sleeper_selected.png'
+
 
 
 
@@ -32,9 +31,9 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-export const SeaterSitting = ({setSelected,selected,booked}) => {
+export const SeaterSitting = ({setSelected,selected,booked,bustype}) => {
   console.log(booked,"Bookes")
-    let bustype="Sleeper"
+    
     const classes = useStyles();
   
 
@@ -42,6 +41,7 @@ export const SeaterSitting = ({setSelected,selected,booked}) => {
     // console.log(totalsittngseats)
       
     const handleClick =(item) =>{
+ 
       if(selected.length<6){
         if(!selected.includes(item)){            
             setSelected([...selected,item])
@@ -63,7 +63,7 @@ export const SeaterSitting = ({setSelected,selected,booked}) => {
             <Seats>
             
             {
-                       ( bustype==="seater" || bustype==="semi sleeper" ) &&
+                       ( bustype==="seater" || bustype==="semi sleeper" )?
                 <Grid container className={classes.root} >
                   
                   
@@ -75,7 +75,7 @@ export const SeaterSitting = ({setSelected,selected,booked}) => {
                     <img  className={classes.paper} src={Selected} alt="available" />
                     </Grid>
                     : (booked.includes(item))?
-                    <Grid xs={3} sm={3} md={3} lg={3} xl={3} item key={item} onClick={()=>handleClick(item)} >
+                    <Grid xs={3} sm={3} md={3} lg={3} xl={3} item key={item}  >
                     <img  className={classes.paper} src={Booked} alt="available" />
                     </Grid>
                     :
@@ -88,43 +88,15 @@ export const SeaterSitting = ({setSelected,selected,booked}) => {
               
         )}
    
-                        
-             
+
                         
                     </Grid>
-}
 
-                    {
-                        bustype==="Sleeper" &&
-                        <Grid container className={classes.root} >
-                  
-                  
-               
-                        {totalsleeperseats.map((item)=>  
-                        {
-                          return  (selected.includes(item))?
-                            <Grid xs={4} sm={4} md={4} lg={4} xl={4} item key={item} onClick={()=>handleClick(item)} >
-                            <img  className={classes.paper} src={sleeper_selected} alt="available" />
-                            </Grid>
-                            : (booked.includes(item))?
-                            <Grid xs={4} sm={4} md={4} lg={4} xl={4} item key={item} onClick={()=>handleClick(item)} >
-                            <img  className={classes.paper} src={booked_sleeper} alt="available" />
-                            </Grid>
-                            :
-                            <Grid xs={4} sm={4} md={4} lg={4} xl={4} item key={item} onClick={()=>handleClick(item)} >
-                            <img  className={classes.paper}  src={sleeper_available}  alt="available" />
-                            </Grid>
-        
-                        }
-                        
-                      
-                )}
-           
-                                
-                            
-                                
-                            </Grid>
-                    }
+                :
+                <SleeperSitting bustype={bustype} selected={selected} booked={booked} handleClick={handleClick}/>
+              }
+
+                    
 
                     </Seats>
     )

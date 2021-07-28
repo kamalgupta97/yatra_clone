@@ -75,7 +75,7 @@ export const SeaterSitting = ({setSelected,selected,booked}) => {
                     <img  className={classes.paper} src={Selected} alt="available" />
                     </Grid>
                     : (booked.includes(item))?
-                    <Grid xs={3} sm={3} md={3} lg={3} xl={3} item key={item} onClick={()=>handleClick(item)} >
+                    <Grid xs={3} sm={3} md={3} lg={3} xl={3} item key={item}  >
                     <img  className={classes.paper} src={Booked} alt="available" />
                     </Grid>
                     :
@@ -107,7 +107,7 @@ export const SeaterSitting = ({setSelected,selected,booked}) => {
                             <img  className={classes.paper} src={sleeper_selected} alt="available" />
                             </Grid>
                             : (booked.includes(item))?
-                            <Grid xs={4} sm={4} md={4} lg={4} xl={4} item key={item} onClick={()=>handleClick(item)} >
+                            <Grid xs={4} sm={4} md={4} lg={4} xl={4} item key={item}  >
                             <img  className={classes.paper} src={booked_sleeper} alt="available" />
                             </Grid>
                             :

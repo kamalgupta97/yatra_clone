@@ -451,7 +451,7 @@ export const SeatSelection = ({operator,source,destination,setindividualmodalope
                             
                             </Driver>}
 
-                            {/* <SeaterSitting  selected={selected} setSelected={setSelected} booked={bookedseats} _id={_id}/> */}
+                            <SeaterSitting  selected={selected} setSelected={setSelected} booked={bookedseats} _id={_id}/>
                     </Sitting>
                     <SeatStatus>
 

@@ -46,7 +46,11 @@ export const requirement = {
 
 export const totalsittngseats = new Array(40).fill(0).map((a, i) => i+1);
 
-export const totalsleeperseats = new Array(30).fill(0).map((a, i) => i+1);
+// export const totalsleeperseats = new Array(30).fill(0).map((a, i) => i+1);
+
+export const totallowerseats = new Array(15).fill(0).map((a, i) => i+1);
+export const totalupperseats = new Array(15).fill(15).map((a, i) => i+16);
+
 
 // seats[0].available(false)
 // console.log(seats)

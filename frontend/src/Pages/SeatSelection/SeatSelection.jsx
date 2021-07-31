@@ -476,7 +476,7 @@ export const SeatSelection = ({operator,source,destination,setindividualmodalope
                             
                             </Driver>}
 
-                            <SeaterSitting  selected={selected} setSelected={setSelected} booked={bookedseats} _id={_id} bustype={bustype}/>
+                            <SeaterSitting activelower={activelower}  selected={selected} setSelected={setSelected} booked={bookedseats} _id={_id} bustype={bustype}/>
                     </Sitting>
                     <SeatStatus>
 
@@ -580,7 +580,25 @@ export const SeatSelection = ({operator,source,destination,setindividualmodalope
                                 {/* {console.log(selectedseats)} */}
                               
                                     {
-                                        (selectedDroppingpoint!=="" && setactiveBordingpoint!=="" && selected.length>0)?
+                                       (selectedDroppingpoint!=="" && setactiveBordingpoint!=="" && selected.length>0)?
+
+                                        <>
+                                        <AmountandSeats>
+                                      <Amount>
+                                          <p>Total Amount</p>
+                                         
+                                          <p>₹ {isNaN(selected.length*Number(fare))?0:selected.length*Number(fare)}</p>
+                                      </Amount>
+                                      <SeatNo>
+                                          <p>Seats No:</p>
+                                          <p>{selected.join(",")}</p>
+                                      </SeatNo>
+                                  </AmountandSeats>
+                                  <ConfirmActiveButton onClick={handleBook}>Confirm Seats</ConfirmActiveButton>
+                                      </>
+                                  
+                                        :
+                                        (selected.length>0)?
                                         <>
                                           <AmountandSeats>
                                         <Amount>
@@ -593,9 +611,12 @@ export const SeatSelection = ({operator,source,destination,setindividualmodalope
                                             <p>{selected.join(",")}</p>
                                         </SeatNo>
                                     </AmountandSeats>
-                                        <ConfirmActiveButton onClick={handleBook}>Confirm Seats</ConfirmActiveButton>
+                                    <ConfirmButton disabled>Confirm Seats</ConfirmButton>
                                         </>
-                                        :<ConfirmButton disabled>Confirm Seats</ConfirmButton>
+                                        :
+                                        
+                                        
+                                        <ConfirmButton disabled>Confirm Seats</ConfirmButton>
                                     }
                                     
                                    

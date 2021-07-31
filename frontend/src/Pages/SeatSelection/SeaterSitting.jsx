@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-export const SeaterSitting = ({setSelected,selected,booked,bustype}) => {
+export const SeaterSitting = ({setSelected,selected,booked,bustype,activelower}) => {
   console.log(booked,"Bookes")
     
     const classes = useStyles();
@@ -93,7 +93,7 @@ export const SeaterSitting = ({setSelected,selected,booked,bustype}) => {
                     </Grid>
 
                 :
-                <SleeperSitting bustype={bustype} selected={selected} booked={booked} handleClick={handleClick}/>
+                <SleeperSitting bustype={bustype} selected={selected} booked={booked} handleClick={handleClick} activelower={activelower}/>
               }
 
                     

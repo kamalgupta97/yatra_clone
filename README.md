@@ -13,6 +13,9 @@ Clone the project
 ```
 
 Go to the project directory
+```bash
+  cd yatra_clone\frontend
+```
 
 Install dependencies
 

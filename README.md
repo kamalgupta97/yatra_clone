@@ -56,13 +56,19 @@ Start the server
 ### Home Page
 
 
- ![2021-08-17-00-33-20](https://user-images.githubusercontent.com/77036158/129616489-bd3caafc-948c-4c73-8864-8ec1b8829d07.png)
+ ![2021-08-17-00-33-20](https://i.imgur.com/KpR7w4l.png)
 ### Sign In Page
+ ![2021-08-17-00-33-20](https://i.imgur.com/ZZvBBMb.png)
 ### Login Page
+ ![2021-08-17-00-33-20](https://i.imgur.com/91RWevL.png)
 ### Bus selection Page
+ ![2021-08-17-00-33-20](https://i.imgur.com/zcQC5jA.png)
 ### Seat selection Page
+ ![2021-08-17-00-33-20](https://i.imgur.com/6o9NF7T.png)
 ### Review Page
+ ![2021-08-17-00-33-20](https://i.imgur.com/UxTG9OS.png)
 ### Payment Page
+ ![2021-08-17-00-33-20](https://i.imgur.com/raVfLSv.png)
 
 
 

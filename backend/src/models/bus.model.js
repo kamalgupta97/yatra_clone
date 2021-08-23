@@ -13,6 +13,8 @@ const busSchema = new mongoose.Schema({
     totalseat: {type: Number, required: true},
     availableseat: {type: Number, required: true},
     bookedseats: {type: [{type: Number, required: false}]},
+    arrId: {type: mongoose.Schema.Types.ObjectId, ref: "stop", required: true},
+    desId: {type: mongoose.Schema.Types.ObjectId, ref: "stop", required: true},
 }, {
     versionKey: false,
     timestamps: true

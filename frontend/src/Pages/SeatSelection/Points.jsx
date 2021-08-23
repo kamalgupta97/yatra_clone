@@ -66,7 +66,7 @@ export const Points = ({BordingPoints,bording}) => {
                 <StopsTiming>
                 <div>
                 <p>
-                    {item.point}
+                    {item.point.toUpperCase()}
                </p>
 
                 </div>
@@ -104,7 +104,7 @@ export const Points = ({BordingPoints,bording}) => {
                 <StopsTiming>
                 <div>
                 <p>
-                    {item.point}
+                    {item.point.toUpperCase()}
                </p>
 
                 </div>

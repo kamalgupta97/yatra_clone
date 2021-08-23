@@ -8,6 +8,7 @@ import PaymentSection from "../Pages/PaymentSection/PaymentSection";
 import Home from "../Pages/Home";
 import PaymentForm from "../Pages/PaymentSection/PaymentOptions/PaymentForm";
 import StripeContainer from "../Pages/PaymentSection/PaymentOptions/StripeContainer ";
+import { UserDetails } from "../Pages/Authentication/UserDetails";
 
 const Routes = () => {
   return (
@@ -28,6 +29,9 @@ const Routes = () => {
         </Route>
         <Route exact path="/signin">
           <SignIn />
+        </Route>
+        <Route exact path="/userdetails">
+          <UserDetails/>
         </Route>
        
       </Switch>

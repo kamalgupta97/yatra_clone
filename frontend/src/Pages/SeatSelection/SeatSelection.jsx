@@ -103,13 +103,25 @@ const LowerUper =styled.div`
     align-items:center;
   
 `
-
+const Lower=styled.div`
+    width:100%;
+    min-height:80px;
+    display:flex;
+    justify-content:center;
+    align-items:center;    
+`
 const Buttons = styled.div`
     width:200px;
     border:1px solid #c4c4c4;
-    height:40px;
-   
-   
+    height:40px; 
+`
+const LowerButtons =styled.div`
+    width:100px;
+    border:1px solid #c4c4c4;
+    height:40px; 
+    &>button{
+        width:100%;
+    }
 `
 const Sitting = styled.div`
     margin:2%;
@@ -335,9 +347,23 @@ padding :12px 24px;
 font-weight:600;
 cursor:pointer;
 `
+// {
+//     _id
+//     bookedseats,
+//     operator,
+//     source,
+//     destination,
+//     departtime,
+//     arrivaltime,
+//     date,
+//     bustype,
+//     totalseat,
+//     availableseat,
+//     fare,
+//     duration,
+//   }
 
-
-export const SeatSelection = ({operator,source,destination,setopenSelectseat,bustype,dropping_point,boardingpoint,fare,bus_id,date,bookedseats,departtime,arrivaltime}) => {
+export const SeatSelection = ({operator,source,destination,setindividualmodalopen,setopenSelectseat,bustype,dropping_point,boardingpoint,fare,_id,date,bookedseats,departtime,arrivaltime}) => {
     const [activelower,setActivelower] = React.useState(true)
     const [activeplace,setactiveplace] =React.useState(true)
     const [activeBordingpoint,setactiveBordingpoint] = React.useState(false)
@@ -345,11 +371,14 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
     const [selected,setSelected]= React.useState([])
     const [droppingpoints,setDroppingpoints]=React.useState([])
     const [boardingpoints,setboardingpoints]=React.useState([])
+    const [selectedDroppingpoint,setselectedDroppingpoint]=React.useState("")
+    const [selectedBordingpoint,setselectedBordingpoint]=React.useState("")
+
 
     React.useEffect(()=>{
       
-        console.log(operator,dropping_point,boardingpoint,fare,bus_id,bustype,date,bookedseats,arrivaltime)
-        axios.get(`http://localhost:2244/stops/points?city=${"surat"}&busid=${bus_id}`).then(res=>{
+        console.log(operator,dropping_point,boardingpoint,fare,_id,bustype,date,bookedseats,arrivaltime)
+        axios.get(`http://localhost:2244/stops/points?city=${"surat"}&busid=${_id}`).then(res=>{
             console.log(res.data)
             setboardingpoints(res.data.points)
             console.log(boardingpoints ,"STATE boardingpoints")
@@ -359,7 +388,7 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
                 console.log(err)
             })
 
-            axios.get(`http://localhost:2244/stops/points?city=${"jaipur"}&busid=${bus_id}`).then(res=>{
+            axios.get(`http://localhost:2244/stops/points?city=${"jaipur"}&busid=${_id}`).then(res=>{
                 console.log(res.data)
                 setDroppingpoints(res.data.points)
                 console.log(droppingpoints,"STATE droppingpoints")
@@ -375,7 +404,7 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
     const dispatch = useDispatch()
     const handleBook=()=>{
         const payload={
-            bus_id,
+            _id,
             selected
         }
         dispatch(getSelectedData(payload))
@@ -404,6 +433,10 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
         }
         // console.log(activeplace,activeBordingpoint,activeDroppingpoint) at this line why it is giving wrong output
     }
+    const handleCross =()=>{
+        setopenSelectseat(false)
+        setindividualmodalopen(false)
+    }
 
     return  (
         <SeatSelectionWrapper>
@@ -412,19 +445,29 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
 
             
            <SeatSelectionWrapperRight>
-           <CrossIcon onClick={()=>setopenSelectseat(false)}>✖</CrossIcon>
+           <CrossIcon onClick={handleCross}>✖</CrossIcon>
                 <div>
                     <H1>Seat Preferences</H1>
                 </div>
 
                 <DescriptionAnsStatus>
                 <ArrangementWrapper>
-                    <LowerUper>
+                   { 
+                   bustype==="sleeper"?
+                   <LowerUper>
                         <Buttons>
                         <button className={ activelower? styles.activelower : styles.lower} onClick={()=>setActivelower(true)}>Lower Deck</button>
                         <button className={ activelower? styles.lower: styles.activelower  } onClick={()=>setActivelower(false)}>Upper Deck</button>
                         </Buttons>
                     </LowerUper>
+                    :
+                    <Lower>
+                    <LowerButtons>
+                    <button className={ activelower? styles.activelower : styles.lower} onClick={()=>setActivelower(true)}>Lower Deck</button>
+                    </LowerButtons>
+                </Lower>
+
+                    }
 
                     <Sitting>
                            
@@ -433,7 +476,7 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
                             
                             </Driver>}
 
-                            <SeaterSitting  selected={selected} setSelected={setSelected} booked={bookedseats} bus_id={bus_id}/>
+                            <SeaterSitting activelower={activelower}  selected={selected} setSelected={setSelected} booked={bookedseats} _id={_id} bustype={bustype}/>
                     </Sitting>
                     <SeatStatus>
 
@@ -488,7 +531,7 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
                 </ArrangementWrapper>
                 <TravelDescription>
                    <DescHeading>
-                        <button className={activeplace && styles.activebuttons} name="activeplace" onClick={handleClick}>{requirement.source}-{requirement.destination}</button>
+                        <button className={activeplace && styles.activebuttons} name="activeplace" onClick={handleClick}>{source[0].toUpperCase() + source.substring(1)}-{destination[0].toUpperCase() + destination.substring(1)}</button>
                         <button className={activeBordingpoint && styles.activebuttons} name="activeBordingpoint" onClick={handleClick}>Bording Points</button>
                         <button className={activeDroppingpoint && styles.activebuttons} name="activeDroppingpoint" onClick={handleClick}>Dropping Points</button>
 
@@ -496,10 +539,10 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
                     {
                         activeplace && <SeatConfirmation>
                             <SeatConfirmationHeader>
-                                <p>{operator}</p>
+                                <p>{operator.toUpperCase()}</p>
                             </SeatConfirmationHeader>
                             <Bustypes>
-                                <p>{bustype}</p>
+                                <p>{bustype.toUpperCase()}</p>
                             </Bustypes>
 
                             <Dates>
@@ -510,12 +553,12 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
                                 <p>
                                     Select Boarding Point
                                 </p>
-                                <select name="" id="">
+                                <select name="" id="" onChange={(e)=>setselectedBordingpoint(e.target.value)}>
                                     <option>Select Boarding Point</option>
                                     {
                                         
                                         boardingpoints?.map(item=>
-                                            <option value={`${item.point}-${item.time}`}>{`${item.point}-${item.time}`}</option>                                          
+                                            <option value={`${item.point}-${item.time}`}>{`${item.point.toUpperCase()}-${item.time}`}</option>                                          
                                         )
                                     }
                                 </select>
@@ -525,17 +568,39 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
                                 <p>
                                     Select Dropping Point
                                 </p>
-                                <select name="" id="">
+                                <select name="" id="" onChange={(e)=>setselectedDroppingpoint(e.target.value)}>
                                     <option>Select Dropping Point</option>
                                     {
                                         
                                         droppingpoints.map(item=>
-                                            <option value={`${item.point}-${item.time}`}>{`${item.point}-${item.time}`}</option>                                          
+                                            <option value={`${item.point}-${item.time}`}>{`${item.point.toUpperCase()}-${item.time}`}</option>                                          
                                         )
                                     }
                                 </select>
                                 {/* {console.log(selectedseats)} */}
-                                   { selected.length>0?<> <AmountandSeats>
+                              
+                                    {
+                                       (selectedDroppingpoint!=="" && setactiveBordingpoint!=="" && selected.length>0)?
+
+                                        <>
+                                        <AmountandSeats>
+                                      <Amount>
+                                          <p>Total Amount</p>
+                                         
+                                          <p>₹ {isNaN(selected.length*Number(fare))?0:selected.length*Number(fare)}</p>
+                                      </Amount>
+                                      <SeatNo>
+                                          <p>Seats No:</p>
+                                          <p>{selected.join(",")}</p>
+                                      </SeatNo>
+                                  </AmountandSeats>
+                                  <ConfirmActiveButton onClick={handleBook}>Confirm Seats</ConfirmActiveButton>
+                                      </>
+                                  
+                                        :
+                                        (selected.length>0)?
+                                        <>
+                                          <AmountandSeats>
                                         <Amount>
                                             <p>Total Amount</p>
                                            
@@ -546,11 +611,17 @@ export const SeatSelection = ({operator,source,destination,setopenSelectseat,bus
                                             <p>{selected.join(",")}</p>
                                         </SeatNo>
                                     </AmountandSeats>
-                                    <ConfirmActiveButton onClick={handleBook}>Confirm Seats</ConfirmActiveButton>
-                                     </>:
-                                   
-                                     <ConfirmButton disabled>Confirm Seats</ConfirmButton>
+                                    <ConfirmButton disabled>Confirm Seats</ConfirmButton>
+                                        </>
+                                        :
+                                        
+                                        
+                                        <ConfirmButton disabled>Confirm Seats</ConfirmButton>
                                     }
+                                    
+                                   
+                                     
+                                  
                                
                               
                             </SelectCityWrapper>

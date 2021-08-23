@@ -4,9 +4,9 @@ import {
     LOGIN_REQUEST,
     LOGIN_FAILURE,
     LOGIN_SUCCESS,
-    SIGNUP_SUCCESS,
-    SIGNUP_FAILURE,
-    SIGNUP_REQUEST,
+    SEND_OTP_SUCCESS,
+    SEND_OTP_FAILURE,
+    SEND_OTP_REQUEST,
 
     OTP_VERIFICATION_SUCCESS,
     OTP_VERIFICATION_FAILURE,
@@ -70,36 +70,36 @@ import {
 
 
 
-  const signupRequest = (payload) => {
+  const sendOtpRequest = (payload) => {
     return {
-      type: SIGNUP_REQUEST,
+      type: SEND_OTP_REQUEST,
       payload: payload,
     };
   };
-  const signupSuccess = (payload) => {
+  const sendOtpSuccess = (payload) => {
     return {
-      type: SIGNUP_SUCCESS,
+      type: SEND_OTP_SUCCESS,
       payload: payload,
     };
   };
-  const signupFailure = () => {
+  const sendOtpFailure = () => {
     return {
-      type: SIGNUP_FAILURE,
+      type: SEND_OTP_FAILURE,
       payload: "we couldn't create your account. Please try again.",
     };
   };
 
 
 
-  export const getLogin=(payload)=>(dispatch)=>{
-      dispatch(loginRequest())
+  export const sendOtp=(payload)=>(dispatch)=>{
+      dispatch(sendOtpRequest())
 
       return axios.post("http://localhost:7777/login",{mobile:payload})
       .then(res=>{
-        dispatch(loginSuccess(res.data))
+        dispatch(sendOtpSuccess(res.data))
       })
       .catch(err=>{
-        dispatch(loginFailure(err))
+        dispatch(sendOtpFailure(err))
       })
   }
   

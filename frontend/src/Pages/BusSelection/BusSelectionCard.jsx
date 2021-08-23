@@ -69,13 +69,19 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 
-const SelectionCard = ({_id,openSelectseat,setopenSelectseat, handleCancelPolicy , operator,bustype,departtime,arrivaltime,duration,fare,availableseat,destination,source,date,bookedseats}) => {
+const SelectionCard = ({_id,allbuses,openSelectseat,setopenSelectseat, handleCancelPolicy , operator,bustype,departtime,arrivaltime,duration,fare,availableseat,destination,source,date,bookedseats}) => {
   const classes = useStyles();
   const theme = useTheme();
- 
+  const [tobeopen,setTobeopen] = React.useState({})
+  const [individualmodalopen,setindividualmodalopen]=React.useState(false)
   const handleSeatSelection = (_id)=>{
-    setopenSelectseat(!openSelectseat)
-    // alert(_id)
+    setopenSelectseat(true)
+    setindividualmodalopen(!individualmodalopen)
+    console.log(_id,"LOOF FOR IDS")
+    const updated = allbuses.find(item=>item._id===_id)
+    setTobeopen(updated)
+    console.log(updated,"LOOK FOR OBJECT")
+   
   }
 
   return (
@@ -109,7 +115,10 @@ const SelectionCard = ({_id,openSelectseat,setopenSelectseat, handleCancelPolicy
           </div>
           <div className={styles.Column3}>
 
-            <button  onClick={()=>handleSeatSelection(_id)} className={classes.btn} variant="contained">
+            <button   
+            onClick={()=>handleSeatSelection(_id)} 
+            // onClick={()=>alert(_id)} 
+            className={classes.btn} variant="contained">
 
               Select seat
             </button>
@@ -126,7 +135,13 @@ const SelectionCard = ({_id,openSelectseat,setopenSelectseat, handleCancelPolicy
     }
       </div>
       {
-      openSelectseat && <SeatSelection setopenSelectseat={setopenSelectseat} operator={operator} bus_id={_id} fare={fare} boardingpoint={source}  dropping_point={destination} bustype={bustype} date={date} bookedseats={bookedseats} arrivaltime={arrivaltime} departtime={departtime}/>
+
+        
+          // console.log(_id)
+
+          // console.log({...tobeopen})
+   
+          individualmodalopen && <SeatSelection {...tobeopen} setindividualmodalopen={setindividualmodalopen} setopenSelectseat={setopenSelectseat} key={tobeopen.id}/>
     }
     </Card>
     
@@ -134,3 +149,4 @@ const SelectionCard = ({_id,openSelectseat,setopenSelectseat, handleCancelPolicy
 };
 
 export default SelectionCard;
+

@@ -10,24 +10,28 @@ import prefilled from "../../assets/prefilled.png";
 import transfechash from "../../assets/transefechash.png";
 import { Otpform } from "./Otpform";
 import { useDispatch, useSelector } from "react-redux";
-import { getLogin } from "../../Redux/Auth/authAction";
+import { getLogin, sendOtp } from "../../Redux/Auth/authAction";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { loginSuccess } from "../../Redux/Auth/authAction";
+import Navbar2 from "../../Components/Navbar2";
+ 
 
 const BodyWrapper = styled.div`
   background: #f5f5f5;
   height: 100vh;
   width: 100%;
+  overflow-y: hidden;
   @media (max-width: 800px) {
     height: auto;
   }
 `;
 const SignInWrapper = styled.div`
+
   width: 45%;
 
-  height: 85vh;
-  margin: auto;
+  height: 80%;
+  margin: 10vh auto;
   // background:yellow;
   @media (max-width: 800px) {
     height: auto;
@@ -107,18 +111,19 @@ const Label = styled.div`
 `;
 
 const Input = styled.div`
-  background: red;
+  // background: red;
   margin: 30px auto;
-  width: 300px;
+  width: 100%;
 
   & > input {
-    width: 100%;
+    width: 87%;
     height: 40px;
     border: none;
     border-radius: 3px;
     box-shadow: 0 2px 2px #cdcdcd;
     papdding: 10px;
     padding-left: 10px;
+    margin: 0 5%;
     ::placeholder,
     ::-webkit-input-placeholder {
       color: #cdcdcd;
@@ -126,16 +131,16 @@ const Input = styled.div`
   }
 `;
 const Button = styled.div`
-  background: red;
-  width: 313px;
+  // background: red;
+  width: 100%;
 
-  margin: 20px 20px 0 22px;
+  margin: 30px auto;
 
   & > button {
-    width: 100%;
+    width: 90%;
     height: 40px;
     border: none;
-    margin: auto;
+    margin: 0 5%;
     border-radius: 3px;
     box-shadow: 0 2px 2px #cdcdcd;
     background: #ea2330;
@@ -178,16 +183,19 @@ const CancellationWrapper = styled.div`
 
 const CancellationPolicy = styled.div`
   height: 95%;
-  width: 90%;
+  width: 85%;
   // box-shadow: 0 2px 2px #cdcdcd;
 
   border-radius: 10px;
   background: #fef2d8; //#feeab8
   margin: auto;
+  @media (max-width: 800px) {
+    margin:50px auto;
+  }
 `;
 const CancellationPolicyHeading = styled.div`
   background: #feeab8;
-  width: 100%;
+  width: 100%;   
   height: 10%;
   border-radius: 10px 10px 0 0;
   text-align: center;
@@ -229,16 +237,20 @@ export const SignIn = () => {
     });
   };
 
-  console.log(state);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(getLogin(mobileNo));
+    dispatch(sendOtp(mobileNo));
     setotpForm(true);
   };
   return (
     <BodyWrapper>
+      <Navbar2/>
+      {
+        console.log(state)
+      }
       <SignInWrapper>
         <HeadingWrapper>
           <p>Welcome to Yatra!</p>
@@ -265,7 +277,7 @@ export const SignIn = () => {
                 <button>Continue</button>
               </Button>
             </form>
-
+                                        
             <TermsandConditions>
               <Terms>
                 By proceeding, you agree with our{" "}
@@ -352,7 +364,7 @@ export const SignIn = () => {
                   <b> Free Meals, Low Cancellation Fee, Free Rescheduling </b>
                   for SME business customers
                 </CancellationText>
-              </CancelationLine>
+              </CancelationLine> 
             </CancellationPolicy>
           </CancellationWrapper>
         </ContentWrapper>

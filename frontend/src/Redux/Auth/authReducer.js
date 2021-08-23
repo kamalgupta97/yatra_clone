@@ -2,9 +2,9 @@ import {
     LOGIN_REQUEST,
     LOGIN_FAILURE,
     LOGIN_SUCCESS,
-    SIGNUP_SUCCESS,
-    SIGNUP_FAILURE,
-    SIGNUP_REQUEST,
+    SEND_OTP_SUCCESS,
+    SEND_OTP_FAILURE,
+    SEND_OTP_REQUEST,
     OTP_VERIFICATION_SUCCESS,
 
     OTP_VERIFICATION_REQUEST,
@@ -13,7 +13,9 @@ import {
 
   const init={
       isAuth: false,
-      user: "kamal"
+      user: "kamal",
+      status:false,
+      isLoading:false,
   }
 
   export const authReducer = (state = init, { type, payload }) => {
@@ -35,41 +37,50 @@ import {
         return {
           ...state,
           payload,
-          isAuth: true
+         
        
      
         };
         case OTP_VERIFICATION_FAILURE:
           return {
             ...state,
-            payload
+            payload,
+            isLoading:false,
           
           };
         case OTP_VERIFICATION_SUCCESS:
         
           return {
             ...state,
-            payload
+            isAuth:payload.valid,
+            status:payload.status,
+            isLoading:false,
+
           };
         case OTP_VERIFICATION_REQUEST:{
             return{
-                ...state
+                ...state,
+                isLoading:true,
             }
   
         }
-      case SIGNUP_FAILURE:
+      case SEND_OTP_FAILURE:
         return {
           ...state,
+          isLoading:false,
         
         };
-      case SIGNUP_SUCCESS:
-      
+      case SEND_OTP_SUCCESS:
+      alert("Sent Otp ")
         return {
           ...state,
+         status:payload.status,
+         isLoading:false,
         };
-      case SIGNUP_REQUEST:{
+      case SEND_OTP_REQUEST:{
           return{
-              ...state
+              ...state,
+              isLoading:true
           }
 
       }
